@@ -1,7 +1,7 @@
 <?php $this->load->view('headeradmin'); ?>
-		
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 	    <div class="main-panel">
-		
+
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -10,7 +10,7 @@
                                  <h1>DAFTAR PENYAKIT</h1>
                           </div>
                         <div class="card">
-                            
+
 
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
@@ -24,7 +24,7 @@
                                         </thead>
                                         <tbody>
                                             <?php foreach ($penyakit as $key) { ?>
-                                        
+
                                             <tr>
                                                 <td><?php echo $key->nama_penyakit;?></td>
                                                 <td><?php echo $key->definisi;?></td>
@@ -35,11 +35,11 @@
                                                 <td><a href="<?=site_url()?>/admin/delete/<?php echo $key->id_penyakit ?>"> <p data-placement="top" data-toogle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
                                             </tr>
                                                             <!--    <tr>
-                                                
-                                            </tr> --> 
+
+                                            </tr> -->
                                             <?php }?>
-                                        </tbody>    
-                                        
+                                        </tbody>
+
                                     </table>
                                 </table>
 
@@ -50,5 +50,5 @@
                 </div>
             </div>
         </div>
-		
 
+</div>

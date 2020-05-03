@@ -35,12 +35,12 @@
                       </div>
                   <!-- <div class="col-8 col-md-8 col-xl-6 ">
                       <div class="sub_header_social_icon float-right">
-                      
+
                       </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
-        </div> --> -->
+        </div> -->
         <div class="main_menu">
             <div class="container">
                 <div class="row">
@@ -87,7 +87,7 @@
                 </div>
             </div>
         </div>
-     
+
     <!-- Header part end-->
 
     <!-- banner part start-->
@@ -114,9 +114,9 @@
                 <div class="col-md-6">
 
                     <div class="container">
-                                
+
                             <img src="<?php echo base_url()?>/assets/img/about.png" height="400" width="400"  alt="">
-                                
+
                     </div>
 
                    <!--  <div class="about_img">
@@ -131,7 +131,7 @@
                         <!-- <img src="img/about_icon.png" class="about_icon" alt=""> -->
                         <h2>Sistem Pakar Kelinci</h2>
                         <p>Website ini digunakan untuk membantu para pemilik kelinci mendapat penanganan pertama jika kelinci terkena penyakit.</p>
-                       
+
                     </div>
                 </div>
             </div>
@@ -222,9 +222,9 @@
                 <div class="col-md-6">
 
                     <div class="container">
-                                
+
                             <img src="<?php echo base_url()?>/assets/img/steps.png" height="200" width="200"  alt="">
-                                
+
                     </div>
 
                    <!--  <div class="about_img">
@@ -241,7 +241,7 @@
                         <p> 2. Pilih "pencarian" </p>
                         <p> 3. Penyakit dan penanganan pertama akan muncul </p>
                         <p> 4. Jika hasil tidak sesuai, maka pilih "revisi". maka pakar akan merevisi hasinya</p>
-                       
+
                     </div>
                 </div>
             </div>
@@ -255,8 +255,8 @@
                 <div class="counter_text">
                         <h2>Sistem Pakar Kelinci</h2>
                         <p>Website ini digunakan untuk membantu para pemilik kelinci mendapat penanganan pertama jika kelinci terkena penyakit.</p>
-                       
-                    
+
+
                 </div>
             </div>
         </div>

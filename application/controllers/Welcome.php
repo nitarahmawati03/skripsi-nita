@@ -1,4 +1,3 @@
-
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -48,16 +47,16 @@ class Welcome extends CI_Controller {
 	// 		);
 	// 	$cek = $this->m_user->cek_login("indexadmin",$where)->num_rows();
 	// 	if($cek > 0){
- 
+
 	// 		$data_session = array(
 	// 			'nama' => $username,
 	// 			'status' => "login"
 	// 			);
- 
+
 	// 		$this->session->set_userdata($data_session);
- 
+
 	// 		redirect('indexadmin');
- 
+
 	// 	}else{
 	// 		echo "Username dan password salah !";
 	// 	}
@@ -72,7 +71,7 @@ class Welcome extends CI_Controller {
 		// {
 		// 	//$this->load->view('login_view');
 		// 	redirect('loginAdmin','refresh');
-		// } else 
+		// } else
 		// {
 			if($this->input->post('username')=='admin' && $this->input->post('password')=='admin')
 			{
