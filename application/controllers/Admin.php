@@ -8,6 +8,7 @@ class Admin extends CI_Controller{
 		$this->load->helper('url','form');
 		$this->load->library('form_validation');
 		$this->load->model('m_pengelola');
+		$this->load->model('M_penyakit');
 	}
  
 	public function index()
@@ -23,14 +24,10 @@ class Admin extends CI_Controller{
 		
 	}
 
-	public function data_gejala()
-	{
-		
-	}
 
 	public function datatable_ajax()
 	{
-		// $this->load->view('koki_datatable_ajax');	
+		$this->load->view('penyakit_datatable_ajax');	
 	}
 
 	public function data_server()
@@ -52,7 +49,7 @@ class Admin extends CI_Controller{
 		 	{
 				$this->load->view("tambahpenyakit");
 				}else
-					{
+					{ 
 						$this->load->library('upload', $config);
 
 						if ( ! $this->upload->do_upload('userfile'))
@@ -92,7 +89,7 @@ class Admin extends CI_Controller{
 				}
 				else
 				{
-					$this->koki_model->UpdateById($id_penyakit);
+					$this->M_penyakit->UpdateById($id_penyakit);
 					$this->load->view('edit_penyakit_sukses');
 				}	
 			}
@@ -102,6 +99,12 @@ class Admin extends CI_Controller{
 	{
 		$this->M_penyakit->delete($id_penyakit);
 		$this->load->view('hapus_penyakit_sukses');
+	}
+
+	public function datatable()
+	{
+		$data['penyakit_list']=$this->M_penyakit->readPenyakit();
+		$this->load->view('penyakit_list',$data);
 	}
 
 }
