@@ -6,7 +6,7 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
                         <div class="jumbotron text-center">
                                  <h1>TAMBAH PENYAKIT</h1>
                           </div>
@@ -20,13 +20,13 @@
                                         <?php echo validation_errors();  ?>
                                         <div class="from-group">
                                             <label for="">Nama Penyakit</label>
-                                            <input type="text" name="nama_penyakit" class="form-control" id="nama_penyakit" placeholder="field">
+                                            <input type="text" name="nama_penyakit" class="form-control" id="nama_penyakit" placeholder=""><br>
 
                                             <label for="">Definisi</label>
-                                            <input type="text" name="definisi" class="form-control" id="definisi" placeholder="field">
+                                            <input type="text" name="definisi" class="form-control" id="definisi" placeholder=""><br>
 
                                             <label for="">Solusi</label>
-                                            <input type="text" name="solusi" class="form-control" id="solusi" placeholder="field">
+                                            <input type="text" name="solusi" class="form-control" id="solusi" placeholder=""><br>
 
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
