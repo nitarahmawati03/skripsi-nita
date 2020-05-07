@@ -46,18 +46,10 @@ class Penyakit extends CI_Controller {
 			$this->load->view("tambah_penyakit_view");
 		}else
 		{
-		$this->load->library('upload', $config);
-
-		if ( ! $this->upload->do_upload('userfile'))
-		{
-			$error = array('error' => $this->upload->display_errors());
-			$this->load->view('tambah_penyakit_view',$error);
-		}
-		else
-		{
+		
 			$this->M_penyakit->insertPenyakit();
 			$this->load->view('tambah_penyakit_sukses');
-		}
+		
 
 		}
 	}
@@ -78,25 +70,6 @@ class Penyakit extends CI_Controller {
 		{
 			$this->M_penyakit->UpdateById($id_penyakit);
 			$this->load->view('edit_penyakit_sukses');
-		// 	$config['upload_path'] = './assets/penyakit/';
-		// 	$config['allowed_types'] = 'gif|jpg|png|jpeg';
-		// 	$config['max_size']  = '9000000000';
-		// 	$config['max_width']  = '10240';
-		// 	$config['max_height']  = '7680';
-		// 	$this->load->library('upload', $config);
-
-		// 	if ( ! $this->upload->do_upload('userfile'))
-		// {
-		// 	$error = array('error' => $this->upload->display_errors());
-		// 	$this->load->view('tambah_penyakit_view',$error);
-		// }
-		// else
-		// {
-		// 	$this->M_penyakit->UpdateById($id_penyakit);
-		// 	$this->load->view('edit_penyakit_sukses');
-		// 	}
-
-
 			}
 	}
 
