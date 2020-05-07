@@ -5,7 +5,7 @@ class Penyakit extends CI_Controller {
 
 	public function datatable_ajax()
 	{
-		$this->load->view('penyakit_datatable_ajax');	
+		$this->load->view('penyakit_datatable_ajax');
 	}
 
 	public function data_server()
@@ -28,7 +28,7 @@ class Penyakit extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->model('M_penyakit');
 		$data['Penyakit']=$this->M_penyakit->readPenyakit();
-	
+
 		$this->load->view('indexadmin', $data);
 	}
 
@@ -36,7 +36,7 @@ class Penyakit extends CI_Controller {
 	{
 			$this->load->helper('url','form');
 			$this->load->library('form_validation');
-			
+
 			$this->form_validation->set_rules('nama_penyakit', 'Nama Penyakit', 'trim|required');
 
 			$this->load->model('M_penyakit');
@@ -61,7 +61,7 @@ class Penyakit extends CI_Controller {
 
 		}
 	}
-		
+
 		public function Update($id_penyakit)
 	{
 		$this->form_validation->set_rules('nama_penyakit', 'Nama Penyakit','trim|required');
@@ -70,25 +70,33 @@ class Penyakit extends CI_Controller {
 
 		$data['penyakit']=$this->M_penyakit->getPenyakit($id_penyakit);
 
-		if ($this->form_validation->run()==FALSE) 
+		if ($this->form_validation->run()==FALSE)
 		{
 			$this->load->view('edit_penyakit_view', $data);
-		}else
-			{
-		$this->load->library('upload', $config);
-
-		if ( ! $this->upload->do_upload('userfile'))
-		{
-			$error = array('error' => $this->upload->display_errors());
-			$this->load->view('tambah_penyakit_view',$error);
 		}
 		else
 		{
 			$this->M_penyakit->UpdateById($id_penyakit);
 			$this->load->view('edit_penyakit_sukses');
-			}
+		// 	$config['upload_path'] = './assets/penyakit/';
+		// 	$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		// 	$config['max_size']  = '9000000000';
+		// 	$config['max_width']  = '10240';
+		// 	$config['max_height']  = '7680';
+		// 	$this->load->library('upload', $config);
 
-				
+		// 	if ( ! $this->upload->do_upload('userfile'))
+		// {
+		// 	$error = array('error' => $this->upload->display_errors());
+		// 	$this->load->view('tambah_penyakit_view',$error);
+		// }
+		// else
+		// {
+		// 	$this->M_penyakit->UpdateById($id_penyakit);
+		// 	$this->load->view('edit_penyakit_sukses');
+		// 	}
+
+
 			}
 	}
 
