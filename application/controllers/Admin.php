@@ -1,8 +1,8 @@
-<?php 
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller{
- 
+
 	public function __construct(){
 		parent::__construct();
 		$this->load->helper('url','form');
@@ -10,7 +10,7 @@ class Admin extends CI_Controller{
 		$this->load->model('m_pengelola');
 		$this->load->model('M_penyakit');
 	}
- 
+
 	public function index()
 	{
 		$this->load->view('indexadmin');
@@ -21,13 +21,13 @@ class Admin extends CI_Controller{
 		$this->load->model('M_penyakit');
 		$data['penyakit']=$this->M_penyakit->readPenyakit();
 		$this->load->view('tabelpenyakit',$data);
-		
+
 	}
 
 
 	public function datatable_ajax()
 	{
-		$this->load->view('penyakit_datatable_ajax');	
+		$this->load->view('penyakit_datatable_ajax');
 	}
 
 	public function data_server()
@@ -48,23 +48,14 @@ class Admin extends CI_Controller{
 		if ($this->form_validation->run()==FALSE)
 		 	{
 				$this->load->view("tambahpenyakit");
-				}else
-					{ 
-						$this->load->library('upload', $config);
+				}else{
 
-						if ( ! $this->upload->do_upload('userfile'))
-						{
-							$error = array('error' => $this->upload->display_errors());
-							$this->load->view('tambahpenyakit',$error);
-						}
-						else
-					{
 						$this->M_penyakit->insertPenyakit();
 						$this->load->view('tambah_penyakit_sukses');
 				}
 
-			}
 	}
+
 
 	public function Update($id_penyakit)
 	{
@@ -74,12 +65,12 @@ class Admin extends CI_Controller{
 
 		$data['penyakit']=$this->M_penyakit->getPenyakit($id_penyakit);
 
-		if ($this->form_validation->run()==FALSE) 
+		if ($this->form_validation->run()==FALSE)
 		{
 			$this->load->view('editpenyakit', $data);
 		}else
 			{
-		
+
 				$this->load->library('upload', $config);
 
 				if ( ! $this->upload->do_upload('userfile'))
@@ -91,7 +82,7 @@ class Admin extends CI_Controller{
 				{
 					$this->M_penyakit->UpdateById($id_penyakit);
 					$this->load->view('edit_penyakit_sukses');
-				}	
+				}
 			}
 	}
 

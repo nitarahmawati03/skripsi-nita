@@ -8,7 +8,7 @@
 	<link href="<?php echo base_url()?>assets/css/font-awesome.min.css" rel="stylesheet">
 	<link href="<?php echo base_url()?>assets/css/datepicker3.css" rel="stylesheet">
 	<link href="<?php echo base_url()?>assets/css/styles.css" rel="stylesheet">
-	
+
 	<!--Custom Font-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 	<!--[if lt IE 9]>
@@ -32,7 +32,7 @@
 						<em class="fa fa-power-off">&nbsp;</em><span class="label label-info"></span>
 					</a>
 						<ul class="dropdown-menu dropdown-alerts">
-							
+
 						</ul>
 					</li>
 				</ul>
@@ -56,3 +56,4 @@
 		</ul>
 	</div><!--/.sidebar-->
 </body>
+
