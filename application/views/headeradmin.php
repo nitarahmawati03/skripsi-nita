@@ -50,7 +50,7 @@
 		<ul class="nav menu">
 			<li><a href="<?=site_url()?>/Admin/index"><em class="fa fa-home">&nbsp;</em> Home</a></li>
 			<li><a href="<?=site_url()?>/Admin/daftar_penyakit"><em class="fa fa-list">&nbsp;</em>Daftar Penyakit</a></li>
-			<li><a href="<?=site_url()?>/Admin/tambah_penyakit"><em class="fa fa-edit">&nbsp;</em>Tambah Penyakit</a></li>
+			<li><a href="<?=site_url()?>/Admin/create"><em class="fa fa-edit">&nbsp;</em>Tambah Penyakit</a></li>
 			<li><a href="<?=site_url()?>/Admin/daftar_gejala"><em class="fa fa-list">&nbsp;</em>Daftar Gejala</a></li>
 			<li><a href="<?=site_url()?>/Admin/tambah_gejala"><em class="fa fa-edit">&nbsp;</em>Tambah Gejala</a></li>
 		</ul>
