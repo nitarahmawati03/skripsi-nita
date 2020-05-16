@@ -29,19 +29,19 @@ class Gejala extends CI_Controller {
 			$this->load->view('indexadmin');
 		}
 
-	public function daftar_gejala();
-		{
-			$this->load->model('M_gejala');
-			$data[gejala]=$this->M_gejala->readGejala();
-			$this->load->view('tabelgejala',$data);
-		}
+	public function daftar_gejala()
+	{
+		$this->load->model('M_gejala');
+		$data['gejala']=$this->M_gejala->readGejala();
+		$this->load->view('tabelgejala',$data);
+	}
 
-	public function datatable_ajax()
+	public function datatable_ajaxGejala()
 		{
 			$this->load->view('gejala_datatable_ajax');
 		}
 
-	public function data_server()
+	public function data_serverGejala()
 		{
 			$this->load->library('Datatables');
 			$this->datatables->select('id_gejala, gejala, id_bobot')->from('tb_gejala');

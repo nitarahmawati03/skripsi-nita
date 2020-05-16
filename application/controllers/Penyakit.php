@@ -36,7 +36,7 @@ class Penyakit extends CI_Controller {
 		$this->load->view('tabelpenyakit',$data);
 	}
 
-	public function datatable_ajax()
+	public function datatable_ajaxPenyakit()
 	{
 		$this->load->view('penyakit_datatable_ajax');
 	}
