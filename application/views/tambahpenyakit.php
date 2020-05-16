@@ -15,7 +15,7 @@
                                 <table class="table table-hover table-striped">
                                     <table class="table table-hover" id="contoh">
 
-                                        <?php echo form_open_multipart('Admin/create');?>
+                                        <?php echo form_open_multipart('Penyakit/create');?>
                                         
                                         <?php echo validation_errors();  ?>
                                         <div class="from-group">

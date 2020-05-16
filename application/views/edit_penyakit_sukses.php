@@ -21,7 +21,7 @@
 <div class="alert alert-success">
 	<strong>Data berhasil diupdate</strong>
 	<?php
-		echo anchor('Admin/daftar_penyakit', 'Lihat Penyakit');
+		echo anchor('Penyakit/daftar_penyakit', 'Lihat Penyakit');
 		?>
 </div>
 

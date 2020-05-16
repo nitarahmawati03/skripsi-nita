@@ -1,4 +1,4 @@
 <?php
 	echo "Sukses Simpan Data";
-	echo anchor('Admin/create', 'Masukan data lagi');
+	echo anchor('Penyakit/create', 'Masukan data lagi');
 ?>

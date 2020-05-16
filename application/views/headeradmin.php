@@ -28,7 +28,7 @@
 							<li class="divider"></li>
 						</ul>
 					</li>
-					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="<?php echo site_url('Welcome/logout')?>">
+					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="<?php echo site_url('Pengelola/logout')?>">
 						<em class="fa fa-power-off">&nbsp;</em><span class="label label-info"></span>
 					</a>
 						<ul class="dropdown-menu dropdown-alerts">
@@ -49,10 +49,10 @@
 		<div class="divider"></div>
 		<ul class="nav menu">
 			<li><a href="<?=site_url()?>/Admin/index"><em class="fa fa-home">&nbsp;</em> Home</a></li>
-			<li><a href="<?=site_url()?>/Admin/daftar_penyakit"><em class="fa fa-list">&nbsp;</em>Daftar Penyakit</a></li>
-			<li><a href="<?=site_url()?>/Admin/create"><em class="fa fa-edit">&nbsp;</em>Tambah Penyakit</a></li>
-			<li><a href="<?=site_url()?>/Admin/daftar_gejala"><em class="fa fa-list">&nbsp;</em>Daftar Gejala</a></li>
-			<li><a href="<?=site_url()?>/Admin/tambah_gejala"><em class="fa fa-edit">&nbsp;</em>Tambah Gejala</a></li>
+			<li><a href="<?=site_url()?>/Penyakit/daftar_penyakit"><em class="fa fa-list">&nbsp;</em>Daftar Penyakit</a></li>
+			<li><a href="<?=site_url()?>/Penyakit/create"><em class="fa fa-edit">&nbsp;</em>Tambah Penyakit</a></li>
+			<li><a href="<?=site_url()?>/Gejala/daftar_gejala"><em class="fa fa-list">&nbsp;</em>Daftar Gejala</a></li>
+			<li><a href="<?=site_url()?>/Gejala/createGejala"><em class="fa fa-edit">&nbsp;</em>Tambah Gejala</a></li>
 		</ul>
 	</div><!--/.sidebar-->
 </body>

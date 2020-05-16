@@ -21,7 +21,7 @@
 <div class="alert alert-success">
 	<strong>Data berhasil dihapus</strong>
 	<?php
-		echo anchor('Admin/index', 'Lihat Penyakit');
+		echo anchor('Penyakit/daftar_penyakit', 'Lihat Penyakit');
 		?>
 </div>
 

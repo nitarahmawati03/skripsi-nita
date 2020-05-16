@@ -18,7 +18,7 @@
 
 									<?php echo validation_errors(); ?>
 
-									<?php echo form_open_multipart('penyakit/update/'.$this->uri->segment(3)); ?>
+									<?php echo form_open_multipart('Penyakit/update/'.$this->uri->segment(3)); ?>
 									<div class="form_group">
 										<label class="control-label col-sm-2" for="nama penyakit">Nama Penyakit
 											:</label>

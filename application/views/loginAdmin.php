@@ -30,7 +30,7 @@
 					<img src="<?php echo base_url()?>/assets/images/img-01.png" alt="IMG">
 				</div>
 
-				<?php echo form_open('Welcome/cekLogin'); ?>
+				<?php echo form_open('Pengelola/cekLogin'); ?>
 					<span class="login100-form-title">
 						Login
 					</span>

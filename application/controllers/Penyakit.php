@@ -21,36 +21,49 @@ class Penyakit extends CI_Controller {
 		$this->load->model('M_penyakit');
 		$this->load->helper('url','form');
 		$this->load->library('form_validation');
+		$this->load->model('m_pengelola');
 	}
 
 	public function index()
 	{
-		$this->load->helper('url');
-		$this->load->model('M_penyakit');
-		$data['Penyakit']=$this->M_penyakit->readPenyakit();
-
-		$this->load->view('indexadmin', $data);
+		$this->load->view('indexadmin');
 	}
+
+	public function daftar_penyakit()
+	{
+		$this->load->model('M_penyakit');
+		$data['penyakit']=$this->M_penyakit->readPenyakit();
+		$this->load->view('tabelpenyakit',$data);
+	}
+
+	public function datatable_ajax_Penyakit()
+	{
+		$this->load->view('penyakit_datatable_ajax');
+	}
+
+	public function data_serverPenyakit()
+	{
+		$this->load->library('Datatables');
+		$this->datatables->select('id_penyakit,nama_penyakit, definisi, solusi')->from('tb_penyakit');
+			echo $this->datatables->generate();
+	}
+
 
 	public function Create()
 	{
 			$this->load->helper('url','form');
 			$this->load->library('form_validation');
-
 			$this->form_validation->set_rules('nama_penyakit', 'Nama Penyakit', 'trim|required');
-
 			$this->load->model('M_penyakit');
 
 		if ($this->form_validation->run()==FALSE)
-		 {
-			$this->load->view("tambah_penyakit_view");
+		 	{
+				$this->load->view("tambahpenyakit");
 		}else
 		{
 		
 			$this->M_penyakit->insertPenyakit();
 			$this->load->view('tambah_penyakit_sukses');
-		
-
 		}
 	}
 
@@ -64,7 +77,7 @@ class Penyakit extends CI_Controller {
 
 		if ($this->form_validation->run()==FALSE)
 		{
-			$this->load->view('edit_penyakit_view', $data);
+			$this->load->view('editpenyakit', $data);
 		}
 		else
 		{
