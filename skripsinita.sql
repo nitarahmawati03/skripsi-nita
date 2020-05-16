@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2020 at 10:22 AM
+-- Generation Time: May 16, 2020 at 05:51 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.29
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tb_basis_pengetahuan` (
   `id_basis_pengetahuan` varchar(10) NOT NULL,
+  `id_gejala` varchar(10) NOT NULL,
   `id_penyakit` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -40,8 +41,20 @@ CREATE TABLE `tb_basis_pengetahuan` (
 
 CREATE TABLE `tb_bobot` (
   `id_bobot` int(10) NOT NULL,
-  `kriteria` varchar(1000) NOT NULL,
+  `kriteria` varchar(30) NOT NULL,
   `nilai` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_detail_perhitungan`
+--
+
+CREATE TABLE `tb_detail_perhitungan` (
+  `id_detail_perhitungan` int(10) NOT NULL,
+  `id_perhitungan` int(10) NOT NULL,
+  `id_gejala` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -52,8 +65,7 @@ CREATE TABLE `tb_bobot` (
 
 CREATE TABLE `tb_gejala` (
   `id_gejala` varchar(10) NOT NULL,
-  `gejala` varchar(1000) NOT NULL,
-  `id_penyakit` varchar(10) NOT NULL,
+  `gejala` varchar(100) NOT NULL,
   `id_bobot` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -77,15 +89,15 @@ CREATE TABLE `tb_kasus_baru` (
 
 CREATE TABLE `tb_pengelola` (
   `id_pengelola` int(10) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `pass` varchar(50) NOT NULL
+  `username` varchar(50) CHARACTER SET utf8mb4 NOT NULL,
+  `pass` varchar(50) CHARACTER SET utf8mb4 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_pengelola`
 --
 
-INSERT INTO `tb_pengelola` (`id_pengelola`, `email`, `pass`) VALUES
+INSERT INTO `tb_pengelola` (`id_pengelola`, `username`, `pass`) VALUES
 (1, 'admin', 'admin');
 
 -- --------------------------------------------------------
@@ -106,7 +118,7 @@ CREATE TABLE `tb_penyakit` (
 --
 
 INSERT INTO `tb_penyakit` (`id_penyakit`, `nama_penyakit`, `definisi`, `solusi`) VALUES
-('P01', 'Kembung', 'Penyakit ini bisa menyerang kelinci usia dibawah 2 tahun dan indukan kelinci yang sedang hami atau menyusui', 'diberi pakan daun kacang kering, diberi antibiotik kedalam makanan atau minuman\r\n'),
+('P01', 'Kembung', 'Penyakit ini bisa menyerang kelinci usia dibawah 2 tahun dan indukan kelinci yang sedang hami atau menyusui', 'diberi pakan daun kacang kering, diberi antibiotik kedalam makanan atau minuman'),
 ('P02', 'Diare', 'Penyakit mencret/diare pada ternak kelinci sering dianggap hal yang biasa, padahal mencret bisa menyebabkan kematian. Ternak kelinci yang mengalami mencret jika dibiarkan dapat menyebabkan perut kelinci kembung dan tidak jarang mengakibatkan ternak mati. Penyakit mencret/diare pada kelinci bisa disebabkan oleh pakan yang diberikan. ', 'diberi antibiotik kedalam makanan atau minuman\r\n'),
 ('P03', 'Pasteurellosis', 'Pasteurellosis adalah penyakit gangguan pencernaan pada ternak kelinci. Penyebab penyakit pasteurellosis pada kelinci adalah kuman Pasteurella multocida. Penyakit ini sering menyerang kelinci dewasa, baik jantan maupun betina.', 'Selalu membersihkan kandang dari feses/kotoran kelinci dan diberi vaksin'),
 ('P04', 'Young De Syndrome', 'Penyakit ini terjadi pada kelinci betina yang sedang menyususi. Penyebabnya adalah septicemia akibat mastitis sehingga terjadi pembengkakan pada kelenjar susu atau puting susu. Akibatnya induk kelinci tidak bisa menyusui anaknya dan anak-anak kelinci akan mati karena tidak mendapatkan air susu dari induknya.', 'Pembersihan kandang,  induk kelinci yang terkena Young Doe Syndrome harus di isolasi dulu di kandang terpisah lalu disuntikan dengan Penicilin, Sulfa Strong, Oxylin atau Sulmethonl.\r\n\r\n'),
@@ -129,8 +141,8 @@ INSERT INTO `tb_penyakit` (`id_penyakit`, `nama_penyakit`, `definisi`, `solusi`)
 CREATE TABLE `tb_perhitungan` (
   `id_perhitungan` int(10) NOT NULL,
   `id_penyakit` varchar(10) NOT NULL,
-  `id_gejala` varchar(10) NOT NULL,
-  `hasil` varchar(1000) NOT NULL
+  `hasil` varchar(1000) NOT NULL,
+  `tgl_perhitungan` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -142,6 +154,7 @@ CREATE TABLE `tb_perhitungan` (
 --
 ALTER TABLE `tb_basis_pengetahuan`
   ADD PRIMARY KEY (`id_basis_pengetahuan`),
+  ADD KEY `id_gejala` (`id_gejala`),
   ADD KEY `id_penyakit` (`id_penyakit`);
 
 --
@@ -151,12 +164,19 @@ ALTER TABLE `tb_bobot`
   ADD PRIMARY KEY (`id_bobot`);
 
 --
+-- Indexes for table `tb_detail_perhitungan`
+--
+ALTER TABLE `tb_detail_perhitungan`
+  ADD PRIMARY KEY (`id_detail_perhitungan`),
+  ADD KEY `id_perhitungan` (`id_perhitungan`),
+  ADD KEY `id_gejala` (`id_gejala`);
+
+--
 -- Indexes for table `tb_gejala`
 --
 ALTER TABLE `tb_gejala`
   ADD PRIMARY KEY (`id_gejala`),
-  ADD KEY `id_bobot` (`id_bobot`),
-  ADD KEY `id_penyakit` (`id_penyakit`);
+  ADD KEY `id_bobot` (`id_bobot`);
 
 --
 -- Indexes for table `tb_kasus_baru`
@@ -183,8 +203,7 @@ ALTER TABLE `tb_penyakit`
 --
 ALTER TABLE `tb_perhitungan`
   ADD PRIMARY KEY (`id_perhitungan`),
-  ADD KEY `id_penyakit` (`id_penyakit`),
-  ADD KEY `id_gejala` (`id_gejala`);
+  ADD KEY `id_penyakit` (`id_penyakit`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -197,10 +216,10 @@ ALTER TABLE `tb_bobot`
   MODIFY `id_bobot` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tb_pengelola`
+-- AUTO_INCREMENT for table `tb_detail_perhitungan`
 --
-ALTER TABLE `tb_pengelola`
-  MODIFY `id_pengelola` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `tb_detail_perhitungan`
+  MODIFY `id_detail_perhitungan` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_perhitungan`
@@ -216,14 +235,20 @@ ALTER TABLE `tb_perhitungan`
 -- Constraints for table `tb_basis_pengetahuan`
 --
 ALTER TABLE `tb_basis_pengetahuan`
-  ADD CONSTRAINT `tb_basis_pengetahuan_ibfk_1` FOREIGN KEY (`id_penyakit`) REFERENCES `tb_penyakit` (`id_penyakit`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tb_basis_pengetahuan_ibfk_1` FOREIGN KEY (`id_gejala`) REFERENCES `tb_gejala` (`id_gejala`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tb_basis_pengetahuan_ibfk_2` FOREIGN KEY (`id_penyakit`) REFERENCES `tb_penyakit` (`id_penyakit`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tb_detail_perhitungan`
+--
+ALTER TABLE `tb_detail_perhitungan`
+  ADD CONSTRAINT `tb_detail_perhitungan_ibfk_1` FOREIGN KEY (`id_perhitungan`) REFERENCES `tb_perhitungan` (`id_perhitungan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_gejala`
 --
 ALTER TABLE `tb_gejala`
-  ADD CONSTRAINT `tb_gejala_ibfk_1` FOREIGN KEY (`id_bobot`) REFERENCES `tb_bobot` (`id_bobot`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tb_gejala_ibfk_2` FOREIGN KEY (`id_penyakit`) REFERENCES `tb_penyakit` (`id_penyakit`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tb_gejala_ibfk_2` FOREIGN KEY (`id_bobot`) REFERENCES `tb_bobot` (`id_bobot`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_kasus_baru`
@@ -236,8 +261,7 @@ ALTER TABLE `tb_kasus_baru`
 -- Constraints for table `tb_perhitungan`
 --
 ALTER TABLE `tb_perhitungan`
-  ADD CONSTRAINT `tb_perhitungan_ibfk_1` FOREIGN KEY (`id_penyakit`) REFERENCES `tb_penyakit` (`id_penyakit`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tb_perhitungan_ibfk_2` FOREIGN KEY (`id_gejala`) REFERENCES `tb_gejala` (`id_gejala`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tb_perhitungan_ibfk_1` FOREIGN KEY (`id_penyakit`) REFERENCES `tb_penyakit` (`id_penyakit`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
