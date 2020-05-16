@@ -21,7 +21,7 @@ class Penyakit extends CI_Controller {
 		$this->load->model('M_penyakit');
 		$this->load->helper('url','form');
 		$this->load->library('form_validation');
-		$this->load->model('m_pengelola');
+		$this->load->model('M_pengelola');
 	}
 
 	public function index()
@@ -36,7 +36,7 @@ class Penyakit extends CI_Controller {
 		$this->load->view('tabelpenyakit',$data);
 	}
 
-	public function datatable_ajax_Penyakit()
+	public function datatable_ajax()
 	{
 		$this->load->view('penyakit_datatable_ajax');
 	}

@@ -52,7 +52,7 @@
 			<li><a href="<?=site_url()?>/Penyakit/daftar_penyakit"><em class="fa fa-list">&nbsp;</em>Daftar Penyakit</a></li>
 			<li><a href="<?=site_url()?>/Penyakit/create"><em class="fa fa-edit">&nbsp;</em>Tambah Penyakit</a></li>
 			<li><a href="<?=site_url()?>/Gejala/daftar_gejala"><em class="fa fa-list">&nbsp;</em>Daftar Gejala</a></li>
-			<li><a href="<?=site_url()?>/Gejala/createGejala"><em class="fa fa-edit">&nbsp;</em>Tambah Gejala</a></li>
+			<li><a href="<?=site_url()?>/Gejala/create"><em class="fa fa-edit">&nbsp;</em>Tambah Gejala</a></li>
 		</ul>
 	</div><!--/.sidebar-->
 </body>
