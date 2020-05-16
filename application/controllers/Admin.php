@@ -21,7 +21,6 @@ class Admin extends CI_Controller{
 		$this->load->model('M_penyakit');
 		$data['penyakit']=$this->M_penyakit->readPenyakit();
 		$this->load->view('tabelpenyakit',$data);
-
 	}
 
 

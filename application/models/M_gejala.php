@@ -35,4 +35,32 @@ class M_gejala extends CI_Model {
 		$this->db->insert('tb_gejala',$object);
 	}
 
+	public function getGejala($id_gejala){
+		$this->db->where('id_gejala',$id_gejala);
+		$query= $this->db->get('tb_gejala');
+		return $query->result();
+	}
+
+	public function UpdateById($id_gejala)
+	{
+		$data = array
+		(
+			'gejala' =>$this->input->post('gejala'),
+			'id_bobot' =>$this->input->post('id_bobot')
+		);
+		$this->db->where('id_gejala',$id_gejala);
+		$this->db->update('tb_gejala',$data);
+	}
+
+	public function delete($id_gejala)
+	{
+		$this->db->where('id_gejala', $id_gejala);
+		$this->db->delete('tb_gejala');
+	}
+
+	public function getGejalaQueryObject(){
+	  $query=$this->db->query('SELECT * FROM tb_gejala');
+	  return $query->result();
+	 }
+
 }
