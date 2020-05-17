@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2020 at 05:51 PM
+-- Generation Time: May 17, 2020 at 07:07 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.29
 
@@ -45,15 +45,24 @@ CREATE TABLE `tb_bobot` (
   `nilai` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tb_bobot`
+--
+
+INSERT INTO `tb_bobot` (`id_bobot`, `kriteria`, `nilai`) VALUES
+(1, 'Gejala Biasa', 1),
+(2, 'Gejala Sedang', 3),
+(3, 'Gejala Dominan', 5);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_detail_perhitungan`
+-- Table structure for table `tb_detail_pemeriksaan`
 --
 
-CREATE TABLE `tb_detail_perhitungan` (
-  `id_detail_perhitungan` int(10) NOT NULL,
-  `id_perhitungan` int(10) NOT NULL,
+CREATE TABLE `tb_detail_pemeriksaan` (
+  `id_detail_pemeriksaan` int(10) NOT NULL,
+  `id_pemeriksaan` int(10) NOT NULL,
   `id_gejala` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -77,8 +86,21 @@ CREATE TABLE `tb_gejala` (
 
 CREATE TABLE `tb_kasus_baru` (
   `id_kasus_baru` varchar(10) NOT NULL,
-  `id_perhitungan` int(10) NOT NULL,
+  `id_pemeriksaan` int(10) NOT NULL,
   `id_penyakit` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_pemeriksaan`
+--
+
+CREATE TABLE `tb_pemeriksaan` (
+  `id_pemeriksaan` int(10) NOT NULL,
+  `id_penyakit` varchar(10) NOT NULL,
+  `hasil` varchar(1000) NOT NULL,
+  `tgl_pemeriksaan` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -132,19 +154,6 @@ INSERT INTO `tb_penyakit` (`id_penyakit`, `nama_penyakit`, `definisi`, `solusi`)
 ('P12', 'Hairball', 'Hairball terjadi karena masuknya rambut/bulu kelinci ke dalam saluran pencernaan, kemudian terakumulasi dalam jangka waktu lama hingga mengeras. Hal ini akibat kelinci suka menjilati-jilat tubuh', 'Pemberian Hay/rumput kering juga disarankan untuk menstimulasi gerakan saluran pencernaan sehingga hairball terdorong keluar tubuh.'),
 ('P13', 'Abses', 'Abses adalah suatu pernimbunan nanah, biasanya terjadi akibat suatu infeksi bakteri. Jika bakteri menyusup kedalam jaringan yang sehat, maka akan terjadi infeksi. Sebagian sel akan mati dan hancur, meninggalkan rongga yang berisi jaringan dan sel – sel yang terinfeksi. ', 'Gunting bulu diatas abses hingga bersih, keluarkan nanahnya dan diberi antibiotik\r\n');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_perhitungan`
---
-
-CREATE TABLE `tb_perhitungan` (
-  `id_perhitungan` int(10) NOT NULL,
-  `id_penyakit` varchar(10) NOT NULL,
-  `hasil` varchar(1000) NOT NULL,
-  `tgl_perhitungan` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 --
 -- Indexes for dumped tables
 --
@@ -164,11 +173,11 @@ ALTER TABLE `tb_bobot`
   ADD PRIMARY KEY (`id_bobot`);
 
 --
--- Indexes for table `tb_detail_perhitungan`
+-- Indexes for table `tb_detail_pemeriksaan`
 --
-ALTER TABLE `tb_detail_perhitungan`
-  ADD PRIMARY KEY (`id_detail_perhitungan`),
-  ADD KEY `id_perhitungan` (`id_perhitungan`),
+ALTER TABLE `tb_detail_pemeriksaan`
+  ADD PRIMARY KEY (`id_detail_pemeriksaan`),
+  ADD KEY `id_perhitungan` (`id_pemeriksaan`),
   ADD KEY `id_gejala` (`id_gejala`);
 
 --
@@ -183,7 +192,14 @@ ALTER TABLE `tb_gejala`
 --
 ALTER TABLE `tb_kasus_baru`
   ADD PRIMARY KEY (`id_kasus_baru`),
-  ADD KEY `id_perhitungan` (`id_perhitungan`),
+  ADD KEY `id_perhitungan` (`id_pemeriksaan`),
+  ADD KEY `id_penyakit` (`id_penyakit`);
+
+--
+-- Indexes for table `tb_pemeriksaan`
+--
+ALTER TABLE `tb_pemeriksaan`
+  ADD PRIMARY KEY (`id_pemeriksaan`),
   ADD KEY `id_penyakit` (`id_penyakit`);
 
 --
@@ -199,13 +215,6 @@ ALTER TABLE `tb_penyakit`
   ADD PRIMARY KEY (`id_penyakit`);
 
 --
--- Indexes for table `tb_perhitungan`
---
-ALTER TABLE `tb_perhitungan`
-  ADD PRIMARY KEY (`id_perhitungan`),
-  ADD KEY `id_penyakit` (`id_penyakit`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -216,16 +225,16 @@ ALTER TABLE `tb_bobot`
   MODIFY `id_bobot` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tb_detail_perhitungan`
+-- AUTO_INCREMENT for table `tb_detail_pemeriksaan`
 --
-ALTER TABLE `tb_detail_perhitungan`
-  MODIFY `id_detail_perhitungan` int(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tb_detail_pemeriksaan`
+  MODIFY `id_detail_pemeriksaan` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tb_perhitungan`
+-- AUTO_INCREMENT for table `tb_pemeriksaan`
 --
-ALTER TABLE `tb_perhitungan`
-  MODIFY `id_perhitungan` int(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tb_pemeriksaan`
+  MODIFY `id_pemeriksaan` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -239,29 +248,29 @@ ALTER TABLE `tb_basis_pengetahuan`
   ADD CONSTRAINT `tb_basis_pengetahuan_ibfk_2` FOREIGN KEY (`id_penyakit`) REFERENCES `tb_penyakit` (`id_penyakit`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tb_detail_perhitungan`
+-- Constraints for table `tb_detail_pemeriksaan`
 --
-ALTER TABLE `tb_detail_perhitungan`
-  ADD CONSTRAINT `tb_detail_perhitungan_ibfk_1` FOREIGN KEY (`id_perhitungan`) REFERENCES `tb_perhitungan` (`id_perhitungan`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `tb_detail_pemeriksaan`
+  ADD CONSTRAINT `tb_detail_pemeriksaan_ibfk_1` FOREIGN KEY (`id_pemeriksaan`) REFERENCES `tb_pemeriksaan` (`id_pemeriksaan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_gejala`
 --
 ALTER TABLE `tb_gejala`
-  ADD CONSTRAINT `tb_gejala_ibfk_2` FOREIGN KEY (`id_bobot`) REFERENCES `tb_bobot` (`id_bobot`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tb_gejala_ibfk_1` FOREIGN KEY (`id_bobot`) REFERENCES `tb_bobot` (`id_bobot`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_kasus_baru`
 --
 ALTER TABLE `tb_kasus_baru`
-  ADD CONSTRAINT `tb_kasus_baru_ibfk_1` FOREIGN KEY (`id_perhitungan`) REFERENCES `tb_perhitungan` (`id_perhitungan`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tb_kasus_baru_ibfk_1` FOREIGN KEY (`id_pemeriksaan`) REFERENCES `tb_pemeriksaan` (`id_pemeriksaan`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tb_kasus_baru_ibfk_2` FOREIGN KEY (`id_penyakit`) REFERENCES `tb_penyakit` (`id_penyakit`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tb_perhitungan`
+-- Constraints for table `tb_pemeriksaan`
 --
-ALTER TABLE `tb_perhitungan`
-  ADD CONSTRAINT `tb_perhitungan_ibfk_1` FOREIGN KEY (`id_penyakit`) REFERENCES `tb_penyakit` (`id_penyakit`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `tb_pemeriksaan`
+  ADD CONSTRAINT `tb_pemeriksaan_ibfk_1` FOREIGN KEY (`id_penyakit`) REFERENCES `tb_penyakit` (`id_penyakit`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
