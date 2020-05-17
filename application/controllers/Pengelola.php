@@ -39,7 +39,7 @@ class Pengelola extends CI_Controller {
 	}
 
 
-		public function cekLogin()
+	public function cekLogin()
 	{
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('username', 'Username', 'trim|required');
@@ -52,6 +52,8 @@ class Pengelola extends CI_Controller {
 				echo "<script>alert('Username atau Password yang Anda Masukan Salah !!!');history.go(-1);</script>";
 			}
 	}
+
+	
 
 	public function logout()
 	{

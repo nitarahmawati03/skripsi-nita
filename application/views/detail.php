@@ -84,7 +84,7 @@
                     <div class="banner_text">
                     <span style="font-family: Brush Script MT;">
                         <h1>Bunnie Health Solution</h1>
-                        <h4>Kesehatan kelinci anda, kebahagian kami</h4>
+                        <p class="pt-20 pb-20">Mau mengetahui penyakit kelinci lebih detail?</p>
                     </span>
                     </div>
                 </div>
@@ -104,17 +104,11 @@
                             <img src="<?php echo base_url()?>/assets/img/about.png" height="400" width="400"  alt="">
 
                     </div>
-
-                   <!--  <div class="about_img">
-                        <img src="img/about.png" alt="">
-                    </div> -->
                 </div>
                 <div class="col-md-5">
                     <div class="about_text">
 
                          <img src="<?php echo base_url()?>/assets/img/about_icon.png" class="about_icon" height="40" width="40">
-
-                        <!-- <img src="img/about_icon.png" class="about_icon" alt=""> -->
                         <h2>Sistem Pakar Kelinci</h2>
                         <p>Website ini digunakan untuk membantu para pemilik kelinci mendapat penanganan pertama jika kelinci terkena penyakit.</p>
 
@@ -133,15 +127,13 @@
                     <div class="section_tittle text-center">
                         <img src="<?php echo base_url()?>/assets/img/seo.png" height="100" width="100" alt="">
                         <h2>Info Penyakit</h2>
-                        <p>Apa saja penyakit kelinci?</p>
                     </div>
                 </div>
             </div>
 
             <div class="row">
-                <?php foreach ($penyakit_object as $key) { ?>  
-                        <div class="col-lg-4">
-                            <a href="<?=site_url()?>/TampilanUser/detailPenyakit/<?=$key->id?>">
+               
+                        <div class="col-lg-12">
                             <div class="single-price">
                                 <div class="top-sec d-flex justify-content-between">
                                     <div class="top-left">
@@ -159,17 +151,16 @@
                                 </div>
                                 <div class="end-sec">
                                     <ul>
-                                        <?php echo substr($key->definisi, 0, 150)."..."?>
+                                        <?php echo $penyakit[0]->definisi?>
                                     </ul>
                                     
                                 </div>                              
                             </div> 
                         </div>
-                        </a>
-                         <?php } ?>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    
     <!-- service part end-->
 
     <!-- counter adopt number here -->
