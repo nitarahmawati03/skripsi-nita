@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2020 at 07:07 PM
+-- Generation Time: May 19, 2020 at 08:54 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.29
 
@@ -36,27 +36,6 @@ CREATE TABLE `tb_basis_pengetahuan` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_bobot`
---
-
-CREATE TABLE `tb_bobot` (
-  `id_bobot` int(10) NOT NULL,
-  `kriteria` varchar(30) NOT NULL,
-  `nilai` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tb_bobot`
---
-
-INSERT INTO `tb_bobot` (`id_bobot`, `kriteria`, `nilai`) VALUES
-(1, 'Gejala Biasa', 1),
-(2, 'Gejala Sedang', 3),
-(3, 'Gejala Dominan', 5);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tb_detail_pemeriksaan`
 --
 
@@ -75,8 +54,36 @@ CREATE TABLE `tb_detail_pemeriksaan` (
 CREATE TABLE `tb_gejala` (
   `id_gejala` varchar(10) NOT NULL,
   `gejala` varchar(100) NOT NULL,
-  `id_bobot` int(10) NOT NULL
+  `bobot` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_gejala`
+--
+
+INSERT INTO `tb_gejala` (`id_gejala`, `gejala`, `bobot`) VALUES
+('G01', 'Berdiri dengan posisi membungkuk', 1),
+('G02', 'Daun telinga turun', 1),
+('G03', 'Kotoran encer, berwarna gelap, berlendir', 5),
+('G04', 'Lesu', 5),
+('G05', 'Kelebihan air liur', 3),
+('G06', 'Sesak napas', 3),
+('G07', 'Pembengkakan wajah', 3),
+('G08', 'Memiringkan kepala', 1),
+('G09', 'Penyumbatan saluran air mata', 1),
+('G10', 'Terjadi pada kelinci betina', 1),
+('G11', 'Pembengkakan pada kelenjar susu', 3),
+('G12', 'Nafsu makan berkurang', 5),
+('G13', 'Berak bercampur darah atau berlendir putih', 5),
+('G14', 'Badan kurus', 5),
+('G15', 'Susah berak', 3),
+('G16', 'Kencing sedikit', 3),
+('G17', 'Bersin-bersin', 5),
+('G18', 'Hidung mengeluarkan lendir berwarna jernih atau keruh', 3),
+('G19', 'Mata sembap berair', 3),
+('G20', 'Nafsu makan berkurang', 5),
+('G21', 'Suhu badan tinggi', 1),
+('G22', 'Kepala sering diangkat tinggi karena susah bernafas', 1);
 
 -- --------------------------------------------------------
 
@@ -167,12 +174,6 @@ ALTER TABLE `tb_basis_pengetahuan`
   ADD KEY `id_penyakit` (`id_penyakit`);
 
 --
--- Indexes for table `tb_bobot`
---
-ALTER TABLE `tb_bobot`
-  ADD PRIMARY KEY (`id_bobot`);
-
---
 -- Indexes for table `tb_detail_pemeriksaan`
 --
 ALTER TABLE `tb_detail_pemeriksaan`
@@ -184,8 +185,7 @@ ALTER TABLE `tb_detail_pemeriksaan`
 -- Indexes for table `tb_gejala`
 --
 ALTER TABLE `tb_gejala`
-  ADD PRIMARY KEY (`id_gejala`),
-  ADD KEY `id_bobot` (`id_bobot`);
+  ADD PRIMARY KEY (`id_gejala`);
 
 --
 -- Indexes for table `tb_kasus_baru`
@@ -219,12 +219,6 @@ ALTER TABLE `tb_penyakit`
 --
 
 --
--- AUTO_INCREMENT for table `tb_bobot`
---
-ALTER TABLE `tb_bobot`
-  MODIFY `id_bobot` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT for table `tb_detail_pemeriksaan`
 --
 ALTER TABLE `tb_detail_pemeriksaan`
@@ -252,12 +246,6 @@ ALTER TABLE `tb_basis_pengetahuan`
 --
 ALTER TABLE `tb_detail_pemeriksaan`
   ADD CONSTRAINT `tb_detail_pemeriksaan_ibfk_1` FOREIGN KEY (`id_pemeriksaan`) REFERENCES `tb_pemeriksaan` (`id_pemeriksaan`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `tb_gejala`
---
-ALTER TABLE `tb_gejala`
-  ADD CONSTRAINT `tb_gejala_ibfk_1` FOREIGN KEY (`id_bobot`) REFERENCES `tb_bobot` (`id_bobot`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_kasus_baru`

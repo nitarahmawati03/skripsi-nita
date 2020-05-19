@@ -48,6 +48,10 @@ class Penyakit extends CI_Controller {
 			echo $this->datatables->generate();
 	}
 
+	// public function detailPenyakit($id_penyakit){
+	// 	$data['penyakit']=$this->M_penyakit->getPenyakit();
+	// 	$this->load->view('detail',$data);
+	// }
 
 	public function Create()
 	{

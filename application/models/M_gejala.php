@@ -21,7 +21,7 @@ class M_gejala extends CI_Model {
 		$row = $query->last_row();
 		if($row){
 			$idPostfix = (int)substr($row->id_gejala,1)+1;
-			$nextId = 'P'.STR_PAD((string)$idPostfix,2,"0",STR_PAD_LEFT);
+			$nextId = 'G'.STR_PAD((string)$idPostfix,2,"0",STR_PAD_LEFT);
 		}
 		else{
 			$nextId = 'G01';
@@ -30,7 +30,7 @@ class M_gejala extends CI_Model {
 			(
 				'id_gejala' => $nextId,
 				'gejala'=>$this->input->post('gejala'),
-				'id_bobot'=>$this->input->post('id_bobot'),
+				'bobot'=>$this->input->post('bobot'),
 			);
 		$this->db->insert('tb_gejala',$object);
 	}
@@ -46,7 +46,7 @@ class M_gejala extends CI_Model {
 		$data = array
 		(
 			'gejala' =>$this->input->post('gejala'),
-			'id_bobot' =>$this->input->post('id_bobot')
+			'bobot' =>$this->input->post('bobot')
 		);
 		$this->db->where('id_gejala',$id_gejala);
 		$this->db->update('tb_gejala',$data);

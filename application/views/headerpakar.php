@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>ADMIN</title>
+	<title>PAKAR</title>
 	<link href="<?php echo base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo base_url()?>assets/css/font-awesome.min.css" rel="stylesheet">
 	<link href="<?php echo base_url()?>assets/css/datepicker3.css" rel="stylesheet">
@@ -42,17 +42,17 @@
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<div class="profile-sidebar">
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name"><em class="fa fa-user">&nbsp;</em> Admin</div>
+				<div class="profile-usertitle-name"><em class="fa fa-user">&nbsp;</em> Pakar</div>
 			</div>
 			<div class="clear"></div>
 		</div>
 		<div class="divider"></div>
 		<ul class="nav menu">
-			<li><a href="<?=site_url()?>/Pengelola/index"><em class="fa fa-home">&nbsp;</em> Home</a></li>
+			<li><a href="<?=site_url()?>/Pakar/index"><em class="fa fa-home">&nbsp;</em> Home</a></li>
 			<li><a href="<?=site_url()?>/Penyakit/daftar_penyakit"><em class="fa fa-list">&nbsp;</em>Daftar Penyakit</a></li>
-			<li><a href="<?=site_url()?>/Penyakit/create"><em class="fa fa-edit">&nbsp;</em>Tambah Penyakit</a></li>
+			<!-- <li><a href="<?=site_url()?>/Penyakit/create"><em class="fa fa-edit">&nbsp;</em>Tambah Penyakit</a></li> -->
 			<li><a href="<?=site_url()?>/Gejala/daftar_gejala"><em class="fa fa-list">&nbsp;</em>Daftar Gejala</a></li>
-			<li><a href="<?=site_url()?>/Gejala/create"><em class="fa fa-edit">&nbsp;</em>Tambah Gejala</a></li>
+			<!-- <li><a href="<?=site_url()?>/Gejala/create"><em class="fa fa-edit">&nbsp;</em>Tambah Gejala</a></li> -->
 		</ul>
 	</div><!--/.sidebar-->
 </body>

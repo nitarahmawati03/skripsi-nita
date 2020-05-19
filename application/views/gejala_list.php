@@ -18,7 +18,7 @@
 					
 					<tr>
                         <td><?php echo $key->gejala;?></td>
-                        <td><?php echo $key->id_bobot;?></td>
+                        <td><?php echo $key->bobot;?></td>
 
                         <td><a href="<?=site_url()?>/Gejala/Update/<?php echo $key->id_gejala ?>"> <p data-placement="top" data-toogle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
 

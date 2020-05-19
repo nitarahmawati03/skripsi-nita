@@ -11,7 +11,7 @@ class Gejala extends CI_Controller {
 	public function data_server()
 		{
 			$this->load->library('Datatables');
-			$this->datatables->select('id_gejala, gejala, id_bobot')->from('tb_gejala');
+			$this->datatables->select('id_gejala, gejala, bobot')->from('tb_gejala');
 				echo $this->datatables->generate();
 		}
 
@@ -44,7 +44,7 @@ class Gejala extends CI_Controller {
 	public function data_serverGejala()
 		{
 			$this->load->library('Datatables');
-			$this->datatables->select('id_gejala, gejala, id_bobot')->from('tb_gejala');
+			$this->datatables->select('id_gejala, gejala, bobot')->from('tb_gejala');
 			echo $this->datatables->generate();
 		}
 
@@ -67,7 +67,7 @@ class Gejala extends CI_Controller {
 	public function Update($id_gejala)
 		{
 			$this->form_validation->set_rules('gejala', 'Gejala','trim|required');
-			$this->form_validation->set_rules('id_bobot','Bobot','trim|required');
+			$this->form_validation->set_rules('bobot','Bobot','trim|required');
 			$data['gejala']=$this->M_gejala->getGejala($id_gejala);
 			if ($this->form_validation->run()==FALSE)
 			{
@@ -80,7 +80,7 @@ class Gejala extends CI_Controller {
 			}
 		}
 
-	public function delete($id_penyakit)
+	public function delete($id_gejala)
 		{
 			$this->M_gejala->delete($id_gejala);
 			$this->load->view('hapus_gejala_sukses');

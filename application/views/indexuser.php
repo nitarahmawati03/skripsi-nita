@@ -26,21 +26,6 @@
 <body>
     <!--::header part start::-->
     <header class="header_area">
-        <!-- <div class="sub_header">
-            <div class="container">
-                <div class="row align-items-center">
-                     <div id="logo">
-                        <img src="<?php echo base_url()?>/assets/img/logo.png" height="70" width="70" alt="" title="Bunnie"/>
-                         <font size="5dp"> &nbsp; Bunnie Health Solution</font>
-                      </div>
-                  <!-- <div class="col-8 col-md-8 col-xl-6 ">
-                      <div class="sub_header_social_icon float-right">
-
-                      </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
         <div class="main_menu">
             <div class="container">
                 <div class="row">
@@ -98,23 +83,13 @@
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-md-6">
-
                     <div class="container">
-
                             <img src="<?php echo base_url()?>/assets/img/about.png" height="400" width="400"  alt="">
-
                     </div>
-
-                   <!--  <div class="about_img">
-                        <img src="img/about.png" alt="">
-                    </div> -->
                 </div>
                 <div class="col-md-5">
                     <div class="about_text">
-
                          <img src="<?php echo base_url()?>/assets/img/about_icon.png" class="about_icon" height="40" width="40">
-
-                        <!-- <img src="img/about_icon.png" class="about_icon" alt=""> -->
                         <h2>Sistem Pakar Kelinci</h2>
                         <p>Website ini digunakan untuk membantu para pemilik kelinci mendapat penanganan pertama jika kelinci terkena penyakit.</p>
 
@@ -138,15 +113,15 @@
                 </div>
             </div>
 
-            <div class="row">
-                <?php foreach ($penyakit_object as $key) { ?>  
-                        <div class="col-lg-4">
-                            <a href="<?=site_url()?>/TampilanUser/detailPenyakit/<?=$key->id?>">
+            <div class="row portofolio-container">
+
+                <!-- <?php foreach ($penyakit as $key) { ?>  
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
+                            <a href="<?=site_url()?>/TampilanUser/detailPenyakit/<?=$key->id?>"></a>
+                            
                             <div class="single-price">
                                 <div class="top-sec d-flex justify-content-between">
-                                    <div class="top-left">
-
-                                        
+                                    <div class="top-left">      
                                         <h4><?php echo $key->nama_penyakit?></h4>
                                         
                                     </div>
@@ -165,8 +140,8 @@
                                 </div>                              
                             </div> 
                         </div>
-                        </a>
-                         <?php } ?>
+                        
+                         <?php } ?> -->
             </div>
         </div>
     </section>
@@ -207,15 +182,9 @@
                             <img src="<?php echo base_url()?>/assets/img/steps.png" height="200" width="200"  alt="">
 
                     </div>
-
-                   <!--  <div class="about_img">
-                        <img src="img/about.png" alt="">
-                    </div> -->
                 </div>
                 <div class="col-md-5">
                     <div class="about_text">
-
-                        <!-- <img src="img/about_icon.png" class="about_icon" alt=""> -->
                         <h2>Bingung?</h2>
                         <p>Berikut tata cara penggunaan</p>
                         <p> 1. Pilih gejala yang sesuai </p>

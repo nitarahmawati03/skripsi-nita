@@ -34,8 +34,8 @@
 										<label class="control-label col-sm-2" for="bobot">Bobot :</label>
 										<div class="col-sm-10">
 
-											<input type="text" name="id_bobot" class="form-control" id="id_bobot"
-												value="<?php echo $bobot[0]->bobot?>" placeholder="Bobot"><br>
+											<input type="text" name="bobot" class="form-control" id="bobot"
+												value="<?php echo $gejala[0]->bobot?>" placeholder="Bobot"><br>
 										</div>
 									</div>
 

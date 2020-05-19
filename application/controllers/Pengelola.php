@@ -24,13 +24,13 @@ class Pengelola extends CI_Controller {
 		$this->load->helper('url','form');
 		$this->load->library('form_validation');
 		$this->load->model('m_pengelola');
+		$this->load->model('m_penyakit');
 	}
 
 
 	public function index()
 	{
 		$this->load->view('indexuser');
-
 	}
 
 	public function menulogin()
@@ -49,6 +49,7 @@ class Pengelola extends CI_Controller {
 			}
 			else
 			{
+				// redirect('Pakar','refresh');
 				echo "<script>alert('Username atau Password yang Anda Masukan Salah !!!');history.go(-1);</script>";
 			}
 	}
