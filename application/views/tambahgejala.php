@@ -22,8 +22,8 @@
                                             <label for="">Gejala</label>
                                             <input type="text" name="gejala" class="form-control" id="gejala" placeholder=""><br>
 
-                                            <label for="">Bobot</label>
-                                            <input type="text" name="bobot" class="form-control" id="bobot" placeholder=""><br>
+                                            <!-- label for="">Bobot</label>
+                                            <input type="text" name="bobot" class="form-control" id="bobot" placeholder=""><br> -->
 
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>

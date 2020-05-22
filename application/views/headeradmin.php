@@ -48,7 +48,7 @@
 		</div>
 		<div class="divider"></div>
 		<ul class="nav menu">
-			<li><a href="<?=site_url()?>/Pengelola/index"><em class="fa fa-home">&nbsp;</em> Home</a></li>
+			<li><a href="<?=site_url()?>/Penyakit/index"><em class="fa fa-home">&nbsp;</em> Home</a></li>
 			<li><a href="<?=site_url()?>/Penyakit/daftar_penyakit"><em class="fa fa-list">&nbsp;</em>Daftar Penyakit</a></li>
 			<li><a href="<?=site_url()?>/Penyakit/create"><em class="fa fa-edit">&nbsp;</em>Tambah Penyakit</a></li>
 			<li><a href="<?=site_url()?>/Gejala/daftar_gejala"><em class="fa fa-list">&nbsp;</em>Daftar Gejala</a></li>

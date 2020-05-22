@@ -30,14 +30,14 @@
 										</div>
 									</div>
 
-									<div class="form_group">
+									<!-- <div class="form_group">
 										<label class="control-label col-sm-2" for="bobot">Bobot :</label>
 										<div class="col-sm-10">
 
 											<input type="text" name="bobot" class="form-control" id="bobot"
 												value="<?php echo $gejala[0]->bobot?>" placeholder="Bobot"><br>
 										</div>
-									</div>
+									</div> -->
 
 									<div class="form_group">
 										<div class="col-sm-offset2 col-sm-10">

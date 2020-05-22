@@ -101,27 +101,28 @@
     <!-- about part start-->
 
     <!-- service part start-->
-    <section class="service_part section_padding services_bg" id="info">
+    <section class="price-area section-gap" id="info">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="section_tittle text-center">
-                        <img src="<?php echo base_url()?>/assets/img/seo.png" height="100" width="100" alt="">
-                        <h2>Info Penyakit</h2>
+            <div class="row d-flex justify-content-center">
+                <div class="menu-content pb-60 col-lg-8">
+                    <div class="tittle text-center">
+                        <img src="<?php echo base_url()?>/assets/img/seo.png" height="150" width="150" alt="">
+                        <h1 class="mb-10">Info Penyakit</h1>
                         <p>Apa saja penyakit kelinci?</p>
                     </div>
                 </div>
             </div>
 
-            <div class="row portofolio-container">
+            <div class="row">
+               
+                <?php foreach ($penyakit_object as $key) { ?>  
 
-                <!-- <?php foreach ($penyakit as $key) { ?>  
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-app wow fadeInUp">
-                            <a href="<?=site_url()?>/TampilanUser/detailPenyakit/<?=$key->id?>"></a>
-                            
+                    <div class="col-lg-4">
+                            <a href="<?=site_url()?>/Pengelola/detailPenyakit/<?=$key->id_penyakit?>">
                             <div class="single-price">
                                 <div class="top-sec d-flex justify-content-between">
-                                    <div class="top-left">      
+                                    <div class="top-left"> 
+
                                         <h4><?php echo $key->nama_penyakit?></h4>
                                         
                                     </div>
@@ -129,19 +130,18 @@
                                         
                                     </div>
                                 </div>
-                                <div class="bottom-sec">
-
-                                </div>
+                                
                                 <div class="end-sec">
                                     <ul>
-                                        <?php echo substr($key->definisi, 0, 150)."..."?>
+                                        <?php echo substr($key->definisi, 0, 100)."..."?>
                                     </ul>
                                     
                                 </div>                              
-                            </div> 
-                        </div>
+                             </div> 
+                    </div>
+                            </a>
                         
-                         <?php } ?> -->
+                         <?php } ?>
             </div>
         </div>
     </section>

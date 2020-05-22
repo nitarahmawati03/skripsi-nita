@@ -30,7 +30,7 @@ class M_gejala extends CI_Model {
 			(
 				'id_gejala' => $nextId,
 				'gejala'=>$this->input->post('gejala'),
-				'bobot'=>$this->input->post('bobot'),
+				// 'bobot'=>$this->input->post('bobot'),
 			);
 		$this->db->insert('tb_gejala',$object);
 	}
@@ -46,7 +46,7 @@ class M_gejala extends CI_Model {
 		$data = array
 		(
 			'gejala' =>$this->input->post('gejala'),
-			'bobot' =>$this->input->post('bobot')
+			// 'bobot' =>$this->input->post('bobot')
 		);
 		$this->db->where('id_gejala',$id_gejala);
 		$this->db->update('tb_gejala',$data);

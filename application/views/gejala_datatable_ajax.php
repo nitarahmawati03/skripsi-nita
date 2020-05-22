@@ -7,8 +7,9 @@
 <table class="table table-striped" id="contoh">
 <thead>
 	<tr>
+		<th>No</th>
 		<th>Gejala</th>
-		<th>Bobot</th>
+		<!-- <th>Bobot</th> -->
 		<th>Edit</th>
 		<th>Delete</th>
 	</tr>

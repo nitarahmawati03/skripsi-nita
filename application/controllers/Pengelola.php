@@ -23,14 +23,20 @@ class Pengelola extends CI_Controller {
 		parent::__construct();
 		$this->load->helper('url','form');
 		$this->load->library('form_validation');
-		$this->load->model('m_pengelola');
-		$this->load->model('m_penyakit');
+		$this->load->model('M_pengelola');
+		$this->load->model('M_penyakit');
 	}
-
 
 	public function index()
 	{
-		$this->load->view('indexuser');
+		$data['penyakit_object']=$this->M_penyakit->getPenyakitQueryObject(); 
+		$this->load->view('indexuser',$data);
+	}
+
+	public function detailPenyakit($id_penyakit)
+	{
+		$data['penyakit']=$this->M_penyakit->getPenyakit($id_penyakit); 
+		$this->load->view('detail',$data);
 	}
 
 	public function menulogin()

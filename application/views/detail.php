@@ -137,18 +137,13 @@
                             <div class="single-price">
                                 <div class="top-sec d-flex justify-content-between">
                                     <div class="top-left">
-
-                                        
-                                        <h4><?php echo $key->nama_penyakit?></h4>
-                                        
+                                        <h4><?php echo $penyakit[0]->nama_penyakit?></h4>
                                     </div>
                                     <div class="top-right">
                                         
                                     </div>
                                 </div>
-                                <div class="bottom-sec">
-
-                                </div>
+                                
                                 <div class="end-sec">
                                     <ul>
                                         <?php echo $penyakit[0]->definisi?>
