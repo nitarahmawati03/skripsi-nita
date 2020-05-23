@@ -21,18 +21,23 @@
                     <th>Delete</th>
                 </thead>
         <tbody>
-        <?php foreach ($gejala as $key) { ?>
+
+        <?php    
+        $no=1;
+        foreach ($gejala as $key) { ?>
 
             <tr>
-                <td>  </td>
+                <td><?php echo $no ?>  </td>
                 <td><?php echo $key->gejala;?></td>
         <!-- <td><?php echo $key->bobot;?></td> -->
-                                               
+
                 <td><a href="<?=site_url()?>/Gejala/Update/<?php echo $key->id_gejala ?>"> <p data-placement="top" data-toogle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
 
                 <td><a href="<?=site_url()?>/Gejala/delete/<?php echo $key->id_gejala ?>"> <p data-placement="top" data-toogle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>                          
             </tr>
-            <?php }?>
+            <?php
+            $no++;
+        } ?>
 
         </tbody>
 

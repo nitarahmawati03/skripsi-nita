@@ -16,6 +16,7 @@
                                 <table class="table table-hover table-striped">
                                     <table class="table table-hover" id="contoh">
                                         <thead>
+                                            <th>No</th>
                                             <th>Nama Penyakit</th>
                                             <th>Definisi</th>
                                             <th>Solusi</th>
@@ -23,9 +24,12 @@
                                             <th>Delete</th>
                                         </thead>
                                         <tbody>
-                                            <?php foreach ($penyakit as $key) { ?>
+                                            <?php 
+                                             $no=1;
+                                             foreach ($penyakit as $key) { ?>
 
                                             <tr>
+                                                <td><?php echo $no ?>  </td>
                                                 <td><?php echo $key->nama_penyakit;?></td>
                                                 <td><?php echo $key->definisi;?></td>
                                                 <td><?php echo $key->solusi;?></td>
@@ -37,7 +41,9 @@
                                                             <!--    <tr>
 
                                             </tr> -->
-                                            <?php }?>
+                                            <?php 
+                                             $no++;
+                                             }?>
                                         </tbody>
 
                                     </table>
