@@ -14,7 +14,7 @@
 					<th>Edit</th>
 					<th>Delete</th>
 				</thead>
-					 <?php $no=1; ?>
+					 
 					<?php foreach ($gejala as $key) { ?>
 					
 					<tr>
@@ -26,8 +26,7 @@
                         <td><a href="<?=site_url()?>/Gejala/delete/<?php echo $key->id_gejala ?>"> <p data-placement="top" data-toogle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
                   
                     </tr>
-						<?php ($no); ?>
-            <?php $no++; ?>
+
             <?php }?>
 
 
