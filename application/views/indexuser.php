@@ -106,9 +106,12 @@
             <div class="row d-flex justify-content-center">
                 <div class="menu-content pb-60 col-lg-8">
                     <div class="tittle text-center">
+                       <br>
                         <img src="<?php echo base_url()?>/assets/img/seo.png" height="150" width="150" alt="">
                         <h1 class="mb-10">Info Penyakit</h1>
                         <p>Apa saja penyakit kelinci?</p>
+                        <br>
+                        <br>
                     </div>
                 </div>
             </div>

@@ -48,23 +48,8 @@
                         <nav class="navbar navbar-expand-lg navbar-light">
                              <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent" style="margin-left: 300px">
                                 <ul class="navbar-nav">
-                                    <li class="nav-item active">
-                                        <a class="nav-link active" href="#home">Home</a>
-                                    </li>
                                     <li class="nav-item">
-                                        <a href="#about" class="nav-link">About</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#info" class="nav-link">Info Penyakit</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#cek" class="nav-link">Cek Gejala</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#bantuan" class="nav-link">Bantuan</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="<?php echo site_url('Pengelola/menulogin')?>" class="nav-link">Login</a>
+                                        <a href="<?php echo site_url('Pengelola/index')?>" class="nav-link">Kembali</a>
                                     </li>
                                 </ul>
                             </div>
@@ -77,7 +62,7 @@
     <!-- Header part end-->
 
     <!-- banner part start-->
-    <section class="banner_part" id="home">
+   <!--  <section class="banner_part" id="home">
         <div class="container">
             <div style="margin-bottom: 700px">
                 <div class="col-lg-7 col-xl-6">
@@ -90,11 +75,11 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- banner part start-->
 
     <!-- about part start-->
-    <section class="about_part section_padding" id="about">
+    <!-- <section class="about_part section_padding" id="about">
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-md-6">
@@ -116,7 +101,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- about part start-->
 
     <!-- service part start-->
