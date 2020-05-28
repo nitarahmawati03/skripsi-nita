@@ -46,7 +46,7 @@
                 <div class="row">
                     <div class="col-lg-12" style="margin-top: 30px">
                         <nav class="navbar navbar-expand-lg navbar-light">
-                             <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent" style="margin-left: 300px">
+                             <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent" style="margin-left: 1100px">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
                                         <a href="<?php echo site_url('Pengelola/index')?>" class="nav-link">Kembali</a>

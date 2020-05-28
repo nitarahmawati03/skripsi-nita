@@ -107,6 +107,8 @@
                 <div class="menu-content pb-60 col-lg-8">
                     <div class="tittle text-center">
                        <br>
+                       <br>
+                       <br>
                         <img src="<?php echo base_url()?>/assets/img/seo.png" height="150" width="150" alt="">
                         <h1 class="mb-10">Info Penyakit</h1>
                         <p>Apa saja penyakit kelinci?</p>
@@ -136,10 +138,11 @@
                                 
                                 <div class="end-sec">
                                     <ul>
-                                        <?php echo substr($key->definisi, 0, 100)."..."?>
+                                        <?php echo substr($key->definisi, 0, 50)."..."?>
                                     </ul>
                                     
-                                </div>                              
+                                </div>  
+                                <br>                            
                              </div> 
                     </div>
                             </a>
