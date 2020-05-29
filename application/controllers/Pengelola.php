@@ -25,11 +25,13 @@ class Pengelola extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->model('M_pengelola');
 		$this->load->model('M_penyakit');
+		$this->load->model('M_gejala');
 	}
 
 	public function index()
 	{
 		$data['penyakit_object']=$this->M_penyakit->getPenyakitQueryObject(); 
+		$data['gejala']=$this->M_gejala->getGejalaQueryObject();
 		$this->load->view('indexuser',$data);
 	}
 

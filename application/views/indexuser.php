@@ -156,24 +156,53 @@
     <!-- counter adopt number here -->
     <section class="abopt_number_counter section_padding" id="cek">
         <div class="container">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-lg-5 col-md-6">
-                    <div class="counter_text">
-                        <h2>Pilih Gejala
-                    </h2>
-                        <p>Gejala 1 </p>
-                        <p>Gejala 2 </p>
-                        <p>Gejala 3 </p>
-                        
-                        <a href="#" class="btn_1">Pencarian</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                   
+            <div class="menu-content pb-60 col-lg-8">
+                <div class="tittle text-center">
+                       <br>
+                        <img src="<?php echo base_url()?>/assets/img/checklist.png" height="150" width="150" alt="">
+                        <h1 class="mb-10">Pilih Gejala</h1>
+                       <center><h4>Centang gejala tersebut, jika gejala sesuai dengan yang dialami kelinci.</h4></center>
+                        <br>
+                        <br>
                 </div>
             </div>
+            <!-- <h2 class="heading mb-5 text-center">Pilih Gejala</h2>
+            <br> -->
+        <form action="<?php echo site_url('Perhitungan'); ?>" method="post" enctype="multipart/form-data">
+            <table class="table table-striped table-bordered data">
+                <thead>
+                    <tr class="bg-group" align="center">
+                        <!-- <th width="5px" rowspan="2" style="vertical-align: middle;">NO</th> -->
+                        <th>No</th>
+                        <th>Gejala</th>
+                        <th>Jawaban</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                    $i=1;
+                    foreach ($gejala as $key) {
+                    ?>
+                        <tr>
+                            <td align="center"><?php echo $i; ?></td>
+                            <td><?php echo $key->gejala;?></td>
+                            <td align="center"><input type="checkbox" name="check_list[]" alt="Checkbox" value="<?php echo $key->id_gejala ?>"></td>
+                        </tr>
+                    <?php
+                    $i++;
+                    }
+                    ?>
+                </tbody>
+            </table>
+            <div class="container">
+                <button class="search100-form-btn">
+                    Pencarian
+                </button>
+            </div>
+        </form>
         </div>
     </section>
+
     <!-- counter adopt number end -->
 
      <!-- client review part here -->
@@ -196,8 +225,6 @@
                         <p> 1. Pilih gejala yang sesuai </p>
                         <p> 2. Pilih "pencarian" </p>
                         <p> 3. Penyakit dan penanganan pertama akan muncul </p>
-                        <p> 4. Jika hasil tidak sesuai, maka pilih "revisi". maka pakar akan merevisi hasinya</p>
-
                     </div>
                 </div>
             </div>

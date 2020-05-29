@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2020 at 08:54 AM
+-- Generation Time: May 29, 2020 at 06:18 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.29
 
@@ -29,8 +29,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tb_basis_pengetahuan` (
   `id_basis_pengetahuan` varchar(10) NOT NULL,
-  `id_gejala` varchar(10) NOT NULL,
   `id_penyakit` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_detail_basis_pengetahuan`
+--
+
+CREATE TABLE `tb_detail_basis_pengetahuan` (
+  `id_detail` varchar(10) NOT NULL,
+  `id_gejala` varchar(10) NOT NULL,
+  `id_basis_pengetahuan` varchar(10) NOT NULL,
+  `bobot` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -40,8 +52,8 @@ CREATE TABLE `tb_basis_pengetahuan` (
 --
 
 CREATE TABLE `tb_detail_pemeriksaan` (
-  `id_detail_pemeriksaan` int(10) NOT NULL,
-  `id_pemeriksaan` int(10) NOT NULL,
+  `id_detail_pemeriksaan` varchar(10) NOT NULL,
+  `id_pemeriksaan` varchar(10) NOT NULL,
   `id_gejala` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -53,37 +65,42 @@ CREATE TABLE `tb_detail_pemeriksaan` (
 
 CREATE TABLE `tb_gejala` (
   `id_gejala` varchar(10) NOT NULL,
-  `gejala` varchar(100) NOT NULL,
-  `bobot` int(10) NOT NULL
+  `gejala` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_gejala`
 --
 
-INSERT INTO `tb_gejala` (`id_gejala`, `gejala`, `bobot`) VALUES
-('G01', 'Berdiri dengan posisi membungkuk', 1),
-('G02', 'Daun telinga turun', 1),
-('G03', 'Kotoran encer, berwarna gelap, berlendir', 5),
-('G04', 'Lesu', 5),
-('G05', 'Kelebihan air liur', 3),
-('G06', 'Sesak napas', 3),
-('G07', 'Pembengkakan wajah', 3),
-('G08', 'Memiringkan kepala', 1),
-('G09', 'Penyumbatan saluran air mata', 1),
-('G10', 'Terjadi pada kelinci betina', 1),
-('G11', 'Pembengkakan pada kelenjar susu', 3),
-('G12', 'Nafsu makan berkurang', 5),
-('G13', 'Berak bercampur darah atau berlendir putih', 5),
-('G14', 'Badan kurus', 5),
-('G15', 'Susah berak', 3),
-('G16', 'Kencing sedikit', 3),
-('G17', 'Bersin-bersin', 5),
-('G18', 'Hidung mengeluarkan lendir berwarna jernih atau keruh', 3),
-('G19', 'Mata sembap berair', 3),
-('G20', 'Nafsu makan berkurang', 5),
-('G21', 'Suhu badan tinggi', 1),
-('G22', 'Kepala sering diangkat tinggi karena susah bernafas', 1);
+INSERT INTO `tb_gejala` (`id_gejala`, `gejala`) VALUES
+('G01', 'Berdiri dengan posisi membungkuk'),
+('G02', 'Daun telinga turun'),
+('G03', 'Kotoran encer, berwarna gelap, berlendir'),
+('G04', 'Lesu'),
+('G05', 'Kelebihan air liur'),
+('G06', 'Sesak napas'),
+('G07', 'Pembengkakan wajah'),
+('G08', 'Memiringkan kepala'),
+('G09', 'Penyumbatan saluran air mata'),
+('G10', 'Terjadi pada kelinci betina'),
+('G11', 'Pembengkakan pada kelenjar susu'),
+('G12', 'Nafsu makan berkurang'),
+('G13', 'Berak bercampur darah atau berlendir putih'),
+('G14', 'Badan kurus'),
+('G15', 'Susah berak'),
+('G16', 'Kencing sedikit'),
+('G17', 'Bersin-bersin'),
+('G18', 'Hidung mengeluarkan lendir berwarna jernih atau keruh'),
+('G19', 'Mata sembap berair'),
+('G20', 'Lemah'),
+('G21', 'Pucat'),
+('G22', 'Koreng/kerak'),
+('G23', 'Gatal-gatal'),
+('G24', 'Rambut rontok'),
+('G25', 'Gigi memanjang'),
+('G26', 'Kelopak atau selaput mata berwarna merah'),
+('G27', 'Bulu sekitar mata basah dan kadang-kadang keluar nanah'),
+('G28', 'Timbul bengkak dibawah kulit pada bagian dagu leher, dada atau di tempat lain pada tubuh');
 
 -- --------------------------------------------------------
 
@@ -93,7 +110,7 @@ INSERT INTO `tb_gejala` (`id_gejala`, `gejala`, `bobot`) VALUES
 
 CREATE TABLE `tb_kasus_baru` (
   `id_kasus_baru` varchar(10) NOT NULL,
-  `id_pemeriksaan` int(10) NOT NULL,
+  `id_pemeriksaan` varchar(10) NOT NULL,
   `id_penyakit` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -104,7 +121,7 @@ CREATE TABLE `tb_kasus_baru` (
 --
 
 CREATE TABLE `tb_pemeriksaan` (
-  `id_pemeriksaan` int(10) NOT NULL,
+  `id_pemeriksaan` varchar(10) NOT NULL,
   `id_penyakit` varchar(10) NOT NULL,
   `hasil` varchar(1000) NOT NULL,
   `tgl_pemeriksaan` date NOT NULL
@@ -148,18 +165,12 @@ CREATE TABLE `tb_penyakit` (
 
 INSERT INTO `tb_penyakit` (`id_penyakit`, `nama_penyakit`, `definisi`, `solusi`) VALUES
 ('P01', 'Kembung', 'Penyakit ini bisa menyerang kelinci usia dibawah 2 tahun dan indukan kelinci yang sedang hami atau menyusui', 'diberi pakan daun kacang kering, diberi antibiotik kedalam makanan atau minuman'),
-('P02', 'Diare', 'Penyakit mencret/diare pada ternak kelinci sering dianggap hal yang biasa, padahal mencret bisa menyebabkan kematian. Ternak kelinci yang mengalami mencret jika dibiarkan dapat menyebabkan perut kelinci kembung dan tidak jarang mengakibatkan ternak mati. Penyakit mencret/diare pada kelinci bisa disebabkan oleh pakan yang diberikan. ', 'diberi antibiotik kedalam makanan atau minuman\r\n'),
 ('P03', 'Pasteurellosis', 'Pasteurellosis adalah penyakit gangguan pencernaan pada ternak kelinci. Penyebab penyakit pasteurellosis pada kelinci adalah kuman Pasteurella multocida. Penyakit ini sering menyerang kelinci dewasa, baik jantan maupun betina.', 'Selalu membersihkan kandang dari feses/kotoran kelinci dan diberi vaksin'),
 ('P04', 'Young De Syndrome', 'Penyakit ini terjadi pada kelinci betina yang sedang menyususi. Penyebabnya adalah septicemia akibat mastitis sehingga terjadi pembengkakan pada kelenjar susu atau puting susu. Akibatnya induk kelinci tidak bisa menyusui anaknya dan anak-anak kelinci akan mati karena tidak mendapatkan air susu dari induknya.', 'Pembersihan kandang,  induk kelinci yang terkena Young Doe Syndrome harus di isolasi dulu di kandang terpisah lalu disuntikan dengan Penicilin, Sulfa Strong, Oxylin atau Sulmethonl.\r\n\r\n'),
 ('P05', 'Koksidiosis', 'Koksidiosis disebabkan oleh protozoa Eimeria Spp yang menyerang hati (hepatik) ataupun pencernaan (intestinal) kelinci. Koksidiosis juga bisa ditularkan dari induk, sehingga muncul pada anaknya pasca sapih. Pada saat masih menyusu, anak kelinci sebenarnya sudah terpapar, tetapi bersifat sub klinis.', 'Sanitasi kandang dan lingkungan, lakukan Karantina terhadap kelinci dengan cara menempatkan kelinci yang sakit di lokasi berbeda dari yang lain sehingga penanganan bisa dilakukan secara khusus dan fokus, membeli obat untuk kelinci di toko khusus hewan. Obat yang di anjurkan adalah jenis obat khusus kelinci yang terjangkit koksidiosis seperti obat yang mengancung sulfa, lakukan pengecekan kondisi kelinci yang sakit secara berkala\r\n'),
-('P06', 'Sembelit', 'Sembelit atau susah buang air besar pada ternak kelinci disebabkan oleh pemberian pakan kering yang tidak seimbang dengan kebutuhan air.', 'memberi air minum sebanyak-banyaknya, makanan hijau yang mengandung serat tinggi, dan diberi vitamin\r\n'),
 ('P07', 'Flu/Pilek', 'Penyakit pilek pada kelinci disebabkan oleh virus/bakteri. Meskipun tergolong penyakit ringan dan tidak berbahaya, namun jika tidak segera diobati dapat berakibat fatal. Lingkungan kandang yang lembab/kurang sinar matahari dapat memicu perkembangbiakan virus/bakteri penyebab flu pada kelinci.', 'hidung disemprot larutan antiseptik, kerak yang mengeras dibersihkan dengan air hangat,  dan kelinci penderita flu/pilek diletakkan pada kandang yang lebih hangat\r\n'),
-('P08', 'Cacingan', 'Cacingan pada kelinci disebabkan oleh cacing pita, Toxocara canis, cacing tambang, cacing gelang, Ancylostama caninum, Uncinaria stenochepala dan cacing cambuk. Cacing parasit tersebut kadang keluar bersama feses/kotoran dan dapat menular ke kelinci lainnya.', 'Menjaga kebersihan kandang, memberi pakan yang bergizi bersih, dan pemberian obat cacing.'),
-('P09', 'Scabies', 'Penyakit scabies pada ternak kelinci disebabkan oleh tungau (Darcoptes scabies). Bagian tubuh kelinci yang sering diserang penyakit ini adalah tepi telinga.', 'Kelinci yang terserang diisolasi agar tidak menular pada kelinci lainnya, dicukur bulu dibagian yang terkena kudisan, cuci luka dengan air hangat, dilap kering lalu diberi obat kudis seperti salep belerang, caviam atau scabicid cream\r\n'),
-('P10', 'Maloklusi', 'Maloklusi dapat dengan mudah diamati dari perubahan bentuk gigi yang abnormal.', 'Penanganan untuk maloklusi adalah dengan pemotongan (trimming) untuk menyamakan bentuk dan ukuran gigi. '),
-('P11', 'Radang Mata', 'Penyebab radang mata pada kelinci bisa karena bakteri, debu, asap atau benda kecil lainnya. Bisa juga karena kelinci suka menggosok-nggosokkan kepala atau pipinya ke dinding kandang/benda keras hingga mengenai mata. Aktifitas ini umumnya terjadi pada kelinci jantan yang sedang birahi.', 'Mata dibersihkan dengan boorwater menggunakan kapas, diobati dengan tetes mata atau salep mata yang mengandung antibiotik\r\n'),
-('P12', 'Hairball', 'Hairball terjadi karena masuknya rambut/bulu kelinci ke dalam saluran pencernaan, kemudian terakumulasi dalam jangka waktu lama hingga mengeras. Hal ini akibat kelinci suka menjilati-jilat tubuh', 'Pemberian Hay/rumput kering juga disarankan untuk menstimulasi gerakan saluran pencernaan sehingga hairball terdorong keluar tubuh.'),
-('P13', 'Abses', 'Abses adalah suatu pernimbunan nanah, biasanya terjadi akibat suatu infeksi bakteri. Jika bakteri menyusup kedalam jaringan yang sehat, maka akan terjadi infeksi. Sebagian sel akan mati dan hancur, meninggalkan rongga yang berisi jaringan dan sel – sel yang terinfeksi. ', 'Gunting bulu diatas abses hingga bersih, keluarkan nanahnya dan diberi antibiotik\r\n');
+('P08', 'Cacingan', 'ghhg', 'Menjaga kebersihan kandang, memberi pakan yang bergizi bersih, dan pemberian obat cacing.'),
+('P09', 'Scabies', 'Penyakit scabies pada ternak kelinci disebabkan oleh tungau (Darcoptes scabies). Bagian tubuh kelinci yang sering diserang penyakit ini adalah tepi telinga.', 'Kelinci yang terserang diisolasi agar tidak menular pada kelinci lainnya, dicukur bulu dibagian yang terkena kudisan, cuci luka dengan air hangat, dilap kering lalu diberi obat kudis seperti salep belerang, caviam atau scabicid cream\r\n');
 
 --
 -- Indexes for dumped tables
@@ -170,16 +181,23 @@ INSERT INTO `tb_penyakit` (`id_penyakit`, `nama_penyakit`, `definisi`, `solusi`)
 --
 ALTER TABLE `tb_basis_pengetahuan`
   ADD PRIMARY KEY (`id_basis_pengetahuan`),
-  ADD KEY `id_gejala` (`id_gejala`),
   ADD KEY `id_penyakit` (`id_penyakit`);
+
+--
+-- Indexes for table `tb_detail_basis_pengetahuan`
+--
+ALTER TABLE `tb_detail_basis_pengetahuan`
+  ADD PRIMARY KEY (`id_detail`),
+  ADD KEY `id_gejala` (`id_gejala`),
+  ADD KEY `id_basis_pengetahuan` (`id_basis_pengetahuan`);
 
 --
 -- Indexes for table `tb_detail_pemeriksaan`
 --
 ALTER TABLE `tb_detail_pemeriksaan`
   ADD PRIMARY KEY (`id_detail_pemeriksaan`),
-  ADD KEY `id_perhitungan` (`id_pemeriksaan`),
-  ADD KEY `id_gejala` (`id_gejala`);
+  ADD KEY `id_gejala` (`id_gejala`),
+  ADD KEY `id_pemeriksaan` (`id_pemeriksaan`);
 
 --
 -- Indexes for table `tb_gejala`
@@ -192,8 +210,8 @@ ALTER TABLE `tb_gejala`
 --
 ALTER TABLE `tb_kasus_baru`
   ADD PRIMARY KEY (`id_kasus_baru`),
-  ADD KEY `id_perhitungan` (`id_pemeriksaan`),
-  ADD KEY `id_penyakit` (`id_penyakit`);
+  ADD KEY `id_penyakit` (`id_penyakit`),
+  ADD KEY `id_pemeriksaan` (`id_pemeriksaan`);
 
 --
 -- Indexes for table `tb_pemeriksaan`
@@ -215,22 +233,6 @@ ALTER TABLE `tb_penyakit`
   ADD PRIMARY KEY (`id_penyakit`);
 
 --
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `tb_detail_pemeriksaan`
---
-ALTER TABLE `tb_detail_pemeriksaan`
-  MODIFY `id_detail_pemeriksaan` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `tb_pemeriksaan`
---
-ALTER TABLE `tb_pemeriksaan`
-  MODIFY `id_pemeriksaan` int(10) NOT NULL AUTO_INCREMENT;
-
---
 -- Constraints for dumped tables
 --
 
@@ -238,8 +240,14 @@ ALTER TABLE `tb_pemeriksaan`
 -- Constraints for table `tb_basis_pengetahuan`
 --
 ALTER TABLE `tb_basis_pengetahuan`
-  ADD CONSTRAINT `tb_basis_pengetahuan_ibfk_1` FOREIGN KEY (`id_gejala`) REFERENCES `tb_gejala` (`id_gejala`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tb_basis_pengetahuan_ibfk_2` FOREIGN KEY (`id_penyakit`) REFERENCES `tb_penyakit` (`id_penyakit`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tb_detail_basis_pengetahuan`
+--
+ALTER TABLE `tb_detail_basis_pengetahuan`
+  ADD CONSTRAINT `tb_detail_basis_pengetahuan_ibfk_1` FOREIGN KEY (`id_gejala`) REFERENCES `tb_gejala` (`id_gejala`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tb_detail_basis_pengetahuan_ibfk_2` FOREIGN KEY (`id_basis_pengetahuan`) REFERENCES `tb_basis_pengetahuan` (`id_basis_pengetahuan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_detail_pemeriksaan`
@@ -251,8 +259,8 @@ ALTER TABLE `tb_detail_pemeriksaan`
 -- Constraints for table `tb_kasus_baru`
 --
 ALTER TABLE `tb_kasus_baru`
-  ADD CONSTRAINT `tb_kasus_baru_ibfk_1` FOREIGN KEY (`id_pemeriksaan`) REFERENCES `tb_pemeriksaan` (`id_pemeriksaan`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tb_kasus_baru_ibfk_2` FOREIGN KEY (`id_penyakit`) REFERENCES `tb_penyakit` (`id_penyakit`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tb_kasus_baru_ibfk_2` FOREIGN KEY (`id_penyakit`) REFERENCES `tb_penyakit` (`id_penyakit`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tb_kasus_baru_ibfk_3` FOREIGN KEY (`id_pemeriksaan`) REFERENCES `tb_pemeriksaan` (`id_pemeriksaan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_pemeriksaan`
