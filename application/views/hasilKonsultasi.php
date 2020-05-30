@@ -49,11 +49,11 @@
     <div class="container py-lg-3">
         <h3 class="heading mb-5 text-center">Hasil Diagnosa</h3>
 
-        <h5 class="heading">Gejala Dipilih</h5><br>
+        <h5 class="heading">Gejala Yang Dipilih</h5><br>
         <table class="table table-striped table-bordered data">
             <thead>
                 <tr class="bg-group" align="center">
-                    <th width="5px">NO</th>
+                    <th width="5px">No</th>
                     <th>Gejala</th>
                 </tr>
             </thead>
@@ -81,7 +81,7 @@
                     <th>Gejala Kasus</th>
                     <th>Gejala Dipilih</th>
                     <th>Gejala Cocok</th>
-                    <th>Sum Gejalah</th>
+                    <th>Penjumlahan Gejalah</th>
                     <th>Pembagi</th>
                     <th>Hasil (Cocok/Kasus)</th>
                 </tr>
