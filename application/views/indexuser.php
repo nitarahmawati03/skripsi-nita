@@ -166,13 +166,11 @@
                         <br>
                 </div>
             </div>
-            <!-- <h2 class="heading mb-5 text-center">Pilih Gejala</h2>
-            <br> -->
+           
         <form action="<?php echo site_url('Perhitungan'); ?>" method="post" enctype="multipart/form-data">
             <table class="table table-striped table-bordered data">
                 <thead>
                     <tr class="bg-group" align="center">
-                        <!-- <th width="5px" rowspan="2" style="vertical-align: middle;">NO</th> -->
                         <th>No</th>
                         <th>Gejala</th>
                         <th>Jawaban</th>

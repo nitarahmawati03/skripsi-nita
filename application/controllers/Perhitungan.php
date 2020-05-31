@@ -53,10 +53,7 @@ class Perhitungan extends CI_Controller
 			$nilai_sim_percent[$key] = $value * 100;
 		}
 
-
-
 		// #grant varible for view 
-
 
 		$var_table_perhitungan = [];
 		foreach ($data_kasus as $key => $value) { //array untuk menampilkan perhitungan
@@ -69,26 +66,6 @@ class Perhitungan extends CI_Controller
 				'hasil' => $nilai_sim_untuk_tiap_kasus[$key]
 			];
 		}
-
-
-
-		// $db_kasus = $this->db
-		// 	->select('gejala.nm_gejala, detail_kasus.fk_kasus, basis_kasus.id_kasus')
-		// 	->join('gejala', 'detail_kasus.fk_gejala = gejala.id_gejala')
-		// 	->join('basis_kasus', 'detail_kasus.fk_kasus = basis_kasus.id_kasus')
-		// 	->get('detail_kasus')->result();
-		// $data_kasus_gejala = [];
-		// foreach ($db_kasus as $key => $value) {
-		// 	$data_kasus_gejala[$value->id_kasus] = $value;
-		// }
-
-		// $var_gejala_cocok = [];
-		// foreach ($db_kasus as $key => $value) {
-		// 	$var_gejala_cocok[$key] = [
-		// 		'id' => $data_kasus_baru[$key]
-		// 		// 'gejalacocok' => $value->nm_gejala
-		// 	];
-		// }
 
 		$db_kasus = $this->db //script untuk join tabel agar dapat berelasi dengan tabel penyakit sehingga muncul nama penyakitnya
 			->select('*')
