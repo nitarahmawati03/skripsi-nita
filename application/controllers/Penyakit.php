@@ -98,7 +98,7 @@ class Penyakit extends CI_Controller {
 
 	public function datatable()
 	{
-		$data['penyakit_list']=$this->M_penyakit->readKoki();
+		$data['penyakit_list']=$this->M_penyakit->readPenyakit();
 		$this->load->view('penyakit_list',$data);
 	}
 
