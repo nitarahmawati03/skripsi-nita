@@ -14,28 +14,18 @@
 							<table class="table table-hover table-striped">
 								<table class="table table-hover" id="contoh">
 
-									<legend>Edit Penyakit</legend>
+									<legend>Edit Basis</legend>
 
 									<?php echo validation_errors(); ?>
 
-									<?php echo form_open_multipart('Penyakit/update/'.$this->uri->segment(3)); ?>
-									<div class="form_group">
-										<label class="control-label col-sm-2" for="nama penyakit">Nama Penyakit
-											:</label>
-
-										<div class="col-sm-10">
-											<input type="text" name="nama_penyakit" class="form-control"
-												id="nama_penyakit" value="<?php echo $penyakit[0]->nama_penyakit?>"
-												placeholder="Nama Penyakit"><br>
-										</div>
-									</div>
+									<?php echo form_open_multipart('BasisPengetahuan/update/'.$this->uri->segment(3)); ?>
 
 									<div class="form_group">
-										<label class="control-label col-sm-2" for="definisi">Definisi :</label>
+										<label class="control-label col-sm-2" for="definisi">Kode Basis Pengetahuan:</label>
 										<div class="col-sm-10">
 
-											<input type="text" name="definisi" class="form-control" id="definisi"
-												value="<?php echo $penyakit[0]->definisi?>" placeholder="Definisi"><br>
+											<input type="text" name="id_basis_pengetahuan" class="form-control" id="id_basis_pengetahuan"
+												value="<?php echo $basis[0]->id_basis_pengetahuan?>" placeholder="Kode Basis Pengetahuan"><br>
 										</div>
 									</div>
 
