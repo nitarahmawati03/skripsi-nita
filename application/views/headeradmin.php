@@ -55,6 +55,9 @@
 			<li><a href="<?=site_url()?>/Penyakit/create"><em class="fa fa-edit">&nbsp;</em>Tambah Penyakit</a></li>
 			<li><a href="<?=site_url()?>/Gejala/daftar_gejala"><em class="fa fa-list">&nbsp;</em>Daftar Gejala</a></li>
 			<li><a href="<?=site_url()?>/Gejala/create"><em class="fa fa-edit">&nbsp;</em>Tambah Gejala</a></li>
+			<li><a href="<?=site_url()?>/BasisKasus/daftar_basis_kasus"><em class="fa fa-list">&nbsp;</em>Daftar Basis Kasus</a></li>
+			<li><a href="<?=site_url()?>/BasisKasus/create"><em class="fa fa-edit">&nbsp;</em>Tambah Basis Kasus</a></li>
+
 		</ul>
 	</div><!--/.sidebar-->
 </body>

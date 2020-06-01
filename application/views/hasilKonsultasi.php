@@ -139,7 +139,7 @@
                 <tr class="bg-group" align="center">
                     <th width="4%">NO</th>
                     <th width="18%">Penyakit</th>
-                    <th width="30%">Detail</th>
+                    <th width="30%">Definisi</th>
                     <th width="30%">Solusi</th>
                     <th width="18%">Persentase (%)</th>
                 </tr>
@@ -152,7 +152,7 @@
                     <tr>
                         <td align="center"><?php echo $i; ?></td>
                         <td align="center"><?php echo $value['penyakit']; ?></td>
-                        <td align="center"><?php echo $value['detail']; ?></td>
+                        <td align="center"><?php echo $value['definisi']; ?></td>
                         <td align="center"><?php echo $value['solusi']; ?></td>
                         <td align="center" name="persen[]"><?php echo $value['persentase']; ?></td>
                     </tr>
