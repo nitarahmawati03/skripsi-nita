@@ -11,7 +11,7 @@ class Perhitungan extends CI_Controller
 
 		$data_kasus = [];
 		foreach ($kasus as $key => $value) {
-			$data_kasus[$value->id_gejala][$value->id_basis_pengetahuan] = $value->bobot; //untuk mengambil bobot dari setiap gejala di kasus lama atau basis pengetahuan
+			$data_kasus[$value->id_basis_pengetahuan][$value->id_gejala] = $value->bobot; //untuk mengambil bobot dari setiap gejala di kasus lama atau basis pengetahuan
 		}
 
 		$data_kasus_baru = $this->input->post('check_list'); //untuk menyimpan gejala kasus baru dengan variable data 
@@ -87,7 +87,7 @@ class Perhitungan extends CI_Controller
 		foreach ($db_kasus as $key => $value) {
 			$var_kemungkinan_penyakit_yang_diderita[$value->id_basis_pengetahuan] = [
 				'penyakit' => $value->nama_penyakit,
-				'detail' => $value->detail,
+				'definisi' => $value->definisi,
 				'solusi' => $value->solusi,
 				'persentase' => $nilai_sim_percent[$value->id_basis_pengetahuan]
 			];
@@ -108,9 +108,7 @@ class Perhitungan extends CI_Controller
 
 		foreach ($max_key_kasus as $key => $value) {
 			$set_pemeriksaan = [
-				
-				'status' => ($var_kemungkinan_penyakit_yang_diderita[$value]['persentase'] >= 50 ? 1 : 2),
-				'id_basis_pengetahuan' => $data_kasus_penyakit[$value]->id_penyakit,
+				'id_penyakit' => $data_kasus_penyakit[$value]->id_penyakit,
 				'hasil' => $var_kemungkinan_penyakit_yang_diderita[$value]['persentase'],
 				
 			];
