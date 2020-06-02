@@ -20,7 +20,7 @@ class M_basispengetahuan extends CI_Model {
                       ->get();
 		$row = $query->last_row();
 		if($row){
-			$idPostfix = (int)substr($row->id_basis_pengetahuan,1)+1;
+			$idPostfix = (int)substr($row->id_basis_pengetahuan,2)+1;
 			$nextId = 'BP'.STR_PAD((string)$idPostfix,2,"0",STR_PAD_LEFT);
 		}
 		else{
@@ -29,7 +29,8 @@ class M_basispengetahuan extends CI_Model {
 			$object=array
 			(
 				'id_basis_pengetahuan' => $nextId,
-				'id_basis_pengetahuan'=>$this->input->post('id_basis_pengetahuan')
+				'id_penyakit'=>$this->input->post('id_penyakit')
+
 			);
 		$this->db->insert('tb_basis_pengetahuan',$object);
 	}

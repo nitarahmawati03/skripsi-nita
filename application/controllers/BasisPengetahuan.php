@@ -26,6 +26,7 @@ class BasisPengetahuan extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('indexadmin');
+		
 	}
 
 	public function daftar_basis_pengetahuan()
@@ -50,8 +51,6 @@ class BasisPengetahuan extends CI_Controller {
 	public function Create()
 	{
 			$this->load->helper('url','form');
-			$this->load->library('form_validation');
-			$this->form_validation->set_rules('id_basis_pengetahuan', 'Kode Basis Pengetahuan', 'trim|required');
 			$this->load->library('form_validation', 'database');
 			$this->form_validation->set_rules('id_penyakit', 'Penyakit', 'trim|required');
 			$this->load->model('M_basispengetahuan');
@@ -71,23 +70,21 @@ class BasisPengetahuan extends CI_Controller {
 
 		if ($this->form_validation->run()==FALSE)
 		 	{
-				$this->load->view("tambahbasis");
 				$data['penyakit']=$this->M_penyakit->readPenyakit();
 				$data['id_basis']=$nextId;
 				$this->load->view("tambahbasis", $data);
 		}else
 		{
-		
 
 			$this->M_basispengetahuan->insertBasis();
 			$this->load->view('tambah_basis_sukses');
 		}
+	}
 
 		public function Update($id_basis_pengetahuan)
 	{
 		$this->form_validation->set_rules('id_basis_pengetahuan', 'Kode Basis Pengetahuan','trim|required');
 		$this->form_validation->set_rules('id_penyakit','Penyakit','trim|required');
-		
 
 		$data['basis']=$this->M_basispengetahuan->getBasis($id_basis_pengetahuan);
 
