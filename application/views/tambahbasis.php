@@ -10,10 +10,14 @@
                         <div class="jumbotron text-center">
                                  <h1>TAMBAH BASIS</h1>
                           </div>
+
                         <div class="card">
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
                                     <table class="table table-hover" id="contoh">
+
+                                        
+                                        
 
                                         <?php echo form_open_multipart('BasisPengetahuan/create');?>
                                         
@@ -21,9 +25,22 @@
                                         <div class="from-group">
                                             <label for="">Kode Basis Pengetahuan</label>
                                             <input type="text" name="id_basis_pengetahuan" class="form-control" id="id_basis_pengetahuan" placeholder=""><br>
-
+                                            
                                             <label for="">Penyakit</label>
-                                            <input type="text" name="id_penyakit" class="form-control" id="id_penyakit" placeholder=""><br>
+
+                                        <select name="Basis" id="id_basis_pengetahuan" form="canform">
+                                            <?php
+                                                foreach ($penyakit as $key => $value){ ?> 
+                                                    <option value="<?php echo $value->id_penyakit ?> "> 
+                                                        <?php echo $value->nama_penyakit ?>
+                                                    </option>
+                                            <?php
+                                                }
+                                            ?>
+                                        </select>
+                                        <br>
+                                            <!-- <label for="">Penyakit</label>
+                                            <input type="text" name="id_penyakit" class="form-control" id="id_penyakit" placeholder=""><br> -->
 
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>

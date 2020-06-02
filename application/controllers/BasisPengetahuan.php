@@ -53,10 +53,13 @@ class BasisPengetahuan extends CI_Controller {
 			$this->load->library('form_validation');
 			$this->form_validation->set_rules('id_basis_pengetahuan', 'Kode Basis Pengetahuan', 'trim|required');
 			$this->load->model('M_basispengetahuan');
+			$this->load->model('M_penyakit');
+			
 
 		if ($this->form_validation->run()==FALSE)
 		 	{
-				$this->load->view("tambahbasis");
+		 		$data['penyakit']=$this->M_penyakit->readPenyakit();
+				$this->load->view("tambahbasis", $data);
 		}else
 		{
 		
