@@ -20,7 +20,7 @@ class M_basispengetahuan extends CI_Model {
 		);
 		$this->db->insert('tb_basis_pengetahuan',$object);
 	}
-
+	
 	public function getBasis($id_basis_pengetahuan){
 		$this->db->where('id_basis_pengetahuan',$id_basis_pengetahuan);
 		$query= $this->db->get('tb_basis_pengetahuan');

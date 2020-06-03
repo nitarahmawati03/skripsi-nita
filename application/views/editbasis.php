@@ -14,11 +14,11 @@
 							<table class="table table-hover table-striped">
 								<table class="table table-hover" id="contoh">
 
-									<legend>Edit Basis</legend>
+								<legend>Edit Basis</legend>
 
-									<?php echo validation_errors(); ?>
+								<?php echo validation_errors(); ?>
 
-									<?php echo form_open_multipart('BasisPengetahuan/update/'.$this->uri->segment(3)); ?>
+								<?php echo form_open_multipart('BasisPengetahuan/update/'.$this->uri->segment(3)); ?>
 
 									<label for="">Kode Basis Pengetahuan</label>
 
@@ -43,7 +43,11 @@
 
 									<div class="form_group">
 										<div class="col-sm-offset2 col-sm-10">
+											<div class="form_group">
+										<div class="col-sm-offset2 col-sm-10">
+
 											<button type="submit" class="btn btn-primary">Submit</button>
+
 											<?php echo form_close(); ?>
 										</div>
 									</div>
