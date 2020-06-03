@@ -20,6 +20,7 @@
 
 									<?php echo form_open_multipart('BasisPengetahuan/update/'.$this->uri->segment(3)); ?>
 
+<<<<<<< HEAD
 									<label for="">Kode Basis Pengetahuan</label>
 
 										<input type="hidden" name="id_basis_pengetahuan" id="id_basis_pengetahuan"
@@ -40,6 +41,43 @@
 												}
 											?>
 										</select>
+=======
+									<div class="form_group">
+										<label class="control-label col-sm-2" for="definisi">Kode Basis Pengetahuan:</label>
+										<div class="col-sm-10">
+
+											<input type="text" name="id_basis_pengetahuan" class="form-control" id="id_basis_pengetahuan"
+												value="<?php echo $basis[0]->id_basis_pengetahuan?>" placeholder="Kode Basis Pengetahuan"><br>
+										</div>
+									</div>
+
+									<div class="form-group">
+							            <label class="control-label col-xs-3" >Penyakit</label>
+							            <div class="col-sm-8">
+							              <select class='form-control' id='exampleFormControlSelect2' name='fk_penyakit'>
+							                <option>-- Pilih Penyakit--</option>
+							                <?php 
+							                	foreach ($penyakit as $value) {
+							                  echo '<option value="'.$value->id_penyakit.'" ';
+							                  if ($key->id_penyakit==$value->id_penyakit)
+							                    echo "selected";
+							                  echo '>'.$value->nama_penyakit.'</option>';
+							                }?>
+							              </select>
+							            </div>
+          							</div><br><br>
+
+          							<!-- <select name="id_penyakit" id="id_penyakit" class="form-control">
+                                            <?php
+                                                foreach ($penyakit as $key => $value) { ?>
+                                                    <option value="<?php echo $value->id_penyakit ?>">
+                                                        <?php echo $value->nama_penyakit ?>
+                                                    </option>
+                                            <?php
+                                                }
+                                            ?>
+                                        </select> -->
+>>>>>>> d61c34f171ae5c8c02eaeef690a174d42b5776d6
 
 									<div class="form_group">
 										<div class="col-sm-offset2 col-sm-10">

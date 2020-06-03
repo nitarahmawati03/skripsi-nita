@@ -26,6 +26,7 @@ class BasisPengetahuan extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('indexadmin');
+		
 	}
 
 	public function daftar_basis_pengetahuan()
