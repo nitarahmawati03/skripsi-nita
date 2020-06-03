@@ -52,6 +52,7 @@ class BasisPengetahuan extends CI_Controller {
 	{
 			$this->load->helper('url','form');
 			$this->load->library('form_validation', 'database');
+			$this->form_validation->set_rules('id_basis_pengetahuan', 'Basis Pengetahuan', 'trim|required');
 			$this->form_validation->set_rules('id_penyakit', 'Penyakit', 'trim|required');
 			$this->load->model('M_basispengetahuan');
 			$this->load->model('M_penyakit');
@@ -81,8 +82,11 @@ class BasisPengetahuan extends CI_Controller {
 		}
 	}
 
+	
+
 		public function Update($id_basis_pengetahuan)
 	{
+		$this->input->post('id_basis_pengetahuan');
 		$this->form_validation->set_rules('id_basis_pengetahuan', 'Kode Basis Pengetahuan','trim|required');
 		$this->form_validation->set_rules('id_penyakit','Penyakit','trim|required');
 

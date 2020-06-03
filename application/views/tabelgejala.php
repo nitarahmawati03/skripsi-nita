@@ -12,11 +12,10 @@
                 <div class="card">
             <div class="content table-responsive table-full-width">
         <table class="table table-hover table-striped">
-            <table class="table table-hover" id="contoh">
+            <table class="table table-hover" id="example">
                 <thead>
                     <th>No</th>
                     <th>Gejala</th>
-                    <!-- <th>Bobot</th> -->
                     <th>Edit</th>
                     <th>Delete</th>
                 </thead>
@@ -52,28 +51,19 @@
     </div>
 </div>
 
- <!--   Core JS Files   -->
-    <script src="<?php echo base_url()?>assets/js/3.2.1/jquery.js" type="text/javascript"></script>
-    <script src="<?php echo base_url()?>assets/js/bootstrap.min.js" type="text/javascript"></script>
-  <script src="<?=base_url()?>DataTables/datatables.min.js" type="text/javascript"></script>
-    <!--  Charts Plugin -->
-    <!-- <script src="<?php echo base_url()?>assets/js/chartist.min.js"></script>
+ <script src="<?=base_url()?>assets/js/jquery.js"></script>
+        <script src="<?=base_url()?>DataTables/datatables.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#example').DataTable({
+                    "processing": true,
 
-     Notifications Plugin   
-    <script src="<?php echo base_url()?>assets/js/bootstrap-notify.js"></script>
- -->
-    <!--  Google Maps Plugin    -->
-    <script type="<?php echo base_url()?>text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+                    "lengthMenu": [
+                        [3, 6, 10, -1],
+                        [3, 6, 10, "All"]
+                    ],
+                });
+            });
 
-    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-    <!-- <script src="<?php echo base_url()?>assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script> -->
+        </script>
 
-    <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-    <!-- <script src="<?php echo base_url()?>assets/js/demo.js"></script> -->
-  
-  <script type="text/javascript">
-    $(document).ready(function(){
-      $('#contoh').DataTable();
-    });
-  </script>
- 

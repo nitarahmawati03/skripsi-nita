@@ -10,8 +10,6 @@
 							<h1>DAFTAR PENYAKIT</h1>
 						</div>
 						<div class="card">
-
-
 							<div class="content table-responsive table-full-width">
 								<table class="table table-hover table-striped">
 									<table class="table table-hover" id="example">

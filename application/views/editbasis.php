@@ -29,36 +29,24 @@
 										</div>
 									</div>
 
-									<div class="form-group">
-							            <label class="control-label col-xs-3" >Penyakit</label>
-							            <div class="col-sm-8">
-							              <select class='form-control' id='exampleFormControlSelect2' name='fk_penyakit'>
-							                <option>-- Pilih Penyakit--</option>
-							                <?php 
-							                	foreach ($penyakit as $value) {
-							                  echo '<option value="'.$value->id_penyakit.'" ';
-							                  if ($key->id_penyakit==$value->id_penyakit)
-							                    echo "selected";
-							                  echo '>'.$value->nama_penyakit.'</option>';
-							                }?>
-							              </select>
-							            </div>
-          							</div><br><br>
+									<div class="form_group">
+										<label class="control-label col-sm-2" for="solusi">Penyakit :</label>
+										<div class="col-sm-10">
+											<input type="hidden" name="id_basis_pengetahuan" id="id_basis_pengetahuan" class="form-control" value="<?php echo $id_basis_pengetahuan?>" >
 
-          							<!-- <select name="id_penyakit" id="id_penyakit" class="form-control">
-                                            <?php
-                                                foreach ($penyakit as $key => $value) { ?>
-                                                    <option value="<?php echo $value->id_penyakit ?>">
-                                                        <?php echo $value->nama_penyakit ?>
-                                                    </option>
-                                            <?php
-                                                }
-                                            ?>
-                                        </select> -->
+											<input class="form-control" disabled value="<?php echo $id_basis_pengetahuan ?> ">
+											
+										</div>
+									</div>
+
+
+
 
 									<div class="form_group">
 										<div class="col-sm-offset2 col-sm-10">
+
 											<button type="submit" class="btn btn-primary">Submit</button>
+											
 											<?php echo form_close(); ?>
 										</div>
 									</div>

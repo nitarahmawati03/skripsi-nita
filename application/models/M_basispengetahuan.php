@@ -14,27 +14,13 @@ class M_basispengetahuan extends CI_Model {
 	}
 
 	public function insertBasis(){
-		$nextId = '';
-		$query = $this->db->select('id_basis_pengetahuan')
-                      ->from('tb_basis_pengetahuan')
-                      ->get();
-		$row = $query->last_row();
-		if($row){
-			$idPostfix = (int)substr($row->id_basis_pengetahuan,2)+1;
-			$nextId = 'BP'.STR_PAD((string)$idPostfix,2,"0",STR_PAD_LEFT);
-		}
-		else{
-			$nextId = 'BP01';
-		} // For the first time
-			$object=array
-			(
-				'id_basis_pengetahuan' => $nextId,
-				'id_penyakit'=>$this->input->post('id_penyakit')
-
-			);
+		$object=array(
+			'id_basis_pengetahuan' => $this->input->post('id_basis_pengetahuan'),
+			'id_penyakit'=>$this->input->post('id_penyakit')
+		);
 		$this->db->insert('tb_basis_pengetahuan',$object);
 	}
-
+	
 	public function getBasis($id_basis_pengetahuan){
 		$this->db->where('id_basis_pengetahuan',$id_basis_pengetahuan);
 		$query= $this->db->get('tb_basis_pengetahuan');
