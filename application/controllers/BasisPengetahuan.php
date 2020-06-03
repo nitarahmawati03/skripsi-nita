@@ -94,6 +94,8 @@ class BasisPengetahuan extends CI_Controller {
 
 		if ($this->form_validation->run()==FALSE)
 		{
+			$this->load->model('M_penyakit');
+			$data['penyakit']=$this->M_penyakit->readPenyakit();
 			$this->load->view('editbasis', $data);
 		}
 		else

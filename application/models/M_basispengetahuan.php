@@ -31,8 +31,8 @@ class M_basispengetahuan extends CI_Model {
 	{
 		$data = array
 		(
-			'id_basis_pengetahuan' => $nextId,
-			'id_basis_pengetahuan'=>$this->input->post('id_basis_pengetahuan')
+			'id_basis_pengetahuan' => $id_basis_pengetahuan,
+			'id_penyakit'=>$this->input->post('id_penyakit')
 		);
 		$this->db->where('id_basis_pengetahuan',$id_basis_pengetahuan);
 		$this->db->update('tb_basis_pengetahuan',$data);

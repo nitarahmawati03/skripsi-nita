@@ -17,28 +17,32 @@
 
                                     <?php echo form_open_multipart('BasisPengetahuan/create');?>
 
-                                    <?php echo validation_errors();  ?>
-                                    <div class="from-group">
-                                        <label for="">Kode Basis Pengetahuan</label>
-                                        <input type="text" name="id_basis_pengetahuan" class="form-control"
-                                            id="id_basis_pengetahuan" disabled value="<?php echo $id_basis ?>"><br>
+									<?php echo validation_errors();  ?>
+									<div class="from-group">
+										<label for="">Kode Basis Pengetahuan</label>
+
+										<input type="hidden" name="id_basis_pengetahuan" id="id_basis_pengetahuan"
+											class="form-control" value="<?php echo $id_basis ?>">
+
+										<input class="form-control" disabled value="<?php echo $id_basis ?>">
+										<br>
 
                                         <label for="">Penyakit</label>
 
-                                        <select name="id_penyakit" id="id_penyakit" class="form-control">
-                                            <?php
-                                                foreach ($penyakit as $key => $value) { ?>
-                                                    <option value="<?php echo $value->id_penyakit ?>">
-                                                        <?php echo $value->nama_penyakit ?>
-                                                    </option>
-                                            <?php
-                                                }
-                                            ?>
-                                        </select>
-                                        <br>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <?php echo form_close();?>
+										<select name="id_penyakit" id="id_penyakit" class="form-control">
+											<?php
+												foreach ($penyakit as $key => $value) { ?>
+											<option value="<?php echo $value->id_penyakit ?>">
+												<?php echo $value->nama_penyakit ?>
+											</option>
+											<?php
+												}
+											?>
+										</select>
+										<br>
+									</div>
+									<button type="submit" class="btn btn-primary">Submit</button>
+									<?php echo form_close();?>
 
 
 

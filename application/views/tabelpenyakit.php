@@ -75,7 +75,6 @@
 			$(document).ready(function () {
 				$('#example').DataTable({
 					"processing": true,
-
 					"lengthMenu": [
 						[3, 6, 10, -1],
 						[3, 6, 10, "All"]
