@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2020 at 04:05 PM
+-- Generation Time: Jun 04, 2020 at 05:28 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.29
 
@@ -52,17 +52,6 @@ CREATE TABLE `tb_detail_basis_pengetahuan` (
   `id_basis_pengetahuan` varchar(10) NOT NULL,
   `bobot` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tb_detail_basis_pengetahuan`
---
-
-INSERT INTO `tb_detail_basis_pengetahuan` (`id_detail`, `id_gejala`, `id_basis_pengetahuan`, `bobot`) VALUES
-('DBP1', 'G01', 'BP01', 1),
-('DBP2', 'G02', 'BP01', 1),
-('DBP3', 'G03', 'BP01', 5),
-('DBP4', 'G03', 'BP02', 5),
-('DBP5', 'G04', 'BP02', 5);
 
 -- --------------------------------------------------------
 
@@ -199,8 +188,8 @@ ALTER TABLE `tb_basis_pengetahuan`
 --
 ALTER TABLE `tb_detail_basis_pengetahuan`
   ADD PRIMARY KEY (`id_detail`),
-  ADD KEY `id_gejala` (`id_gejala`),
-  ADD KEY `id_basis_pengetahuan` (`id_basis_pengetahuan`);
+  ADD UNIQUE KEY `id_basis_pengetahuan` (`id_basis_pengetahuan`),
+  ADD KEY `id_gejala` (`id_gejala`);
 
 --
 -- Indexes for table `tb_detail_pemeriksaan`
@@ -243,13 +232,13 @@ ALTER TABLE `tb_penyakit`
 -- AUTO_INCREMENT for table `tb_detail_pemeriksaan`
 --
 ALTER TABLE `tb_detail_pemeriksaan`
-  MODIFY `id_detail_pemeriksaan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_detail_pemeriksaan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `tb_pemeriksaan`
 --
 ALTER TABLE `tb_pemeriksaan`
-  MODIFY `id_pemeriksaan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_pemeriksaan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
@@ -259,14 +248,14 @@ ALTER TABLE `tb_pemeriksaan`
 -- Constraints for table `tb_basis_pengetahuan`
 --
 ALTER TABLE `tb_basis_pengetahuan`
-  ADD CONSTRAINT `tb_basis_pengetahuan_ibfk_2` FOREIGN KEY (`id_penyakit`) REFERENCES `tb_penyakit` (`id_penyakit`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tb_basis_pengetahuan_ibfk_1` FOREIGN KEY (`id_penyakit`) REFERENCES `tb_penyakit` (`id_penyakit`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_detail_basis_pengetahuan`
 --
 ALTER TABLE `tb_detail_basis_pengetahuan`
-  ADD CONSTRAINT `tb_detail_basis_pengetahuan_ibfk_1` FOREIGN KEY (`id_gejala`) REFERENCES `tb_gejala` (`id_gejala`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tb_detail_basis_pengetahuan_ibfk_2` FOREIGN KEY (`id_basis_pengetahuan`) REFERENCES `tb_basis_pengetahuan` (`id_basis_pengetahuan`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tb_detail_basis_pengetahuan_ibfk_1` FOREIGN KEY (`id_basis_pengetahuan`) REFERENCES `tb_basis_pengetahuan` (`id_basis_pengetahuan`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tb_detail_basis_pengetahuan_ibfk_2` FOREIGN KEY (`id_gejala`) REFERENCES `tb_gejala` (`id_gejala`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tb_detail_pemeriksaan`
