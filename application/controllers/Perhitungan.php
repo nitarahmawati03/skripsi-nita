@@ -134,7 +134,6 @@ class Perhitungan extends CI_Controller
 		// $data['kasus'] = number_format($nilai_sim_untuk_tiap_kasus, 2, '.', '');
 		$data['kasus'] = $nilai_sim_untuk_tiap_kasus;
 		$data['persen'] = $nilai_sim_percent;
-		print_r($kasus);
 		$this->load->view('hasilKonsultasi', $data);
 	}
 
