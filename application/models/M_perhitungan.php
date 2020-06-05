@@ -8,11 +8,25 @@ class M_perhitungan extends CI_Model {
 		parent::__construct();
 	}
 
-	public function readPerhitungan(){
-		$kasus = $this->db->get('tb_detail_basis_pengetahuan');
-		return $kasus->result(); //mengambil data gejala setiap kasus
+	public function insertPemeriksaan($data){
+		$this->db->insert('tb_pemeriksaan',$data);
 	}
 
+	public function insertDetailPemeriksaan($data){
+		$this->db->insert('tb_detail_pemeriksaan',$data);
+	}
 
+	public function getPerhitunganQueryObject(){
+	  $query=$this->db->query('SELECT * FROM tb_detail_basis_pengetahuan');
+	  return $query->result();
+	 }
+
+	public function joinPerhitungan(){
+	 $query = $this->db //script untuk join tabel agar dapat berelasi dengan tabel penyakit sehingga muncul nama penyakitnya
+			->select('*')
+			->join('tb_penyakit', 'tb_basis_pengetahuan.id_penyakit = tb_penyakit.id_penyakit')
+			->get('tb_basis_pengetahuan');
+	return $query->result();
+	}
 
 }

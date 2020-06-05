@@ -6,8 +6,14 @@ class Perhitungan extends CI_Controller
 
 	public function index()
 	{
+		$this->load->model('M_perhitungan');
 
-		$kasus = $this->db->get('tb_detail_basis_pengetahuan')->result(); //mengambil data gejala setiap kasus
+		$kasus = $this->M_perhitungan->getPerhitunganQueryObject(); //mengambil data gejala setiap kasus
+
+		$data_kasus = [];
+		foreach ($kasus as $key => $value) {
+			$data_kasus[$value->id_basis_pengetahuan][$value->id_gejala] = $value->bobot; 
+		}
 
 		$data_kasus = [];
 		foreach ($kasus as $key => $value) {
@@ -67,10 +73,8 @@ class Perhitungan extends CI_Controller
 			];
 		}
 
-		$db_kasus = $this->db //script untuk join tabel agar dapat berelasi dengan tabel penyakit sehingga muncul nama penyakitnya
-			->select('*')
-			->join('tb_penyakit', 'tb_basis_pengetahuan.id_penyakit = tb_penyakit.id_penyakit')
-			->get('tb_basis_pengetahuan')->result();
+		$db_kasus = $this->M_perhitungan->joinPerhitungan();
+		
 		$data_kasus_penyakit = [];
 		foreach ($db_kasus as $key => $value) {
 			$data_kasus_penyakit[$value->id_basis_pengetahuan] = $value;
@@ -113,8 +117,8 @@ class Perhitungan extends CI_Controller
 				
 			];
 
-			$this->db->insert('tb_pemeriksaan', $set_pemeriksaan);
-
+			$this->M_perhitungan->insertPemeriksaan($set_pemeriksaan);
+		
 			$id_pemeriksaan = $this->db->insert_id();
 			foreach ($data_kasus_baru as $key => $value) {
 				$set_detail = [
@@ -122,7 +126,7 @@ class Perhitungan extends CI_Controller
 					'id_gejala' => $value,
 				];
 
-				$this->db->insert('tb_detail_pemeriksaan', $set_detail);
+				$this->M_perhitungan->insertDetailPemeriksaan($set_detail);
 			}
 		}
 
