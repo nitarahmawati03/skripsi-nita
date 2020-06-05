@@ -138,7 +138,7 @@
                                 
                                 <div class="end-sec">
                                     <ul>
-                                        <?php echo substr($key->definisi, 0, 50)."..."?>
+                                        <?php echo substr($key->definisi, 0, 20)."..."?>
                                     </ul>
                                     
                                 </div>  
