@@ -3,17 +3,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Gejala extends CI_Controller {
 
-	public function datatable_ajax()
-		{
-			$this->load->view('gejala_datatable_ajax');
-		}
+	// public function datatable_ajax()
+	// 	{
+	// 		$this->load->view('gejala_datatable_ajax');
+	// 	}
 
-	public function data_server()
-		{
-			$this->load->library('Datatables');
-			$this->datatables->select('id_gejala, gejala')->from('tb_gejala');
-				echo $this->datatables->generate();
-		}
+	// public function data_server()
+	// 	{
+	// 		$this->load->library('Datatables');
+	// 		$this->datatables->select('id_gejala, gejala')->from('tb_gejala');
+	// 			echo $this->datatables->generate();
+	// 	}
 
 	public function __construct()
 		{

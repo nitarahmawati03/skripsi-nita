@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2020 at 05:28 PM
+-- Generation Time: Jun 05, 2020 at 05:59 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.29
 
@@ -53,6 +53,19 @@ CREATE TABLE `tb_detail_basis_pengetahuan` (
   `bobot` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tb_detail_basis_pengetahuan`
+--
+
+INSERT INTO `tb_detail_basis_pengetahuan` (`id_detail`, `id_gejala`, `id_basis_pengetahuan`, `bobot`) VALUES
+('DB01', 'G02', 'BP01', 3),
+('DB02', 'G03', 'BP01', 3),
+('DB03', 'G08', 'BP01', 1),
+('DB04', 'G15', 'BP01', 3),
+('DB05', 'G08', 'BP02', 1),
+('DB06', 'G13', 'BP02', 3),
+('DB07', 'G18', 'BP02', 5);
+
 -- --------------------------------------------------------
 
 --
@@ -64,6 +77,20 @@ CREATE TABLE `tb_detail_pemeriksaan` (
   `id_pemeriksaan` int(10) NOT NULL,
   `id_gejala` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_detail_pemeriksaan`
+--
+
+INSERT INTO `tb_detail_pemeriksaan` (`id_detail_pemeriksaan`, `id_pemeriksaan`, `id_gejala`) VALUES
+(27, 11, 'G03'),
+(28, 11, 'G08'),
+(29, 11, 'G13'),
+(30, 11, 'G26'),
+(31, 11, 'G28'),
+(32, 12, 'G01'),
+(33, 13, 'G01'),
+(34, 14, 'G02');
 
 -- --------------------------------------------------------
 
@@ -122,6 +149,16 @@ CREATE TABLE `tb_pemeriksaan` (
   `hasil` varchar(1000) NOT NULL,
   `tgl_pemeriksaan` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_pemeriksaan`
+--
+
+INSERT INTO `tb_pemeriksaan` (`id_pemeriksaan`, `id_penyakit`, `hasil`, `tgl_pemeriksaan`) VALUES
+(11, 'P02', '44.444444444444', '0000-00-00'),
+(12, 'P01', '0', '0000-00-00'),
+(13, 'P02', '0', '0000-00-00'),
+(14, 'P01', '30', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -188,8 +225,8 @@ ALTER TABLE `tb_basis_pengetahuan`
 --
 ALTER TABLE `tb_detail_basis_pengetahuan`
   ADD PRIMARY KEY (`id_detail`),
-  ADD UNIQUE KEY `id_basis_pengetahuan` (`id_basis_pengetahuan`),
-  ADD KEY `id_gejala` (`id_gejala`);
+  ADD KEY `id_gejala` (`id_gejala`),
+  ADD KEY `id_basis_pengetahuan` (`id_basis_pengetahuan`) USING BTREE;
 
 --
 -- Indexes for table `tb_detail_pemeriksaan`
@@ -232,13 +269,13 @@ ALTER TABLE `tb_penyakit`
 -- AUTO_INCREMENT for table `tb_detail_pemeriksaan`
 --
 ALTER TABLE `tb_detail_pemeriksaan`
-  MODIFY `id_detail_pemeriksaan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_detail_pemeriksaan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `tb_pemeriksaan`
 --
 ALTER TABLE `tb_pemeriksaan`
-  MODIFY `id_pemeriksaan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_pemeriksaan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
