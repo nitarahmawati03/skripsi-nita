@@ -3,18 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BasisPengetahuan extends CI_Controller {
 
-	// public function datatable_ajax()
-	// {
-	// 	$this->load->view('basis_datatable_ajax');
-	// }
-
-	// public function data_server()
-	// {
-	// 	$this->load->library('Datatables');
-	// 	$this->datatables->select('id_basis_pengetahuan, id_penyakit')->from('tb_basis_pengetahuan');
-	// 		echo $this->datatables->generate();
-	// }
-
 	public function __construct()
 	{
 		parent::__construct();

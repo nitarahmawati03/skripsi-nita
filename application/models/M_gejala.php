@@ -58,6 +58,7 @@ class M_gejala extends CI_Model {
 		$this->db->delete('tb_gejala');
 	}
 
+
 	public function getGejalaQueryObject(){
 	  $query=$this->db->query('SELECT * FROM tb_gejala');
 	  return $query->result();

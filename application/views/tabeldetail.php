@@ -17,7 +17,7 @@
                                     <table class="table table-hover" id="contoh">
                                         <thead>
                                             <th>No</th>
-                                            <th>Kode Detail Basis Pengetahuan</th>
+                                            <th>Detail Basis Pengetahuan</th>
                                             <th>Gejala</th>
                                             <th>Edit</th>
                                             <th>Delete</th>

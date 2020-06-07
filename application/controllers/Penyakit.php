@@ -3,18 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Penyakit extends CI_Controller {
 
-	// public function datatable_ajax()
-	// {
-	// 	$this->load->view('penyakit_datatable_ajax');
-	// }
-
-	// public function data_server()
-	// {
-	// 	$this->load->library('Datatables');
-	// 	$this->datatables->select('id_penyakit, nama_penyakit, definisi, solusi')->from('tb_penyakit');
-	// 		echo $this->datatables->generate();
-	// }
-
 	public function __construct()
 	{
 		parent::__construct();
@@ -47,11 +35,6 @@ class Penyakit extends CI_Controller {
 		$this->datatables->select('id_penyakit,nama_penyakit, definisi, solusi')->from('tb_penyakit');
 			echo $this->datatables->generate();
 	}
-
-	// public function detailPenyakit($id_penyakit){
-	// 	$data['penyakit']=$this->M_penyakit->getPenyakit();
-	// 	$this->load->view('detail',$data);
-	// }
 
 	public function Create()
 	{

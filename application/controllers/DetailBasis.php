@@ -9,11 +9,12 @@ class DetailBasis extends CI_Controller {
 		$this->load->model('M_detailbasis');
 		$this->load->helper('url','form');
 		$this->load->library('form_validation');
+
 	}
 
 	public function index()
 	{
-		$this->load->view('tabeldetail');
+		$this->load->view('tabelbasis');
 
 	}
 
@@ -21,7 +22,7 @@ class DetailBasis extends CI_Controller {
 	{
 		$this->load->model('M_detailbasis');
 		$data['detailbasis']=$this->M_detailbasis->readDetail();
-		// $this->load->view('tabeldetail',$data);
+		$this->load->view('tabeldetail',$data);
 	}
 
 	public function datatable_ajaxDetail()
@@ -32,8 +33,24 @@ class DetailBasis extends CI_Controller {
 	public function data_serverDetail()
 	{
 		$this->load->library('Datatables');
-		$this->datatables->select('id_detail, id_gejala')->from('tb_detail_basis_pengetahuan');
+		$this->datatables->select('id_detail, id_gejala, id_basis_pengetahuan, bobot')->from('tb_detail_basis_pengetahuan');
 			echo $this->datatables->generate();
+	}
+
+	// public function DataKasus()
+	// {
+	// 	$data['detailbasis'] = $this->M_detailbasis->getDetail();
+	// 	$data['penyakitbasis']=$this->M_detailbasis->ambilPenyakit();
+	// 	$data['page']='BasisKasus.php';
+	// 	$this->load->view('Admin/menu',$data);
+	// }
+
+	public function DetailBasis($id_detail)
+	{
+		$this->load->model('M_detailbasis');
+		$data['gejalaBasis']=$this->M_detailbasis->ambilGejala();
+		$data['detailbasis'] = $this->M_detailbasis->getDataKasusId();
+		$this->load->view('tabeldetail',$data);
 	}
 
 	public function Create()
@@ -42,8 +59,10 @@ class DetailBasis extends CI_Controller {
 			$this->load->library('form_validation', 'database');
 			$this->form_validation->set_rules('id_detail', 'Detail Basis Pengetahuan', 'trim|required');
 			$this->form_validation->set_rules('id_gejala', 'Gejala', 'trim|required');
+			$this->form_validation->set_rules('id_Basis_pengetahuan', 'Basis Pengetahuan', 'trim|required');
 			$this->load->model('M_detailbasis');
 			$this->load->model('M_gejala');
+			$this->load->model('M_basispengetahuan');
 			$nextId = '';
 			$query = $this->db->select('id_detail')
 						->from('tb_detail_basis_pengetahuan')
@@ -60,6 +79,7 @@ class DetailBasis extends CI_Controller {
 		if ($this->form_validation->run()==FALSE)
 		 	{
 				$data['gejala']=$this->M_gejala->readGejala();
+				$data['basis']=$this->M_basispengetahuan->readBasis();
 				$data['id_detail']=$nextId;
 				$this->load->view("tambahdetail", $data);
 		}else
@@ -76,13 +96,17 @@ class DetailBasis extends CI_Controller {
 	{
 		$this->form_validation->set_rules('id_detail', 'Kode Detail Basis Pengetahuan','trim|required');
 		$this->form_validation->set_rules('id_gejala','Gejala','trim|required');
+		$this->form_validation->set_rules('id_basis_pengetahuan','Basis Pengetahuan','trim|required');
+		$this->form_validation->set_rules('bobot','Bobot','trim|required');
 
-		$data['detailbasis']=$this->M_detailbasis->getDetail($id_detail);
+		$data['detailbasis']=$this->M_detailbasis->getDataBasisId($id_detail);
 
 		if ($this->form_validation->run()==FALSE)
 		{
 			$this->load->model('M_gejala');
 			$data['gejala']=$this->M_gejala->readGejala();
+			$this->load->model('M_basispengetahuan');
+			$data['basis']=$this->M_basispengetahuan->readBasis();
 			$this->load->view('editdetail', $data);
 		}
 		else
