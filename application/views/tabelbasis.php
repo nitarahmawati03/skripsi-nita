@@ -17,7 +17,7 @@
                                     <table class="table table-hover" id="contoh">
                                         <thead>
                                             <th>No</th>
-                                            <th>Kode Basis Pengetahuan</th>
+                                            <th>Basis Pengetahuan</th>
                                             <th>Penyakit</th>
                                             <th>Detail</th>
                                             <th>Edit</th>
@@ -33,7 +33,8 @@
                                                 <td><?php echo $key->id_basis_pengetahuan;?></td>
                                                 <td><?php echo $key->id_penyakit;?></td>
 
-                                                <td><a href="<?=site_url()?>/DetailBasis/DetailBasis"> <p data-placement="top" data-toogle="tooltip" title="Detail"><button class="btn btn-primary btn-xs" data-title="Detail" data-toggle="modal" data-target="#detail"><span class="glyphicon glyphicon-list"></span></button></p></td>
+                                               <td><a href="<?=site_url()?>/DetailBasis/DetailBasis/<?php echo $key->id_basis_pengetahuan ?>"> <p data-placement="top" data-toogle="tooltip" title="Detail"><button class="btn btn-primary btn-xs" data-title="Detail" data-toggle="modal" data-target="#detail"><span class="glyphicon glyphicon-list"></span></button></p></td>
+
 
                                                 <td><a href="<?=site_url()?>/BasisPengetahuan/Update/<?php echo $key->id_basis_pengetahuan ?>"> <p data-placement="top" data-toogle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
 

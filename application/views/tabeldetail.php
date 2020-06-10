@@ -30,23 +30,20 @@
                                             <tr>
                                                 <td><?php echo $no ?>  </td>
                                                 <td><?php echo $key->id_detail;?></td>
-                                                <td><?php echo $key->id_gejala;?></td>
+                                                <td><?php echo $key->gejala;?></td>
 
                                                 <td><a href="<?=site_url()?>/DetailBasis/Update/<?php echo $key->id_detail ?>"> <p data-placement="top" data-toogle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
 
                                                 <td><a href="<?=site_url()?>/DetailBasis/delete/<?php echo $key->id_detail ?>"> <p data-placement="top" data-toogle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
                                             </tr>
-                                                            <!--    <tr>
 
-                                            </tr> -->
                                             <?php 
                                              $no++;
                                              }?>
                                         </tbody>
-
                                     </table>
                                 </table>
-
+                                     <a href="<?php echo site_url('BasisPengetahuan/daftar_basis_pengetahuan')?>"> <button type="kembali" class="btn btn-primary">Kembali</button>
                             </div>
                         </div>
                     </div>

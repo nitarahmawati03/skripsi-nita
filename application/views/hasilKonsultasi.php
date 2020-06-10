@@ -133,7 +133,7 @@
             </tbody>
         </table>
 
-        <h5 class="heading">Anda Kemungkinan Menderita Penyakit :</h5><br>
+        <h5 class="heading">Hasil diagnosis penyakit kelinci :</h5><br>
         <table class="table table-striped table-bordered data">
             <thead>
                 <tr class="bg-group" align="center">
@@ -162,9 +162,7 @@
                 ?>
             </tbody>
         </table>
-        <div class="agileinfo_mail_grid_right submit-buttons text-center">
-            <input type="submit" value="PDF"></span>
-        </div>
+        
     </div>
 </section>
     

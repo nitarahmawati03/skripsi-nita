@@ -22,12 +22,6 @@ class M_detailbasis extends CI_Model {
 		);
 		$this->db->insert('tb_detail_basis_pengetahuan',$object);
 	}
-	
-	// public function getDetail($id_detail){
-	// 	$this->db->where('id_detail',$id_detail);
-	// 	$query= $this->db->get('tb_detail_basis_pengetahuan');
-	// 	return $query->result();
-	// }
 
 	public function UpdateById($id_detail)
 	{
@@ -54,20 +48,9 @@ class M_detailbasis extends CI_Model {
 		return $query->result();
 	}
 
-	// public function getBasisQueryObject(){
-	//   $query=$this->db->query('SELECT * FROM tb_detail_basis_pengetahuan');
-	//   return $query->result();
-	//  }
-
-	// public function getDetail($id_detail)
-	// {
-	// 	$query = $this->db->query("SELECT tb_penyakit.id_penyakit, tb_penyakit.nama_penyakit, tb_basis_pengetahuan.* FROM tb_basis_pengetahuan JOIN tb_penyakit ON tb_basis_pengetahuan.id_penyakit = tb_penyakit.id_penyakit");
-	// 	return $query->result();
-	// }
-
 	public function getDataBasisId($id_detail)
 	{
-		$query = $this->db->query("Select tb_basis_pengetahuan.id_basis_pengetahuan, tb_detail_basis_pengetahuan.*, tb_gejala.id_gejala, tb_gejala.nama_gejala from tb_detail_basis_pengetahuan join tb_basis_pengetahuan on tb_detail_basis_pengetahuan.id_basis_pengetahuan = tb_basis_pengetahuan.id_basis_pengetahuan join tb_gejala on tb_gejala.id_gejala= tb_detail_basis_pengetahuan.id_gejala where tb_detail_basis_pengetahuan.id_basis_pengetahuan='$id_detail'");
+		$query = $this->db->query("Select tb_basis_pengetahuan.id_basis_pengetahuan, tb_detail_basis_pengetahuan.*, tb_gejala.id_gejala, tb_gejala.gejala from tb_detail_basis_pengetahuan join tb_basis_pengetahuan on tb_detail_basis_pengetahuan.id_basis_pengetahuan = tb_basis_pengetahuan.id_basis_pengetahuan join tb_gejala on tb_gejala.id_gejala= tb_detail_basis_pengetahuan.id_gejala where tb_detail_basis_pengetahuan.id_basis_pengetahuan='$id_detail'");
 		return $query->result();
 	}
 

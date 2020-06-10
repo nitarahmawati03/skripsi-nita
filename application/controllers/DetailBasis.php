@@ -28,6 +28,7 @@ class DetailBasis extends CI_Controller {
 	public function datatable_ajaxDetail()
 	{
 		$this->load->view('detail_basis_datatable_ajax');
+
 	}
 
 	public function data_serverDetail()
@@ -37,19 +38,9 @@ class DetailBasis extends CI_Controller {
 			echo $this->datatables->generate();
 	}
 
-	// public function DataKasus()
-	// {
-	// 	$data['detailbasis'] = $this->M_detailbasis->getDetail();
-	// 	$data['penyakitbasis']=$this->M_detailbasis->ambilPenyakit();
-	// 	$data['page']='BasisKasus.php';
-	// 	$this->load->view('Admin/menu',$data);
-	// }
-
-	public function DetailBasis($id_detail)
+	public function DetailBasis($id)
 	{
-		$this->load->model('M_detailbasis');
-		$data['gejalaBasis']=$this->M_detailbasis->ambilGejala();
-		$data['detailbasis'] = $this->M_detailbasis->getDataKasusId();
+		$data['detailbasis'] = $this->M_detailbasis->getDataBasisId($id);
 		$this->load->view('tabeldetail',$data);
 	}
 
@@ -92,7 +83,7 @@ class DetailBasis extends CI_Controller {
 
 
 
-	public function Update($id_detail)
+	public function Update($id)
 	{
 		$this->form_validation->set_rules('id_detail', 'Kode Detail Basis Pengetahuan','trim|required');
 		$this->form_validation->set_rules('id_gejala','Gejala','trim|required');
@@ -116,7 +107,7 @@ class DetailBasis extends CI_Controller {
 			}
 	}
 
-	public function delete($id_detail)
+	public function delete($id)
 	{
 		$this->M_detailbasis->delete($id_detail);
 		$this->load->view('hapus_detail_basis_sukses');
