@@ -20,16 +20,16 @@
 									<?php echo validation_errors();  ?>
 									<div class="from-group">
 										<label for="">Detail Basis Pengetahuan</label>
-										<input type="hidden" name="id_detail" id="id_detail"
-											class="form-control" value="<?php echo $id_detail?>">
+    										<input type="hidden" name="id_detail" id="id_detail"
+    											class="form-control" value="<?php echo $id_detail?>">
 
-										<input class="form-control" disabled value="<?php echo $id_detail?>">
-										<br>
+    										<input class="form-control" disabled value="<?php echo $id_detail?>">
+    										<br>
 
                                         <label for="">Basis Pengetahuan</label>
                                             <select name="id_basis_pengetahuan" id="id_basis_pengetahuan" class="form-control">
                                                 <?php
-                                                    foreach ($id_basis_pengetahuan as $key => $value) { ?>
+                                                    foreach ($basis as $key => $value) { ?>
                                                 <option value="<?php echo $value->id_basis_pengetahuan ?>">
                                                     <?php echo $value->id_basis_pengetahuan ?>
                                                 </option>

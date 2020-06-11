@@ -31,7 +31,7 @@
                                             <?php
                                                 foreach ($basis as $key => $value) { ?>
                                             <option value="<?php echo $value->id_basis_pengetahuan ?>">
-                                                <?php echo $value->basis ?>
+                                                <?php echo $value->id_basis_pengetahuan ?>
                                             </option>
                                             <?php
                                                 }
@@ -52,10 +52,9 @@
 										</select>
 										<br>
 
-									<label for="">Bobot</label>
-										<input type="hidden" name="bobot" id="bobot"
-											class="form-control" value="<?php echo $detailbasis[0]->bobot?>
-										<br>
+										<label for="">Bobot</label>
+										
+										
                                         
 									</div>
 

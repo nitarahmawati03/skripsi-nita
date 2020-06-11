@@ -16,8 +16,8 @@ class M_detailbasis extends CI_Model {
 	public function insertDetail(){
 		$object=array(
 			'id_detail' => $this->input->post('id_detail'),
-			'id_gejala'=>$this->input->post('id_gejala'),
 			'id_basis_pengetahuan'=>$this->input->post('id_basis_pengetahuan'),
+			'id_gejala'=>$this->input->post('id_gejala'),
 			'bobot'=>$this->input->post('bobot')
 		);
 		$this->db->insert('tb_detail_basis_pengetahuan',$object);
@@ -28,8 +28,8 @@ class M_detailbasis extends CI_Model {
 		$data = array
 		(
 			'id_detail' => $id_detail,
-			'id_gejala'=>$this->input->post('id_gejala'),
 			'id_basis_pengetahuan'=>$this->input->post('id_basis_pengetahuan'),
+			'id_gejala'=>$this->input->post('id_gejala'),
 			'bobot'=>$this->input->post('bobot')
 		);
 		$this->db->where('id_detail',$id_detail);

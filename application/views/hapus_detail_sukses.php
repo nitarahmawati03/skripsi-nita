@@ -21,7 +21,7 @@
 <div class="alert alert-success">
 	<strong>Data berhasil dihapus</strong>
 	<?php
-		echo anchor('DetailBasis/daftar_detail', 'Lihat Detail Basis Pengetahuan');
+		echo anchor('BasisPengetahuan/daftar_basis_pengetahuan', 'Lihat Detail Basis Pengetahuan');
 		?>
 </div>
 

@@ -40,6 +40,7 @@ class DetailBasis extends CI_Controller {
 
 	public function DetailBasis($id)
 	{
+		// $this->load->model('M_detailbasis');
 		$data['detailbasis'] = $this->M_detailbasis->getDataBasisId($id);
 		$this->load->view('tabeldetail',$data);
 	}
@@ -49,7 +50,7 @@ class DetailBasis extends CI_Controller {
 			$this->load->helper('url','form');
 			$this->load->library('form_validation', 'database');
 			$this->form_validation->set_rules('id_detail', 'Detail Basis Pengetahuan', 'trim|required');
-			$this->form_validation->set_rules('id_Basis_pengetahuan', 'Basis Pengetahuan', 'trim|required');
+			$this->form_validation->set_rules('id_basis_pengetahuan', 'Basis Pengetahuan', 'trim|required');
 			$this->form_validation->set_rules('id_gejala', 'Gejala', 'trim|required');
 			$this->form_validation->set_rules('bobot', 'Bobot', 'trim|required');
 			$this->load->model('M_detailbasis');
@@ -102,14 +103,14 @@ class DetailBasis extends CI_Controller {
 		else
 		{
 			$this->M_detailbasis->UpdateById($id_detail);
-			$this->load->view('edit_detail_basis_sukses');
+			$this->load->view('edit_detail_sukses');
 			}
 	}
 
-	public function delete($id)
+	public function delete($id_detail)
 	{
 		$this->M_detailbasis->delete($id_detail);
-		$this->load->view('hapus_detail_basis_sukses');
+		$this->load->view('hapus_detail_sukses');
 	}
 
 	public function datatable()
