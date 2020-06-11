@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2020 at 05:59 AM
+-- Generation Time: Jun 11, 2020 at 12:52 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.29
 
@@ -38,7 +38,19 @@ CREATE TABLE `tb_basis_pengetahuan` (
 
 INSERT INTO `tb_basis_pengetahuan` (`id_basis_pengetahuan`, `id_penyakit`) VALUES
 ('BP01', 'P01'),
-('BP02', 'P02');
+('BP02', 'P02'),
+('BP03', 'P03'),
+('BP04', 'P04'),
+('BP05', 'P05'),
+('BP06', 'P06'),
+('BP07', 'P07'),
+('BP08', 'P08'),
+('BP09', 'P09'),
+('BP10', 'P10'),
+('BP11', 'P11'),
+('BP12', 'P12'),
+('BP13', 'P13'),
+('BP14', 'P14');
 
 -- --------------------------------------------------------
 
@@ -58,13 +70,43 @@ CREATE TABLE `tb_detail_basis_pengetahuan` (
 --
 
 INSERT INTO `tb_detail_basis_pengetahuan` (`id_detail`, `id_gejala`, `id_basis_pengetahuan`, `bobot`) VALUES
-('DB01', 'G02', 'BP01', 3),
-('DB02', 'G03', 'BP01', 3),
-('DB03', 'G08', 'BP01', 1),
-('DB04', 'G15', 'BP01', 3),
-('DB05', 'G08', 'BP02', 1),
-('DB06', 'G13', 'BP02', 3),
-('DB07', 'G18', 'BP02', 5);
+('DB01', 'G01', 'BP01', 1),
+('DB02', 'G02', 'BP01', 1),
+('DB03', 'G03', 'BP01', 5),
+('DB04', 'G03', 'BP02', 5),
+('DB05', 'G04', 'BP02', 5),
+('DB06', 'G05', 'BP03', 3),
+('DB07', 'G06', 'BP03', 3),
+('DB08', 'G07', 'BP03', 3),
+('DB09', 'G08', 'BP03', 1),
+('DB10', 'G09', 'BP03', 1),
+('DB11', 'G10', 'BP04', 1),
+('DB12', 'G11', 'BP04', 3),
+('DB13', 'G12', 'BP04', 5),
+('DB14', 'G12', 'BP05', 5),
+('DB15', 'G13', 'BP05', 5),
+('DB16', 'G14', 'BP05', 5),
+('DB17', 'G04', 'BP05', 5),
+('DB18', 'G15', 'BP06', 3),
+('DB19', 'G16', 'BP06', 3),
+('DB20', 'G17', 'BP07', 5),
+('DB21', 'G18', 'BP07', 3),
+('DB22', 'G19', 'BP07', 3),
+('DB23', 'G13', 'BP08', 5),
+('DB24', 'G20', 'BP08', 5),
+('DB25', 'G21', 'BP08', 3),
+('DB26', 'G12', 'BP08', 5),
+('DB27', 'G22', 'BP09', 5),
+('DB28', 'G23', 'BP09', 5),
+('DB29', 'G12', 'BP10', 5),
+('DB30', 'G24', 'BP10', 1),
+('DB31', 'G25', 'BP11', 5),
+('DB32', 'G26', 'BP12', 1),
+('DB33', 'G27', 'BP12', 1),
+('DB34', 'G15', 'BP13', 3),
+('DB35', 'G12', 'BP13', 5),
+('DB36', 'G13', 'BP13', 5),
+('DB37', 'G28', 'BP14', 1);
 
 -- --------------------------------------------------------
 
@@ -85,12 +127,35 @@ CREATE TABLE `tb_detail_pemeriksaan` (
 INSERT INTO `tb_detail_pemeriksaan` (`id_detail_pemeriksaan`, `id_pemeriksaan`, `id_gejala`) VALUES
 (27, 11, 'G03'),
 (28, 11, 'G08'),
-(29, 11, 'G13'),
+(29, 11, 'G14'),
 (30, 11, 'G26'),
 (31, 11, 'G28'),
 (32, 12, 'G01'),
 (33, 13, 'G01'),
-(34, 14, 'G02');
+(34, 14, 'G02'),
+(35, 15, 'G01'),
+(36, 15, 'G02'),
+(37, 16, 'G01'),
+(38, 17, 'G01'),
+(39, 18, 'G01'),
+(40, 19, 'G01'),
+(41, 20, 'G01'),
+(42, 20, 'G03'),
+(43, 21, 'G03'),
+(44, 21, 'G04'),
+(45, 21, 'G06'),
+(46, 21, 'G12'),
+(47, 21, 'G13'),
+(48, 22, 'G03'),
+(49, 22, 'G04'),
+(50, 22, 'G06'),
+(51, 22, 'G12'),
+(52, 22, 'G13'),
+(53, 23, 'G03'),
+(54, 23, 'G04'),
+(55, 23, 'G06'),
+(56, 23, 'G12'),
+(57, 23, 'G13');
 
 -- --------------------------------------------------------
 
@@ -120,8 +185,8 @@ INSERT INTO `tb_gejala` (`id_gejala`, `gejala`) VALUES
 ('G10', 'Terjadi pada kelinci betina'),
 ('G11', 'Pembengkakan pada kelenjar susu'),
 ('G12', 'Nafsu makan berkurang'),
-('G13', 'Berak bercampur darah atau berlendir putih'),
-('G14', 'Badan kurus'),
+('G13', 'Badan kurus'),
+('G14', 'Berak bercampur darah atau berlendir putih'),
 ('G15', 'Susah berak'),
 ('G16', 'Kencing sedikit'),
 ('G17', 'Bersin-bersin'),
@@ -158,7 +223,16 @@ INSERT INTO `tb_pemeriksaan` (`id_pemeriksaan`, `id_penyakit`, `hasil`, `tgl_pem
 (11, 'P02', '44.444444444444', '0000-00-00'),
 (12, 'P01', '0', '0000-00-00'),
 (13, 'P02', '0', '0000-00-00'),
-(14, 'P01', '30', '0000-00-00');
+(14, 'P01', '30', '0000-00-00'),
+(15, 'P01', '30', '0000-00-00'),
+(16, 'P01', '0', '0000-00-00'),
+(17, 'P02', '0', '0000-00-00'),
+(18, 'P01', '0', '0000-00-00'),
+(19, 'P02', '0', '0000-00-00'),
+(20, 'P01', '30', '0000-00-00'),
+(21, 'P02', '100', '0000-00-00'),
+(22, 'P02', '100', '0000-00-00'),
+(23, 'P02', '100', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -206,8 +280,11 @@ INSERT INTO `tb_penyakit` (`id_penyakit`, `nama_penyakit`, `definisi`, `solusi`)
 ('P07', 'Flu/Pilek', 'Penyakit pilek pada kelinci disebabkan oleh virus/bakteri. Meskipun tergolong penyakit ringan dan tidak berbahaya, namun jika tidak segera diobati dapat berakibat fatal. Lingkungan kandang yang lembab/kurang sinar matahari dapat memicu perkembangbiakan virus/bakteri penyebab flu pada kelinci.', 'hidung disemprot larutan antiseptik, kerak yang mengeras dibersihkan dengan air hangat,  dan kelinci penderita flu/pilek diletakkan pada kandang yang lebih hangat\r\n'),
 ('P08', 'Cacingan\r\n', 'Cacingan pada kelinci disebabkan oleh cacing pita, Toxocara canis, cacing tambang, cacing gelang, Ancylostama caninum, Uncinaria stenochepala dan cacing cambuk. Cacing parasit tersebut kadang keluar bersama feses/kotoran dan dapat menular ke kelinci lainnya.', 'diberi obat cacing, makanan hijau, sanitasi kandang dijaga dengan baik\r\n'),
 ('P09', 'Scabies', 'Penyakit scabies pada ternak kelinci disebabkan oleh tungau (Darcoptes scabies). Bagian tubuh kelinci yang sering diserang penyakit ini adalah tepi telinga.', 'Kelinci yang terserang diisolasi agar tidak menular pada kelinci lainnya, dicukur bulu dibagian yang terkena kudisan, cuci luka dengan air hangat, dilap kering lalu diberi obat kudis seperti salep belerang, caviam atau scabicid cream\r\n'),
-('P10', 'Scabies\r\n', 'Penyakit gudig, kudis atau scabies pada ternak kelinci disebabkan oleh tungau (Darcoptes scabies). Bagian tubuh kelinci yang sering diserang penyakit ini adalah tepi telinga.', 'Dicukur bulu dibagian yang terkena kudisan, cuci luka dengan air hangat, dilap kering lalu diberi obat kudis seperti salep belerang, caviam atau scabicid cream.\r\n'),
-('P11', 'Maloklusi\r\n', 'Maloklusi dapat disebabkan karena makanan yang kurang serat, akibat gigitan anjing atau hewan buas di kepala, atau karena luka kecelakaan/jatuh. Namun kebanyakan maloklusi terjadi karena kekurangan serat yang menyebabkan gigi tidak difungsikan dengan baik. Secara alami, gigi kelinci yang tumbuh secara normal akan bertemu antara gigi atas dan bawah.', 'Penanganan untuk maloklusi adalah dengan pemotongan (trimming) untuk menyamakan bentuk dan ukuran gigi. Pemotongan gigi harus dilakukan dengan kondisi kelinci yang tidak sadar dengan anastesi/pembiusan.');
+('P10', 'Maloklusi\r\n', 'Maloklusi dapat disebabkan karena makanan yang kurang serat, akibat gigitan anjing atau hewan buas di kepala, atau karena luka kecelakaan/jatuh. Namun kebanyakan maloklusi terjadi karena kekurangan serat yang menyebabkan gigi tidak difungsikan dengan baik. Secara alami, gigi kelinci yang tumbuh secara normal akan bertemu antara gigi atas dan bawah.', 'Penanganan untuk maloklusi adalah dengan pemotongan (trimming) untuk menyamakan bentuk dan ukuran gigi. Pemotongan gigi harus dilakukan dengan kondisi kelinci yang tidak sadar dengan anastesi/pembiusan.'),
+('P11', 'Furmites', 'Parasit Cheyletiella hidup dalam hubungan erat dengan lapisan keratin kulit tetapi mereka tidak bersembunyi ke dalam kulit. Hal ini diduga bahwa tungau mungkin ada asymptomatically dalam jumlah kecil pada kelinci sehat. Perkembangan dari telur menjadi tungau dewasa terjadi pada host kelinci yang sama. Betina bertelur dan tongkat mereka untuk rambut sekitar 3 sampai 4 mm di atas kulit. Siklus hidup memakan waktu sekitar 5 minggu di bawah kondisi yang optimal.', 'sering mengganti alas dasar, dicukur, diberi bedak kutu, dan dimandikan, menggunakan alkohol bisa membantu jika tdk ada luka terbuka dan cukup efektif\r\n'),
+('P12', 'Radang Mata', 'Penyebab radang mata pada kelinci bisa karena bakteri, debu, asap atau benda kecil lainnya. Bisa juga karena kelinci suka menggosok-nggosokkan kepala atau pipinya ke dinding kandang/benda keras hingga mengenai mata. Aktifitas ini umumnya terjadi pada kelinci jantan yang sedang birahi.', 'Mata dibersihkan dengan boorwater menggunakan kapas, diobati dengan tetes mata atau salep mata yang mengandung antibiotik\r\n'),
+('P13', 'Hairball', 'Kelinci yang memakan bulunya sendiri atau bulu temannya disebabkan pakan yang diberikan kurang mengandung protein. Kekurangan protein menyebabkan nafsu makan kelinci menjadi rendah sehingga berat badan merosot. Bulu-bulu yang dimakan bisa mengganggu sistem pencernaan kelinci, karena bulu tidak bisa dicerna.', 'Terapi dengan mineral oil 20 PO, obat sembelit/laxative, atau obat hairball untuk kucing (hairball paw gel).'),
+('P14', 'Abses', 'Abses atau kelenjar nanah yg terbentuk bisa karena iritasi ringan yg di ikuti oleh terinveksinya kulit oleh bakteri hingga terjadinya peradangan, atau bisa juga terjadi karena terdapatnya lemak jahat pada tubuh kelinci yg tidak dapat terproses oleh darah sehingga menjadi gumpalan lemak kotor yg berasal dari pakan yg biasa hewan tersebut konsumsi. ABSES ini berbentuk seperti cairan berwarna putih kental atau seperti yogurt berwarna putih atau agak kekuningan. ', 'Gunting bulu diatas abses hingga bersih, keluarkan nanahnya dan diberi antibiotik\r\n');
 
 --
 -- Indexes for dumped tables
@@ -269,13 +346,13 @@ ALTER TABLE `tb_penyakit`
 -- AUTO_INCREMENT for table `tb_detail_pemeriksaan`
 --
 ALTER TABLE `tb_detail_pemeriksaan`
-  MODIFY `id_detail_pemeriksaan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_detail_pemeriksaan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `tb_pemeriksaan`
 --
 ALTER TABLE `tb_pemeriksaan`
-  MODIFY `id_pemeriksaan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_pemeriksaan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Constraints for dumped tables

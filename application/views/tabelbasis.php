@@ -14,7 +14,9 @@
 
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
-                                    <table class="table table-hover" id="contoh">
+                                    <a href="<?php echo site_url('BasisPengetahuan/create')?>"><button type="basis" class="btn btn-primary">Tambah Basis Pengetahuan</button>
+                                    <a href="<?php echo site_url('DetailBasis/create')?>"><button type="detail" class="btn btn-primary">Tambah Detail Basis Pengetahuan</button>
+                                    <table class="table table-hover" id="example">
                                         <thead>
                                             <th>No</th>
                                             <th>Basis Pengetahuan</th>
@@ -58,5 +60,18 @@
                 </div>
             </div>
         </div>
+        <script src="<?=base_url()?>assets/js/jquery.js"></script>
+        <script src="<?=base_url()?>DataTables/datatables.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#example').DataTable({
+                    "processing": true,
+                    "lengthMenu": [
+                        [3, 6, 10, -1],
+                        [3, 6, 10, "All"]
+                    ],
+                });
+            });
+        </script>
 
    

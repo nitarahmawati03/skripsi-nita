@@ -14,32 +14,50 @@
 							<table class="table table-hover table-striped">
 								<table class="table table-hover" id="contoh">
 
-								<legend>Edit Basis</legend>
+								<legend>Edit Detail</legend>
 
 								<?php echo validation_errors(); ?>
 
-								<?php echo form_open_multipart('BasisPengetahuan/update/'.$this->uri->segment(3)); ?>
+								<?php echo form_open_multipart('DetailBasis/update/'.$this->uri->segment(3)); ?>
 
-									<label for="">Kode Basis Pengetahuan</label>
-
-										<input type="hidden" name="id_basis_pengetahuan" id="id_basis_pengetahuan"
+									<label for="">Detail Basis Pengetahuan</label>
+										<input type="hidden" name="id_detail" id="id_detail"
 											class="form-control" value="<?php echo $this->uri->segment(3) ?>">
-											
 										<input class="form-control" disabled value="<?php echo $this->uri->segment(3) ?>">
 										<br>
 
-										<label for="">Penyakit</label>
+                                   <label for="">Basis Pengetahuan</label>
+                                        <select name="id_basis_pengetahuan" id="id_basis_pengetahuan" class="form-control">
+                                            <?php
+                                                foreach ($basis as $key => $value) { ?>
+                                            <option value="<?php echo $value->id_basis_pengetahuan ?>">
+                                                <?php echo $value->basis ?>
+                                            </option>
+                                            <?php
+                                                }
+                                            ?>
+                                        </select>
+                                        <br>
 
-										<select name="id_penyakit" id="id_penyakit" class="form-control">
+                                    <label for="">Gejala</label>
+										<select name="id_gejala" id="id_gejala" class="form-control">
 											<?php
-												foreach ($penyakit as $key => $value) { ?>
-											<option value="<?php echo $value->id_penyakit ?>">
-												<?php echo $value->nama_penyakit ?>
+												foreach ($gejala as $key => $value) { ?>
+											<option value="<?php echo $value->id_gejala ?>">
+												<?php echo $value->gejala ?>
 											</option>
 											<?php
 												}
 											?>
 										</select>
+										<br>
+
+									<label for="">Bobot</label>
+										<input type="hidden" name="bobot" id="bobot"
+											class="form-control" value="<?php echo $detailbasis[0]->bobot?>
+										<br>
+                                        
+									</div>
 
 									<div class="form_group">
 										<div class="col-sm-offset2 col-sm-10">

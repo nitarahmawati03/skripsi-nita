@@ -49,8 +49,9 @@ class DetailBasis extends CI_Controller {
 			$this->load->helper('url','form');
 			$this->load->library('form_validation', 'database');
 			$this->form_validation->set_rules('id_detail', 'Detail Basis Pengetahuan', 'trim|required');
-			$this->form_validation->set_rules('id_gejala', 'Gejala', 'trim|required');
 			$this->form_validation->set_rules('id_Basis_pengetahuan', 'Basis Pengetahuan', 'trim|required');
+			$this->form_validation->set_rules('id_gejala', 'Gejala', 'trim|required');
+			$this->form_validation->set_rules('bobot', 'Bobot', 'trim|required');
 			$this->load->model('M_detailbasis');
 			$this->load->model('M_gejala');
 			$this->load->model('M_basispengetahuan');
@@ -69,8 +70,8 @@ class DetailBasis extends CI_Controller {
 
 		if ($this->form_validation->run()==FALSE)
 		 	{
+		 		$data['basis']=$this->M_basispengetahuan->readBasis();
 				$data['gejala']=$this->M_gejala->readGejala();
-				$data['basis']=$this->M_basispengetahuan->readBasis();
 				$data['id_detail']=$nextId;
 				$this->load->view("tambahdetail", $data);
 		}else
@@ -81,13 +82,11 @@ class DetailBasis extends CI_Controller {
 		}
 	}
 
-
-
-	public function Update($id)
+	public function Update($id_detail)
 	{
 		$this->form_validation->set_rules('id_detail', 'Kode Detail Basis Pengetahuan','trim|required');
-		$this->form_validation->set_rules('id_gejala','Gejala','trim|required');
 		$this->form_validation->set_rules('id_basis_pengetahuan','Basis Pengetahuan','trim|required');
+		$this->form_validation->set_rules('id_gejala','Gejala','trim|required');
 		$this->form_validation->set_rules('bobot','Bobot','trim|required');
 
 		$data['detailbasis']=$this->M_detailbasis->getDataBasisId($id_detail);
