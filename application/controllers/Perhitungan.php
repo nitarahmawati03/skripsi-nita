@@ -12,11 +12,6 @@ class Perhitungan extends CI_Controller
 
 		$data_kasus = [];
 		foreach ($kasus as $key => $value) {
-			$data_kasus[$value->id_basis_pengetahuan][$value->id_gejala] = $value->bobot; 
-		}
-
-		$data_kasus = [];
-		foreach ($kasus as $key => $value) {
 			$data_kasus[$value->id_basis_pengetahuan][$value->id_gejala] = $value->bobot; //untuk mengambil bobot dari setiap gejala di kasus lama atau basis pengetahuan
 		}
 
@@ -69,7 +64,7 @@ class Perhitungan extends CI_Controller
 				'gejala_cocok' => count(array_filter($data_bobot_kasus_tiap_penyakit[$key])),
 				'sum_gejala' => $sum_kasus_baru[$key],
 				'pembagi' => $sum_kasus_lama[$key],
-				'hasil' => $nilai_sim_untuk_tiap_kasus[$key]
+				'hasil' => number_format($nilai_sim_untuk_tiap_kasus[$key],2)
 			];
 		}
 
@@ -84,16 +79,17 @@ class Perhitungan extends CI_Controller
 		foreach ($db_kasus as $key => $value) {
 			$var_hasil_analisa_penyakit[$key] = [
 				'penyakit' => $value->nama_penyakit,
-				'persentase' => $nilai_sim_percent[$value->id_basis_pengetahuan]
+				'persentase' => number_format($nilai_sim_percent[$value->id_basis_pengetahuan],2)
 			];
 		}
+
 		$var_kemungkinan_penyakit_yang_diderita = [];
 		foreach ($db_kasus as $key => $value) {
 			$var_kemungkinan_penyakit_yang_diderita[$value->id_basis_pengetahuan] = [
 				'penyakit' => $value->nama_penyakit,
 				'definisi' => $value->definisi,
 				'solusi' => $value->solusi,
-				'persentase' => $nilai_sim_percent[$value->id_basis_pengetahuan]
+				'persentase' => number_format($nilai_sim_percent[$value->id_basis_pengetahuan],2)
 			];
 		}
 
@@ -112,8 +108,11 @@ class Perhitungan extends CI_Controller
 
 		foreach ($max_key_kasus as $key => $value) {
 			$set_pemeriksaan = [
+				'tgl_pemeriksaan' => date("Y-m-d"),
+				'tgl_revisi' => date("Y-m-d"),
+				'status' => ($var_kemungkinan_penyakit_yang_diderita[$value]['persentase'] >= 50 ? 1 : 2),
 				'id_penyakit' => $data_kasus_penyakit[$value]->id_penyakit,
-				'hasil' => $var_kemungkinan_penyakit_yang_diderita[$value]['persentase'],
+				'hasil' => $var_kemungkinan_penyakit_yang_diderita[$value]['persentase']
 				
 			];
 
@@ -140,6 +139,14 @@ class Perhitungan extends CI_Controller
 		$data['persen'] = $nilai_sim_percent;
 		$this->load->view('hasilKonsultasi', $data);
 	}
+
+	// public function revise($id_pemerikasaan)
+	// {
+	// 	$data_pemeriksaan = $this->db
+	// 		->where('id_pemerikasaan', $id_pemerikasaan)
+	// 		->get('pemeriksaan')
+	// 		->result();
+	// }
 
 }
 

@@ -78,12 +78,12 @@
             <thead>
                 <tr class="bg-group" align="center">
                     <th width="5px">NO</th>
-                    <th>Gejala Kasus</th>
-                    <th>Gejala Dipilih</th>
-                    <th>Gejala Cocok</th>
-                    <th>Penjumlahan Gejalah</th>
+                    <th>Gejala Penyakit</th>
+                    <th>Jumlah Gejala Dipilih</th>
+                    <th>Gejala Yang Cocok</th>
+                    <th>Penjumlahan Gejala</th>
                     <th>Pembagi</th>
-                    <th>Hasil (Cocok/Kasus)</th>
+                    <th>Hasil</th>
                 </tr>
             </thead>
             <tbody>

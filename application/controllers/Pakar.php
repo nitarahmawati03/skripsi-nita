@@ -3,129 +3,112 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pakar extends CI_Controller {
 
-	public function datatable_ajax()
-	{
-		$this->load->view('penyakit_datatable_ajax');
-		$this->load->view('gejala_datatable_ajax');
-	}
 
-	public function data_server()
-	{
-		$this->load->library('Datatables');
-		$this->datatables->select('id_penyakit, nama_penyakit, definisi, solusi')->from('tb_penyakit');
-			echo $this->datatables->generate();
-		$this->datatables->select('id_gejala, gejala, id_bobot')->from('tb_gejala');
-				echo $this->datatables->generate();
-	}
-
-	public function __construct()
-	{
+	function __construct(){
 		parent::__construct();
-		$this->load->model('M_penyakit');
-		$this->load->helper('url','form');
-		$this->load->library('form_validation');
-		$this->load->model('M_pengelola');
-		$this->load->model('M_gejala');
+		$this->load->library(array('form_validation','session'));
+
+		$this->load->model('M_Pakar');
+		if(!$this->session->userdata('level'))
+		{
+			redirect('Pengelola/menulogin');
+		}
 	}
 
 	public function index()
 	{
+		$data['totalKasus'] = $this->M_Pakar->countKasus();
+		$data['totalPenyakit'] = $this->M_Pakar->countPenyakit();
+		$data['totalPemeriksaan'] = $this->M_Pakar->countPemeriksaan();
+		// $data['komen']=$this->M_Pakar->getDataKomen();
 		$this->load->view('indexpakar');
 	}
 
-	public function daftar_penyakit()
+	public function DataPenyakit()
 	{
-		$this->load->model('M_penyakit');
-		$data['penyakit']=$this->M_penyakit->readPenyakit();
-		$this->load->view('tabelpenyakit',$data);
-	}
+		$data['penyakit'] = $this->M_Pakar->getDataPenyakit();
+		// $data['page']='Penyakit.php';
+		$this->load->view('indexpakar');
 
-	public function datatable_ajaxPenyakit()
+	public function DataBasis()
 	{
-		$this->load->view('penyakit_datatable_ajax');
-	}
+		$data['basis'] = $this->M_Pakar->getDataBasis();
+		// $data['page']='BasisKasus.php';
+		$this->load->view('indexpakar');
 
-	public function data_serverPenyakit()
+	public function detailBasis($id)
 	{
-		$this->load->library('Datatables');
-		$this->datatables->select('id_penyakit,nama_penyakit, definisi, solusi')->from('tb_penyakit');
-			echo $this->datatables->generate();
+		$data['basis'] = $this->M_Pakar->getDataBasisId($id);
+		// $data['page']='DetailKasus.php';
+		$this->load->view('indexpakar');
 	}
 
-	public function daftar_gejala()
+	public function DataPemeriksaan()
 	{
-		$this->load->model('M_gejala');
-		$data['gejala']=$this->M_gejala->readGejala();
-		$this->load->view('tabelgejala',$data);
+		$data['pemeriksaan'] = $this->M_Pakar->getDataPemeriksaan();
+		// $data['page']='Pemeriksaan.php';
+		$this->load->view('indexpakar');
 	}
 
-	public function datatable_ajaxGejala()
-		{
-			$this->load->view('gejala_datatable_ajax');
-		}
-
-	public function data_serverGejala()
-		{
-			$this->load->library('Datatables');
-			$this->datatables->select('id_gejala, gejala, id_bobot')->from('tb_gejala');
-			echo $this->datatables->generate();
-		}
-
-	// public function detailPenyakit($id_penyakit){
-	// 	$data['penyakit']=$this->M_penyakit->getPenyakit();
-	// 	$this->load->view('detail',$data);
-	// }
-
-	// public function Create()
-	// {
-	// 		$this->load->helper('url','form');
-	// 		$this->load->library('form_validation');
-	// 		$this->form_validation->set_rules('nama_penyakit', 'Nama Penyakit', 'trim|required');
-	// 		$this->load->model('M_penyakit');
-
-	// 	if ($this->form_validation->run()==FALSE)
-	// 	 	{
-	// 			$this->load->view("tambahpenyakit");
-	// 	}else
-	// 	{
-		
-	// 		$this->M_penyakit->insertPenyakit();
-	// 		$this->load->view('tambah_penyakit_sukses');
-	// 	}
-	// }
-
-	// 	public function Update($id_penyakit)
-	// {
-	// 	$this->form_validation->set_rules('nama_penyakit', 'Nama Penyakit','trim|required');
-	// 	$this->form_validation->set_rules('definisi','Definisi','trim|required');
-	// 	$this->form_validation->set_rules('solusi','Solusi','trim|required');
-
-	// 	$data['penyakit']=$this->M_penyakit->getPenyakit($id_penyakit);
-
-	// 	if ($this->form_validation->run()==FALSE)
-	// 	{
-	// 		$this->load->view('editpenyakit', $data);
-	// 	}
-	// 	else
-	// 	{
-	// 		$this->M_penyakit->UpdateById($id_penyakit);
-	// 		$this->load->view('edit_penyakit_sukses');
-	// 		}
-	// }
-
-	// public function delete($id_penyakit)
-	// {
-	// 	$this->M_penyakit->delete($id_penyakit);
-	// 	$this->load->view('hapus_penyakit_sukses');
-	// }
-
-	public function datatable()
+	public function detailPemeriksaan($id)
 	{
-		$data['penyakit_list']=$this->M_penyakit->readKoki();
-		$this->load->view('penyakit_list',$data);
-		$data['gejala_list']=$this->M_gejala->readGejala();
-		$this->load->view('gejala_list',$data);
+		$data['pemeriksaan'] = $this->M_Pakar->getDataPemeriksaanId($id);
+		// $data['page']='PemeriksaanDetail.php';
+		$this->load->view('indexpakar');
 	}
 
-
+	//untuk tampilan pemeriksaan revisi
+	public function DataPemeriksaanRevisi()
+	{
+		$data['pemeriksaan'] = $this->M_Pakar->getDataPemeriksaanRevisi();
+		$data['penyakitKasus']=$this->M_Pakar->ambilPenyakit();
+		// $data['page']='PemeriksaanRevisi.php';
+		$this->load->view('indexpakar');
 	}
+
+	public function detailPemeriksaanRevisi($id)
+	{
+		$where = array('id_pemeriksaan' => $id);
+		$data['penyakit'] = $this->M_Pakar->getdataID($where,'tb_pemeriksaan')->result();
+		$data['penyakitKasus']=$this->M_Pakar->ambilPenyakit();
+		$data['pemeriksaan'] = $this->M_Pakar->getDataPemeriksaanId($id);
+		// $data['page']='PemeriksaanDetailRevisi.php';
+		$this->load->view('indexpakar');
+	}
+
+	//klik button simpan
+	function ProsesRevisi($id){
+		$data = array(
+			'id_penyakit' => $this->input->post('id_penyakit'),
+			'id_pengelola' => $_SESSION['id_pengelola'],
+			'status' => "4",
+			'tgl_revisi' => date("Y-m-d")
+		);
+		$where = array(
+			'id_pemeriksaan' => $id
+		);
+		$this->M_Pakar->updatePemeriksaan($where, $data, 'tb_pemeriksaan');
+
+		$output = $this->input->post('bobot', TRUE);
+		$id_gejala = $this->input->post('id_gejala', TRUE);
+		$this->M_Pakar->addKeBasis($output, $id_gejala);
+		$this->session->set_flashdata('success','Data Kasus Berhasil Direvisi');
+		redirect('Pakar/DataPemeriksaanRevisi');
+	}
+
+//klik button hapus oleh pakar
+	function ProsesRevisiDihapus($id){
+		$data = array(
+			'id_pengelola' => $_SESSION['id_pengelola'],
+			'status' => "3",
+			'tgl_revisi' => date("Y-m-d")
+		);
+		$where = array(
+			'id_pemeriksaan' => $id
+		);
+		$this->M_Pakar->updatePemeriksaan($where, $data, 'tb_pemeriksaan');
+		$this->session->set_flashdata('success','Data Kasus Berhasil Dihapus dari Kasus Revisi');
+		redirect('Pakar/DataPemeriksaanRevisi');
+	}
+}
+?>
