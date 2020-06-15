@@ -51,17 +51,38 @@ class Pengelola extends CI_Controller {
 	{
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('username', 'Username', 'trim|required');
-			if($this->input->post('username')=='admin' && $this->input->post('password')=='admin')
-			{
-				redirect('Penyakit','refresh');
-			}
-			else
-			{
+		$this->form_validation->set_rules('pass', 'Password', 'trim|required|callback_cekDb');
+			if ($this->form_validation->run() == FALSE){
+			//$this->load->view('login_view');
+			redirect('Pengelola','refresh');
+		} else {
+			if($this->input->post('username')=='admin' && $this->input->post('pass')=='admin'){
+				redirect('Penyakit','refresh');}
+			else{
 				redirect('Pakar','refresh');
-				// echo "<script>alert('Username atau Password yang Anda Masukan Salah !!!');history.go(-1);</script>";
 			}
+		}
 	}
 
+public function cekDb($password)
+	{
+		$this->load->model('M_pengelola');
+		$username = $this->input->post('username');
+		$result = $this->M_pengelola->login($username,$pass);
+		if($result){
+			$sess_array = array();
+			foreach ($result as $row) {
+				$sess_array = array(
+					'id_pengelola'=>$row->id,
+					'username'=> $row->username);
+					$this->session->set_userdata('logged_in',$sess_array);
+					 }
+					 return true;
+					}else{
+						$this->form_validation->set_message('cekDb',"Login Gagal Username dan Password tidak Valid");
+						return false;
+		}
+	}
 	
 
 	public function logout()

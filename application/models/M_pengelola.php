@@ -3,12 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class m_pengelola extends CI_Model {
 
-	public function login($username, $password)
+	public function login($username, $pass)
 {
-	$this->db->select('id, username, password');
-	$this->db->from('user');
+	$this->db->select('id_pengelola, username, pass');
+	$this->db->from('tb_pengelola');
 	$this->db->where('username', $username);
-	$this->db->where('password', MD5($password));
+	$this->db->where('pass', MD5($password));
 	$query = $this->db->get();
 	if($query->num_rows()==1){
 		return $query->result();
@@ -18,9 +18,9 @@ class m_pengelola extends CI_Model {
 }
 	public function insertUser(){
 		$object = array('username'=>$this->input->post('username'),
-						'password'=>MD5($this->input->post('password'))
+						'pass'=>MD5($this->input->post('pass'))
 					);
-		$this->db->insert('user',$object);
+		$this->db->insert('tb_pengelola',$object);
 	}
 
 }
