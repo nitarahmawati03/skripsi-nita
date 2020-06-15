@@ -5,10 +5,10 @@ class m_pengelola extends CI_Model {
 
 	public function login($username, $pass)
 {
-	$this->db->select('id_pengelola, username, pass');
+	$this->db->select('id_pengelola, username, pass, nama');
 	$this->db->from('tb_pengelola');
 	$this->db->where('username', $username);
-	$this->db->where('pass', MD5($pass));
+	$this->db->where('pass', $pass);
 	$query = $this->db->get();
 	if($query->num_rows()==1){
 		return $query->result();
@@ -18,7 +18,7 @@ class m_pengelola extends CI_Model {
 }
 	public function insertUser(){
 		$object = array('username'=>$this->input->post('username'),
-						'pass'=>MD5($this->input->post('pass'))
+						'pass'=>$this->input->post('pass')
 					);
 		$this->db->insert('tb_pengelola',$object);
 	}

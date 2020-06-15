@@ -30,14 +30,14 @@ class Pengelola extends CI_Controller {
 
 	public function index()
 	{
-		$data['penyakit_object']=$this->M_penyakit->getPenyakitQueryObject(); 
+		$data['penyakit_object']=$this->M_penyakit->getPenyakitQueryObject();
 		$data['gejala']=$this->M_gejala->getGejalaQueryObject();
 		$this->load->view('indexuser',$data);
 	}
 
 	public function detailPenyakit($id_penyakit)
 	{
-		$data['penyakit']=$this->M_penyakit->getPenyakit($id_penyakit); 
+		$data['penyakit']=$this->M_penyakit->getPenyakit($id_penyakit);
 		$this->load->view('detail',$data);
 	}
 
@@ -51,8 +51,8 @@ class Pengelola extends CI_Controller {
 	{
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('username', 'Username', 'trim|required');
-		$this->form_validation->set_rules('pass', 'Pass', 'trim|required|callback_cekDb');
-			if ($this->form_validation->run() == FALSE){
+		$this->form_validation->set_rules('password', 'Password', 'trim|required|callback_cekDb');
+		if ($this->form_validation->run() == FALSE){
 			$this->load->view('loginAdmin');
 		}else{
 			if ($this->session->userdata("nama")=="Admin") {
@@ -61,27 +61,19 @@ class Pengelola extends CI_Controller {
 				redirect('Pakar','refresh');
 			}
 		}
-
-		// 	redirect('Pengelola/menulogin','refresh');
-		// } else {
-		// 	if($this->input->post('username')=='admin' && $this->input->post('pass')=='admin'){
-		// 		redirect('Penyakit','refresh');}
-		// 	else{
-		// 		redirect('Pakar','refresh');
-		// 	}
-		// }
 	}
 
-public function cekDb($pass)
+public function cekDb()
 	{
 		$this->load->model('M_pengelola');
 		$username = $this->input->post('username');
-		$result = $this->M_pengelola->login($username,$pass);
+		$password = $this->input->post('password');
+		$result = $this->M_pengelola->login($username,$password);
 		if($result){
 			$sess_array = array();
 			foreach ($result as $row) {
 				$sess_array = array(
-					'id_pengelola'=>$row->id,
+					'id_pengelola'=>$row->id_pengelola,
 					'username'=> $row->username,
 					'nama'=> $row->nama);
 					$this->session->set_userdata('logged_in',$sess_array);
@@ -92,7 +84,7 @@ public function cekDb($pass)
 						return false;
 		}
 	}
-	
+
 
 	public function logout()
 	{
