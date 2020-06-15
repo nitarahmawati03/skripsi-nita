@@ -28,33 +28,33 @@ class Pakar extends CI_Controller {
 	{
 		$data['penyakit'] = $this->M_Pakar->getDataPenyakit();
 		// $data['page']='Penyakit.php';
-		$this->load->view('indexpakar');
+		$this->load->view('indexpakar',$data);
 
 	public function DataBasis()
 	{
 		$data['basis'] = $this->M_Pakar->getDataBasis();
 		// $data['page']='BasisKasus.php';
-		$this->load->view('indexpakar');
+		$this->load->view('indexpakar',$data);
 
 	public function detailBasis($id)
 	{
 		$data['basis'] = $this->M_Pakar->getDataBasisId($id);
 		// $data['page']='DetailKasus.php';
-		$this->load->view('indexpakar');
+		$this->load->view('indexpakar',$data);
 	}
 
 	public function DataPemeriksaan()
 	{
 		$data['pemeriksaan'] = $this->M_Pakar->getDataPemeriksaan();
 		// $data['page']='Pemeriksaan.php';
-		$this->load->view('indexpakar');
+		$this->load->view('indexpakar',$data);
 	}
 
 	public function detailPemeriksaan($id)
 	{
 		$data['pemeriksaan'] = $this->M_Pakar->getDataPemeriksaanId($id);
 		// $data['page']='PemeriksaanDetail.php';
-		$this->load->view('indexpakar');
+		$this->load->view('indexpakar',$data);
 	}
 
 	//untuk tampilan pemeriksaan revisi
@@ -63,7 +63,7 @@ class Pakar extends CI_Controller {
 		$data['pemeriksaan'] = $this->M_Pakar->getDataPemeriksaanRevisi();
 		$data['penyakitKasus']=$this->M_Pakar->ambilPenyakit();
 		// $data['page']='PemeriksaanRevisi.php';
-		$this->load->view('indexpakar');
+		$this->load->view('indexpakar',$data);
 	}
 
 	public function detailPemeriksaanRevisi($id)
@@ -73,7 +73,7 @@ class Pakar extends CI_Controller {
 		$data['penyakitKasus']=$this->M_Pakar->ambilPenyakit();
 		$data['pemeriksaan'] = $this->M_Pakar->getDataPemeriksaanId($id);
 		// $data['page']='PemeriksaanDetailRevisi.php';
-		$this->load->view('indexpakar');
+		$this->load->view('indexpakar',$data);
 	}
 
 	//klik button simpan

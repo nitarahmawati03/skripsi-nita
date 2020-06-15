@@ -57,8 +57,8 @@ class Pengelola extends CI_Controller {
 			}
 			else
 			{
-				// redirect('Pakar','refresh');
-				echo "<script>alert('Username atau Password yang Anda Masukan Salah !!!');history.go(-1);</script>";
+				redirect('Pakar','refresh');
+				// echo "<script>alert('Username atau Password yang Anda Masukan Salah !!!');history.go(-1);</script>";
 			}
 	}
 

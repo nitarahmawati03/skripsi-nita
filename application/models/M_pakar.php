@@ -4,16 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_Pakar extends CI_Model {
 
-	// public function getDataKomen($value='')
-	// {
-	// 	// $query = $this->db->query("Select * from kamera");
-	// 	$this->db->select('*');
-	// 	$this->db->from('komentar');
-	// 	$this->db->order_by('id_komen','DESC');
-	// 	$query = $this->db->get();
-	// 	return $query->result();
-	// }
-
 	public function countPenyakit()
 	{
 		$query = $this->db->query("SELECT COUNT(id_penyakit) AS total FROM tb_penyakit");

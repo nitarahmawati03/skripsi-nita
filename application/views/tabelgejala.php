@@ -11,7 +11,7 @@
                     </div>
                 <div class="card">
             <div class="content table-responsive table-full-width">
-        <table class="table table-hover table-striped">
+            <table class="table table-hover table-striped">
             <a href="<?php echo site_url('Gejala/create')?>"><button type="kembali" class="btn btn-primary">Tambah Penyakit</button>
             <table class="table table-hover" id="example">
                 <thead>
