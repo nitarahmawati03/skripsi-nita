@@ -86,7 +86,7 @@ class M_Pakar extends CI_Model {
 		$row = $query->last_row();
 		if($row){
 			$idPostfix = (int)substr($row->id_basis_pengetahuan,1)+1;
-			$nextId = 'BP'.STR_PAD((string)$idPostfix,3,"0",STR_PAD_LEFT);
+			$nextId = 'BP'.STR_PAD((string)$idPostfix,2,"0",STR_PAD_LEFT);
 		}
 		else{
 			$nextId = 'BP01';

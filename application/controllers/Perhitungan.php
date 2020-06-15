@@ -140,13 +140,13 @@ class Perhitungan extends CI_Controller
 		$this->load->view('hasilKonsultasi', $data);
 	}
 
-	public function revise($id_pemeriksaan)
-	{
-		$data_pemeriksaan = $this->db
-			->where('id_pemeriksaan', $id_pemeriksaan)
-			->get('tb_pemeriksaan')
-			->result();
-	}
+	// public function revise($id_pemerikasaan)
+	// {
+	// 	$data_pemeriksaan = $this->db
+	// 		->where('id_pemerikasaan', $id_pemerikasaan)
+	// 		->get('pemeriksaan')
+	// 		->result();
+	// }
 
 }
 
