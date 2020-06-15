@@ -43,16 +43,17 @@ class Pakar extends CI_Controller {
 
 	public function DataPemeriksaan()
 	{
+		// $this->load->model('M_pakar');
 		$data['pemeriksaan'] = $this->M_pakar->getDataPemeriksaan();
 		// $data['page']='Pemeriksaan.php';
-		$this->load->view('indexpakar',$data);
+		$this->load->view('Pemeriksaan',$data);
 	}
 
 	public function detailPemeriksaan($id)
 	{
 		$data['pemeriksaan'] = $this->M_pakar->getDataPemeriksaanId($id);
 		// $data['page']='PemeriksaanDetail.php';
-		$this->load->view('indexpakar',$data);
+		$this->load->view('Pemeriksaan',$data);
 	}
 
 	//untuk tampilan pemeriksaan revisi
