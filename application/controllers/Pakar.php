@@ -24,21 +24,23 @@ class Pakar extends CI_Controller {
 	{
 		$data['penyakit'] = $this->M_pakar->getDataPenyakit();
 		// $data['page']='Penyakit.php';
-		$this->load->view('indexpakar',$data);
+		$this->load->view('penyakitPakar',$data);
 	}
 
 	public function DataBasis()
 	{
 		$data['basis'] = $this->M_pakar->getDataBasis();
 		// $data['page']='BasisKasus.php';
-		$this->load->view('indexpakar',$data);
+		$this->load->view('basisPakar',$data);
 	}
 
 	public function detailBasis($id)
 	{
 		$data['basis'] = $this->M_pakar->getDataBasisId($id);
 		// $data['page']='DetailKasus.php';
-		$this->load->view('indexpakar',$data);
+		$this->load->view('basisDetailPakar',$data);
+
+		
 	}
 
 	public function DataPemeriksaan()

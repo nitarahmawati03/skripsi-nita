@@ -54,8 +54,9 @@ class Pengelola extends CI_Controller {
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|callback_cekDb');
 		if ($this->form_validation->run() == FALSE){
 			$this->load->view('loginAdmin');
-		}else{
-			if ($this->session->userdata("nama")=="Admin") {
+		}else
+		{
+			if ($this->input->post('username')=='admin' && $this->input->post('password')=='admin') {
 				redirect('Penyakit','refresh');}
 			else{
 				redirect('Pakar','refresh');
@@ -75,7 +76,7 @@ public function cekDb()
 				$sess_array = array(
 					'id_pengelola'=>$row->id_pengelola,
 					'username'=> $row->username,
-					'nama'=> $row->nama);
+					);
 					$this->session->set_userdata('logged_in',$sess_array);
 					 }
 					 return true;

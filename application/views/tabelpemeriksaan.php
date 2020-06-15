@@ -10,6 +10,10 @@
                         </div>
 
                         <table class="table table-striped table-bordered data">
+                           <a href="<?php echo site_url('Cetak')?>"> <button type="kembali" class="btn btn-primary">Cetak</button>
+
+                          <br>
+                          <br>
                           <thead>
                             <tr class="bg-group">
                               <th width="5px">NO</th>
