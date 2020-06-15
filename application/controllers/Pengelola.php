@@ -53,15 +53,23 @@ class Pengelola extends CI_Controller {
 		$this->form_validation->set_rules('username', 'Username', 'trim|required');
 		$this->form_validation->set_rules('pass', 'Pass', 'trim|required|callback_cekDb');
 			if ($this->form_validation->run() == FALSE){
-			//$this->load->view('login_view');
-			redirect('Pengelola/menulogin','refresh');
-		} else {
-			if($this->input->post('username')=='admin' && $this->input->post('pass')=='admin'){
+			$this->load->view('loginAdmin');
+		}else{
+			if ($this->session->userdata("nama")=="Admin") {
 				redirect('Penyakit','refresh');}
 			else{
 				redirect('Pakar','refresh');
 			}
 		}
+
+		// 	redirect('Pengelola/menulogin','refresh');
+		// } else {
+		// 	if($this->input->post('username')=='admin' && $this->input->post('pass')=='admin'){
+		// 		redirect('Penyakit','refresh');}
+		// 	else{
+		// 		redirect('Pakar','refresh');
+		// 	}
+		// }
 	}
 
 public function cekDb($pass)
@@ -74,7 +82,8 @@ public function cekDb($pass)
 			foreach ($result as $row) {
 				$sess_array = array(
 					'id_pengelola'=>$row->id,
-					'username'=> $row->username);
+					'username'=> $row->username,
+					'nama'=> $row->nama);
 					$this->session->set_userdata('logged_in',$sess_array);
 					 }
 					 return true;
