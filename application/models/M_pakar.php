@@ -54,7 +54,7 @@ class M_Pakar extends CI_Model {
 	}
 
 	//fungsi untuk menampilkan detail pemeriksaan revisi
-	function getDataPemeriksaanId($id)
+	public function getDataPemeriksaanId($id)
 	{
 		$query = $this->db->query("Select tb_pemeriksaan.id_pemeriksaan, tb_detail_pemeriksaan.*, tb_gejala.id_gejala,tb_gejala.gejala from tb_detail_pemeriksaan join tb_pemeriksaan on tb_detail_pemeriksaan.id_pemeriksaan = tb_pemeriksaan.id_pemeriksaan join tb_gejala on tb_gejala.id_gejala=tb_detail_pemeriksaan.id_gejala where tb_detail_pemeriksaan.id_pemeriksaan='$id'");
 		return $query->result();

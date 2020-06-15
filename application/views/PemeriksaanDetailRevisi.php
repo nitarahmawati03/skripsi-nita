@@ -57,8 +57,8 @@
                     <table class="table table-striped table-bordered data">
                       <thead>
                         <tr class="bg-group">
-                          <th width="5px">NO</th>
-                          <th>Nama Gejala</th>
+                          <th width="5px">No</th>
+                          <th>Gejala</th>
                           <th>Bobot</th>
                           <!-- <th>Action</th> -->
                         </tr>
@@ -92,7 +92,7 @@
                     <div class="clearfix"></div>
                       <input type="submit" class="btn btn-success" onclick="return confirm('Apakah Ingin Menyimpan Hasil Revisi?');" value="SIMPAN">
 
-                      <a href="<?php echo base_url()?>Pakar/DataPemeriksaanRevisi"><button type="button" class="btn btn-primary">KEMBALI</button></a>
+                      <a href="<?php echo site_url('Pakar/DataPemeriksaanRevisi')?>"> <button type="kembali" class="btn btn-primary">Kembali</button>
 
                     <?php echo form_close(); ?>
 

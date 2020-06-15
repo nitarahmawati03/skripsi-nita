@@ -1,4 +1,4 @@
-<?php $this->load->view('headerpakar'); ?>
+<?php $this->load->view('headeradmin'); ?>
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
       <div class="main-panel">
         <div class="content">

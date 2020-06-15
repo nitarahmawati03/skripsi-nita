@@ -72,11 +72,11 @@ class Pakar extends CI_Controller {
 		$data['penyakitKasus']=$this->M_pakar->ambilPenyakit();
 		$data['pemeriksaan'] = $this->M_pakar->getDataPemeriksaanId($id);
 		// $data['page']='PemeriksaanDetailRevisi.php';
-		$this->load->view('indexpakar',$data);
+		$this->load->view('pemeriksaanDetailRevisi',$data);
 	}
 
 	//klik button simpan
-	function ProsesRevisi($id){
+	public function ProsesRevisi($id){
 		$data = array(
 			'id_penyakit' => $this->input->post('id_penyakit'),
 			'id_pengelola' => $_SESSION['id_pengelola'],

@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="jumbotron text-center">
-                              <h3>DATA PEMERIKSAAN REVISI</h3>
+                              <h1>DATA PEMERIKSAAN REVISI</h1>
                         </div>
 
                         <?php if ($this->session->flashdata('success')) {?>
@@ -35,9 +35,9 @@
                           <table class="table table-striped table-bordered data">
                             <thead>
                               <tr class="bg-group">
-                                <th width="5px">NO</th>
+                                <th width="5px">No</th>
                                 <th>Tanggal Pemeriksaan</th>
-                                <th>Dugaan Penyakit</th>
+                                <th>Penyakit</th>
                                 <th>Persentase (%)</th>
                                 <!-- <th>Penangan Kasus</th> -->
                                 <th>Action</th>
@@ -55,7 +55,9 @@
                                 <td><?php echo $key->nama_penyakit;?></td>
                                 <td><?php echo $key->hasil;?></td>
                                 <td>
-                                  <a href="<?php echo base_url('Pakar/detailPemeriksaanRevisi/'.$key->id_pemeriksaan)?>" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-list"> Gejala</a>
+
+                                   <a href="<?=site_url()?>/Pakar/detailPemeriksaanRevisi/<?php echo $key->id_pemeriksaan ?>" class="btn btn-primary"><span class="glyphicon glyphicon-list"> Gejala</a>
+
                                 </td>
                               </tr>
                               <?php
