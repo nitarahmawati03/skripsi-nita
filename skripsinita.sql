@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 11, 2020 at 12:52 PM
+-- Generation Time: Jun 15, 2020 at 05:12 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.29
 
@@ -155,7 +155,23 @@ INSERT INTO `tb_detail_pemeriksaan` (`id_detail_pemeriksaan`, `id_pemeriksaan`, 
 (54, 23, 'G04'),
 (55, 23, 'G06'),
 (56, 23, 'G12'),
-(57, 23, 'G13');
+(57, 23, 'G13'),
+(58, 24, 'G27'),
+(59, 24, 'G28'),
+(60, 25, 'G08'),
+(61, 25, 'G09'),
+(62, 26, 'G08'),
+(63, 26, 'G09'),
+(64, 26, 'G11'),
+(65, 27, 'G08'),
+(66, 27, 'G09'),
+(67, 27, 'G11'),
+(68, 28, 'G08'),
+(69, 28, 'G09'),
+(70, 28, 'G11'),
+(71, 29, 'G01'),
+(72, 29, 'G02'),
+(73, 29, 'G03');
 
 -- --------------------------------------------------------
 
@@ -212,27 +228,36 @@ CREATE TABLE `tb_pemeriksaan` (
   `id_pemeriksaan` int(10) NOT NULL,
   `id_penyakit` varchar(10) NOT NULL,
   `hasil` varchar(1000) NOT NULL,
-  `tgl_pemeriksaan` date NOT NULL
+  `status` enum('1','2','3','4') NOT NULL,
+  `tgl_pemeriksaan` date NOT NULL,
+  `tgl_revisi` date DEFAULT NULL,
+  `id_pengelola` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_pemeriksaan`
 --
 
-INSERT INTO `tb_pemeriksaan` (`id_pemeriksaan`, `id_penyakit`, `hasil`, `tgl_pemeriksaan`) VALUES
-(11, 'P02', '44.444444444444', '0000-00-00'),
-(12, 'P01', '0', '0000-00-00'),
-(13, 'P02', '0', '0000-00-00'),
-(14, 'P01', '30', '0000-00-00'),
-(15, 'P01', '30', '0000-00-00'),
-(16, 'P01', '0', '0000-00-00'),
-(17, 'P02', '0', '0000-00-00'),
-(18, 'P01', '0', '0000-00-00'),
-(19, 'P02', '0', '0000-00-00'),
-(20, 'P01', '30', '0000-00-00'),
-(21, 'P02', '100', '0000-00-00'),
-(22, 'P02', '100', '0000-00-00'),
-(23, 'P02', '100', '0000-00-00');
+INSERT INTO `tb_pemeriksaan` (`id_pemeriksaan`, `id_penyakit`, `hasil`, `status`, `tgl_pemeriksaan`, `tgl_revisi`, `id_pengelola`) VALUES
+(11, 'P02', '44.444444444444', '', '0000-00-00', '0000-00-00', NULL),
+(12, 'P01', '0', '', '0000-00-00', '0000-00-00', NULL),
+(13, 'P02', '0', '', '0000-00-00', '0000-00-00', NULL),
+(14, 'P01', '30', '', '0000-00-00', '0000-00-00', NULL),
+(15, 'P01', '30', '', '0000-00-00', '0000-00-00', NULL),
+(16, 'P01', '0', '', '0000-00-00', '0000-00-00', NULL),
+(17, 'P02', '0', '', '0000-00-00', '0000-00-00', NULL),
+(18, 'P01', '0', '', '0000-00-00', '0000-00-00', NULL),
+(19, 'P02', '0', '', '0000-00-00', '0000-00-00', NULL),
+(20, 'P01', '30', '', '0000-00-00', '0000-00-00', NULL),
+(21, 'P02', '100', '', '0000-00-00', '0000-00-00', NULL),
+(22, 'P02', '100', '', '0000-00-00', '0000-00-00', NULL),
+(23, 'P02', '100', '', '0000-00-00', '0000-00-00', NULL),
+(24, 'P14', '100', '', '0000-00-00', '0000-00-00', NULL),
+(25, 'P03', '18.18', '', '2020-06-13', '0000-00-00', NULL),
+(26, 'P04', '33.33', '', '2020-06-13', '0000-00-00', NULL),
+(27, 'P04', '33.33', '', '2020-06-13', '0000-00-00', NULL),
+(28, 'P04', '33.33', '', '2020-06-13', '0000-00-00', NULL),
+(29, 'P01', '100.00', '1', '2020-06-13', '2020-06-13', NULL);
 
 -- --------------------------------------------------------
 
@@ -243,15 +268,17 @@ INSERT INTO `tb_pemeriksaan` (`id_pemeriksaan`, `id_penyakit`, `hasil`, `tgl_pem
 CREATE TABLE `tb_pengelola` (
   `id_pengelola` int(10) NOT NULL,
   `username` varchar(50) CHARACTER SET utf8mb4 NOT NULL,
-  `pass` varchar(50) CHARACTER SET utf8mb4 NOT NULL
+  `pass` varchar(50) CHARACTER SET utf8mb4 NOT NULL,
+  `nama` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_pengelola`
 --
 
-INSERT INTO `tb_pengelola` (`id_pengelola`, `username`, `pass`) VALUES
-(1, 'admin', 'admin');
+INSERT INTO `tb_pengelola` (`id_pengelola`, `username`, `pass`, `nama`) VALUES
+(1, 'admin', 'admin', 'Admin'),
+(2, 'pakar', 'pakar', 'Pakar');
 
 -- --------------------------------------------------------
 
@@ -324,7 +351,8 @@ ALTER TABLE `tb_gejala`
 --
 ALTER TABLE `tb_pemeriksaan`
   ADD PRIMARY KEY (`id_pemeriksaan`),
-  ADD KEY `id_penyakit` (`id_penyakit`);
+  ADD KEY `id_penyakit` (`id_penyakit`),
+  ADD KEY `id_pengelola` (`id_pengelola`);
 
 --
 -- Indexes for table `tb_pengelola`
@@ -346,13 +374,19 @@ ALTER TABLE `tb_penyakit`
 -- AUTO_INCREMENT for table `tb_detail_pemeriksaan`
 --
 ALTER TABLE `tb_detail_pemeriksaan`
-  MODIFY `id_detail_pemeriksaan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id_detail_pemeriksaan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `tb_pemeriksaan`
 --
 ALTER TABLE `tb_pemeriksaan`
-  MODIFY `id_pemeriksaan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_pemeriksaan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `tb_pengelola`
+--
+ALTER TABLE `tb_pengelola`
+  MODIFY `id_pengelola` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -382,7 +416,8 @@ ALTER TABLE `tb_detail_pemeriksaan`
 -- Constraints for table `tb_pemeriksaan`
 --
 ALTER TABLE `tb_pemeriksaan`
-  ADD CONSTRAINT `tb_pemeriksaan_ibfk_1` FOREIGN KEY (`id_penyakit`) REFERENCES `tb_penyakit` (`id_penyakit`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tb_pemeriksaan_ibfk_1` FOREIGN KEY (`id_penyakit`) REFERENCES `tb_penyakit` (`id_penyakit`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tb_pemeriksaan_ibfk_2` FOREIGN KEY (`id_pengelola`) REFERENCES `tb_pengelola` (`id_pengelola`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
