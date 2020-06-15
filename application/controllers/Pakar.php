@@ -35,6 +35,7 @@ class Pakar extends CI_Controller {
 		$data['basis'] = $this->M_Pakar->getDataBasis();
 		// $data['page']='BasisKasus.php';
 		$this->load->view('indexpakar',$data);
+	}
 
 	public function detailBasis($id)
 	{
