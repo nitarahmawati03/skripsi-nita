@@ -29,6 +29,7 @@ class Pakar extends CI_Controller {
 		$data['penyakit'] = $this->M_Pakar->getDataPenyakit();
 		// $data['page']='Penyakit.php';
 		$this->load->view('indexpakar',$data);
+	}
 
 	public function DataBasis()
 	{
