@@ -31,10 +31,14 @@ class Pemeriksaan extends CI_Controller {
 
 	public function data_serverPemeriksaan()
 	{
+		$this->load->model('M_pemeriksaan');
+		$data['pemeriksaan']=$this->M_pemeriksaan->joinPemeriksaan();
 		$this->load->library('Datatables');
 		$this->datatables->select('id_pemeriksaan, id_penyakit, hasil, tgl_pemeriksaan')->from('tb_pemeriksaan');
 			echo $this->datatables->generate();
+		// $db = $this->M_pemeriksaan->joinPemeriksaan();
 	}
+
 
 	public function Create()
 	{

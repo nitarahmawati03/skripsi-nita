@@ -24,6 +24,14 @@ class M_pemeriksaan extends CI_Model {
 		);
 		$this->db->insert('tb_pemeriksaan',$object);
 	}
+
+	public function joinPemeriksaan(){
+	 $query = $this->db //script untuk join tabel agar dapat berelasi dengan tabel penyakit sehingga muncul nama penyakitnya
+			->select('*')
+			->join('tb_penyakit', 'tb_pemeriksaan.id_penyakit = tb_penyakit.id_penyakit')
+			->get('tb_pemeriksaan');
+	return $query->result();
+	}
 	
 	public function getPemeriksaan($id_pemeriksaan){
 		$this->db->where('id_pemeriksaan',$id_pemeriksaan);
