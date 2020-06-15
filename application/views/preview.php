@@ -23,7 +23,7 @@
 </head> 
 
 <body> 
-<p style="text-align: center">Data Pemeriksaan</p> 
+<h1><p style="text-align: center">Data Pemeriksaan</p> </h1>
 <table> 
  <tr> 
       <th>Tanggal Pemeriksaan</th>
@@ -48,6 +48,7 @@
   </tr> 
  <?php }?> 
 </table> 
-<p style="text-align: center"><button type="submit" class="btn btn-success"><a href="<?php echo base_url()?>Cetak/cetakpdf">Cetak PDF</a></p> 
+
+<p style="text-align: center"><button type="submit" class="btn btn-success"><a href="<?php echo site_url('Cetak/cetakpdf')?>">Cetak PDF</a></p> 
 </body> 
 </html>

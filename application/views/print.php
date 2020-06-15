@@ -23,7 +23,7 @@
 </head> 
 
 <body> 
-<p style="text-align: center">Data Pemeriksaan</p> 
+<h1><p style="text-align: center">Data Pemeriksaan</p> </h1>
 <table> 
  <tr> 
       <th>Tanggal Pemeriksaan</th>
