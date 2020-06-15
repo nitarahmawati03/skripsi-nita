@@ -26,7 +26,7 @@ class M_pemeriksaan extends CI_Model {
 	}
 
 	public function joinPemeriksaan(){
-	 $query = $this->db //script untuk join tabel agar dapat berelasi dengan tabel penyakit sehingga muncul nama penyakitnya
+	 $query = $this->db 
 			->select('*')
 			->join('tb_penyakit', 'tb_pemeriksaan.id_penyakit = tb_penyakit.id_penyakit')
 			->get('tb_pemeriksaan');
