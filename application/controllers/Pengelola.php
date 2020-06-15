@@ -54,7 +54,7 @@ class Pengelola extends CI_Controller {
 		$this->form_validation->set_rules('pass', 'Pass', 'trim|required|callback_cekDb');
 			if ($this->form_validation->run() == FALSE){
 			//$this->load->view('login_view');
-			redirect('Pengelola','refresh');
+			redirect('Pengelola/menulogin','refresh');
 		} else {
 			if($this->input->post('username')=='admin' && $this->input->post('pass')=='admin'){
 				redirect('Penyakit','refresh');}
