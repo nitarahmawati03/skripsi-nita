@@ -46,14 +46,14 @@ class Pakar extends CI_Controller {
 		// $this->load->model('M_pakar');
 		$data['pemeriksaan'] = $this->M_pakar->getDataPemeriksaan();
 		// $data['page']='Pemeriksaan.php';
-		$this->load->view('Pemeriksaan',$data);
+		$this->load->view('pemeriksaan',$data);
 	}
 
 	public function detailPemeriksaan($id)
 	{
 		$data['pemeriksaan'] = $this->M_pakar->getDataPemeriksaanId($id);
 		// $data['page']='PemeriksaanDetail.php';
-		$this->load->view('Pemeriksaan',$data);
+		$this->load->view('pemeriksaanDetail',$data);
 	}
 
 	//untuk tampilan pemeriksaan revisi
@@ -62,7 +62,7 @@ class Pakar extends CI_Controller {
 		$data['pemeriksaan'] = $this->M_pakar->getDataPemeriksaanRevisi();
 		$data['penyakitKasus']=$this->M_pakar->ambilPenyakit();
 		// $data['page']='PemeriksaanRevisi.php';
-		$this->load->view('indexpakar',$data);
+		$this->load->view('pemeriksaanRevisi',$data);
 	}
 
 	public function detailPemeriksaanRevisi($id)
