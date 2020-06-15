@@ -16,7 +16,7 @@ class M_pemeriksaan extends CI_Model {
 	public function insertPemeriksaan(){
 		$object=array(
 			'id_pemeriksaan' => $this->input->post('id_basis_pengetahuan'),
-			'id_penyakit'=>$this->input->post('id_penyakit')
+			'id_penyakit'=>$this->input->post('id_penyakit'),
 			'hasil'=>$this->input->post('hasil'),
 			'status'=>$this->input->post('status'),
 			'tgl_pemeriksaan'=>$this->input->post('tgl_pemeriksaan'),

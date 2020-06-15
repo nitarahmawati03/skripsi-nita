@@ -21,7 +21,7 @@ class Pemeriksaan extends CI_Controller {
 	{
 		$this->load->model('M_pemeriksaan');
 		$data['pemeriksaan']=$this->M_pemeriksaan->readPemeriksaan();
-		$this->load->view('tabelpemeriksaan',$data);
+		$this->load->view('Pemeriksaan',$data);
 	}
 
 	public function datatable_ajaxPemeriksaan()

@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="jumbotron text-center">
-                              <h3>PEMERIKSAAN</h3>
+                              <h1>PEMERIKSAAN</h1>
                         </div>
 
                         <table class="table table-striped table-bordered data">
