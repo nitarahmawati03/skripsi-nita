@@ -51,7 +51,7 @@ class Pengelola extends CI_Controller {
 	{
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('username', 'Username', 'trim|required');
-		$this->form_validation->set_rules('pass', 'Password', 'trim|required|callback_cekDb');
+		$this->form_validation->set_rules('pass', 'Pass', 'trim|required|callback_cekDb');
 			if ($this->form_validation->run() == FALSE){
 			//$this->load->view('login_view');
 			redirect('Pengelola','refresh');
@@ -64,7 +64,7 @@ class Pengelola extends CI_Controller {
 		}
 	}
 
-public function cekDb($password)
+public function cekDb($pass)
 	{
 		$this->load->model('M_pengelola');
 		$username = $this->input->post('username');

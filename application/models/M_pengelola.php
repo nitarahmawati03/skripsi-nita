@@ -8,7 +8,7 @@ class m_pengelola extends CI_Model {
 	$this->db->select('id_pengelola, username, pass');
 	$this->db->from('tb_pengelola');
 	$this->db->where('username', $username);
-	$this->db->where('pass', MD5($password));
+	$this->db->where('pass', MD5($pass));
 	$query = $this->db->get();
 	if($query->num_rows()==1){
 		return $query->result();
