@@ -81,7 +81,7 @@ class Pakar extends CI_Controller {
 	public function ProsesRevisi($id){
 		$data = array(
 			'id_penyakit' => $this->input->post('id_penyakit'),
-			'id_pengelola' => $_SESSION['id_pengelola'],
+			'id_pengelola' => $this->session->userdata('id_pengelola'),
 			'status' => "4",
 			'tgl_revisi' => date("Y-m-d")
 		);

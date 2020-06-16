@@ -7,9 +7,9 @@
                     <div class="col-md-12">
                       <div class="jumbotron text-center">
                           <h1>DAFTAR GEJALA PENYAKIT PEMERIKSAAN REVISI</h1>
-                          <p><b>Keterangan !!</b></p>
+                          <!-- <p><b>Keterangan !!</b></p>
                           <p>- Jika kasus dirasa cocok untuk dijadikan solusi maka data dibawah ini dapat disesuaikan datanya dan <em>WAJIB</em> mengisi masing-masing bobot, setelah itu klik button <b><em>SIMPAN</em></b></p>
-                          <p>- Jika kasus tidak cocok untuk dijadikan solusi maka dapat langsung klik button <b><em>HAPUS</em></b></p>
+                          <p>- Jika kasus tidak cocok untuk dijadikan solusi maka dapat langsung klik button <b><em>HAPUS</em></b></p> -->
                       </div>
 
                       <?php if ($this->session->flashdata('success')) {?>
@@ -90,6 +90,7 @@
                     </table>
 
                     <div class="clearfix"></div>
+                      
                       <input type="submit" class="btn btn-success" onclick="return confirm('Apakah Ingin Menyimpan Hasil Revisi?');" value="SIMPAN">
 
                       <a href="<?php echo site_url('Pakar/DataPemeriksaanRevisi')?>"> <button type="kembali" class="btn btn-primary">Kembali</button>
