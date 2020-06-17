@@ -1,6 +1,5 @@
 <!DOCTYPE html> 
-<html> 
-<head> 
+<html><head> 
  <title>Pemeriksaan</title> 
  <style> 
   table{ 
@@ -20,9 +19,7 @@
    vertical-align: top; 
   } 
  </style> 
-</head> 
-
-<body> 
+</head><body> 
 <h1><p style="text-align: center">Data Pemeriksaan</p> </h1>
 <table> 
  <tr> 
@@ -49,5 +46,4 @@
  <?php }?> 
 </table> 
  
-</body> 
-</html>
+</body></html>
