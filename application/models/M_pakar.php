@@ -4,27 +4,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_Pakar extends CI_Model {
 
-	// public function countPenyakit()
-	// {
-	// 	$query = $this->db->query("SELECT COUNT(id_penyakit) AS total FROM tb_penyakit");
-	// 	return $query->result();
-	// }
+	public function countPenyakit()
+	{
+		$query = $this->db->query("SELECT COUNT(id_penyakit) AS total FROM tb_penyakit");
+		return $query->result();
+	}
 
-	// public function countBasis()
-	// {
-	// 	$query = $this->db->query("SELECT COUNT(id_basis_pengetahuan) AS total FROM tb_basis_pengetahuan");
-	// 	return $query->result();
-	// }
+	public function countBasis()
+	{
+		$query = $this->db->query("SELECT COUNT(id_basis_pengetahuan) AS total FROM tb_basis_pengetahuan");
+		return $query->result();
+	}
 
-	// public function countPemeriksaan()
-	// {
-	// 	$query = $this->db->query("SELECT COUNT(id_pemeriksaan) AS total FROM tb_pemeriksaan");
-	// 	return $query->result();
-	// }
+	public function countPemeriksaan()
+	{
+		$query = $this->db->query("SELECT COUNT(id_pemeriksaan) AS total FROM tb_pemeriksaan");
+		return $query->result();
+	}
 
 	function getDataPenyakit()
 	{
 		$query = $this->db->query("Select * from tb_penyakit");
+		return $query->result();
+	}
+
+	function getDataGejala()
+	{
+		$query = $this->db->query("Select * from tb_gejala");
 		return $query->result();
 	}
 

@@ -53,7 +53,7 @@
 			<li><a href="<?=site_url()?>/Penyakit/index"><em class="fa fa-home">&nbsp;</em> Home</a></li>
 			<li><a href="<?=site_url()?>/Penyakit/daftar_penyakit"><em class="fa fa-list">&nbsp;</em>Daftar Penyakit</a></li>
 			<li><a href="<?=site_url()?>/Gejala/daftar_gejala"><em class="fa fa-list">&nbsp;</em>Daftar Gejala</a></li>
-			<li><a href="<?=site_url()?>/BasisPengetahuan/daftar_basis_pengetahuan"><em class="fa fa-list">&nbsp;</em>Daftar Basis</a></li>
+			<li><a href="<?=site_url()?>/BasisPengetahuan/daftar_basis_pengetahuan"><em class="fa fa-list">&nbsp;</em>Daftar Basis Pengetahuan</a></li>
 			<li><a href="<?=site_url()?>/Pemeriksaan/DataPemeriksaan"><em class="fa fa-list">&nbsp;</em>Daftar Pemeriksaan</a></li>
 			
 		</ul>

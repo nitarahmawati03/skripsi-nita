@@ -142,7 +142,7 @@ class Perhitungan extends CI_Controller
 
 	// public function revise($id_pemerikasaan)
 	// {
-	// 	$data_pemeriksaan = $this->db
+	// 	$pemeriksaan = $this->db
 	// 		->where('id_pemerikasaan', $id_pemerikasaan)
 	// 		->get('pemeriksaan')
 	// 		->result();

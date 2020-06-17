@@ -48,7 +48,9 @@
 		</div>
 		<div class="divider"></div>
 		<ul class="nav menu">
-			<li><a href="<?=site_url()?>/Penyakit/index"><em class="fa fa-home">&nbsp;</em> Home</a></li>
+			<li><a href="<?=site_url()?>/Pakar/index"><em class="fa fa-home">&nbsp;</em> Home</a></li>
+			<li><a href="<?=site_url()?>/Pakar/DataPenyakit"><em class="fa fa-list">&nbsp;</em>Daftar Penyakit</a></li>
+			<li><a href="<?=site_url()?>/Pakar/DataGejala"><em class="fa fa-list">&nbsp;</em>Daftar Gejala</a></li>
 			<li><a href="<?=site_url()?>/Pakar/DataBasis"><em class="fa fa-list">&nbsp;</em>Daftar Basis Pengetahuan</a></li>
 			<li><a href="<?=site_url()?>/Pakar/DataPemeriksaan"><em class="fa fa-list">&nbsp;</em>Daftar Pemeriksaan</a></li>
 			<li><a href="<?=site_url()?>/Pakar/DataPemeriksaanRevisi"><em class="fa fa-list">&nbsp;</em>Daftar Pemeriksaan Revisi</a></li>

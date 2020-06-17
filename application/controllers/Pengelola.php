@@ -64,7 +64,7 @@ class Pengelola extends CI_Controller {
 		}
 	}
 
-public function cekDb()
+public function cekDb($password)
 	{
 		$this->load->model('M_pengelola');
 		$username = $this->input->post('username');

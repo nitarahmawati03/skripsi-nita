@@ -6,7 +6,7 @@ class cetak extends CI_Controller {
  public function __construct(){ 
   parent::__construct(); 
   $this->load->model('M_cetak'); 
-  $this->load->model('M_pemeriksaan');
+  // $this->load->model('M_pemeriksaan');
   $this->load->library('dompdf_gen'); 
   $this->load->helper('file'); 
 
