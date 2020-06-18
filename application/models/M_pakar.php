@@ -108,12 +108,24 @@ class M_Pakar extends CI_Model {
 		);
 		$this->db->insert('tb_basis_pengetahuan',$object);
 
-		$id_basis_pengetahuan = $this->db->insert_id();
+		$nextIdDetail = '';
+		$queryD = $this->db->select('id_detail')
+                      ->from('tb_detail_basis_pengetahuan')
+                      ->get();
+		$rowD = $queryD->last_row();
+		if($rowD){
+			$idPostfixD = (int)substr($rowD->id_detail,2)+1;
+			$nextIdDetail = 'DB'.STR_PAD((string)$idPostfixD,2,"0",STR_PAD_LEFT);
+		}
+		else{
+			$nextIdDetail = 'DB01';
+		} // For the first time
 
 		$result = array();
 		foreach ($output as $key => $value) {
 			$result[] = array(
-				'id_basis_pengetahuan' => $id_basis_pengetahuan,
+				'id_detail' => $nextIdDetail,
+				'id_basis_pengetahuan' => $nextId,
 				'id_gejala' => $_POST['id_gejala'][$key],
 				'bobot' => $_POST['bobot'][$key]
 			);
