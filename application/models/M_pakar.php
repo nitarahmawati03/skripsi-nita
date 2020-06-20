@@ -36,7 +36,7 @@ class M_Pakar extends CI_Model {
 
 	function getDataBasis()
 	{
-		$query = $this->db->query("SELECT tb_penyakit.id_penyakit, tb_penyakit.nama_penyakit, tb_basis_pengetahuan.* FROM tb_basis_pengetahuan JOIN tb_penyakit ON tb_basis_pengetahuan.id_penyakit = tb_penyakit.id_penyakit");
+		$query = $this->db->query("SELECT tb_penyakit.id_penyakit, tb_penyakit.nama_penyakit, tb_basis_pengetahuan.* FROM tb_basis_pengetahuan JOIN tb_penyakit ON tb_basis_pengetahuan.id_penyakit = tb_penyakit.id_penyakit ORDER BY id_basis_pengetahuan ASC");
 		return $query->result();
 
 		// $query = $this->db->query("Select tb_basis_pengetahuan.id_basis_pengetahuan, tb_detail_basis_pengetahuan.*, tb_gejala.id_gejala, tb_gejala.gejala from tb_detail_basis_pengetahuan join tb_basis_pengetahuan on tb_detail_basis_pengetahuan.id_basis_pengetahuan = tb_basis_pengetahuan.id_basis_pengetahuan join tb_gejala on tb_gejala.id_gejala= tb_detail_basis_pengetahuan.id_gejala where tb_detail_basis_pengetahuan.id_basis_pengetahuan='$id_detail'");
@@ -94,7 +94,7 @@ class M_Pakar extends CI_Model {
                       ->get();
 		$row = $query->last_row();
 		if($row){
-			$idPostfix = (int)substr($row->id_basis_pengetahuan,1)+1;
+			$idPostfix = (int)substr($row->id_basis_pengetahuan,2)+1;
 			$nextId = 'BP'.STR_PAD((string)$idPostfix,2,"0",STR_PAD_LEFT);
 		}
 		else{
@@ -106,6 +106,7 @@ class M_Pakar extends CI_Model {
 			'id_basis_pengetahuan' => $nextId,
 			'id_penyakit'=>$this->input->post('id_penyakit')
 		);
+
 		$this->db->insert('tb_basis_pengetahuan',$object);
 
 		$nextIdDetail = '';
