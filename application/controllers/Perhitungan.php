@@ -75,6 +75,7 @@ class Perhitungan extends CI_Controller
 			$data_kasus_penyakit[$value->id_basis_pengetahuan] = $value;
 		}
 
+		
 		$var_hasil_analisa_penyakit = []; //script menampilkan hasil analisa penyakit dengan presentase
 		foreach ($db_kasus as $key => $value) {
 			$var_hasil_analisa_penyakit[$key] = [

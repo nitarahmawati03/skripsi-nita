@@ -13,9 +13,9 @@ class Pakar extends CI_Controller {
 
 	public function index()
 	{
-		$data['totalBasis'] = $this->M_Pakar->countKasus();
-		$data['totalPenyakit'] = $this->M_Pakar->countPenyakit();
-		$data['totalPemeriksaan'] = $this->M_Pakar->countPemeriksaan();
+		// $data['totalBasis'] = $this->M_Pakar->countKasus();
+		// $data['totalPenyakit'] = $this->M_Pakar->countPenyakit();
+		// $data['totalPemeriksaan'] = $this->M_Pakar->countPemeriksaan();
 		
 		$this->load->view('indexpakar');
 	}
