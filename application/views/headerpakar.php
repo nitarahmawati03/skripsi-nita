@@ -21,13 +21,6 @@
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<ul class="nav navbar-top-links navbar-right">
-					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-						<em class="fa fa-bell"></em><span class="label label-info"></span>
-					</a>
-						<ul class="dropdown-menu dropdown-messages">
-							<li class="divider"></li>
-						</ul>
-					</li>
 					<li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="<?php echo site_url('Pengelola/logout')?>">
 						<em class="fa fa-power-off">&nbsp;</em><span class="label label-info"></span>
 					</a>

@@ -14,7 +14,11 @@ class Penyakit extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('indexadmin');
+		$data['totalPenyakit'] = $this->M_penyakit->countPenyakit();
+		$data['totalGejala'] = $this->M_penyakit->countGejala();
+		$data['totalPemeriksaan'] = $this->M_penyakit->countPemeriksaan();
+		$data['totalBasis'] = $this->M_penyakit->countBasis();
+		$this->load->view('indexadmin',$data);
 	}
 
 	public function daftar_penyakit()

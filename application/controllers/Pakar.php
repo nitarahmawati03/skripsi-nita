@@ -15,10 +15,10 @@ class Pakar extends CI_Controller {
 	{
 		$data['totalPenyakit'] = $this->M_pakar->countPenyakit();
 		$data['totalGejala'] = $this->M_pakar->countGejala();
-		// $data['totalRevisi'] = $this->M_Pakar->countRevisi();
 		$data['totalPemeriksaan'] = $this->M_pakar->countPemeriksaan();
-		
-		$this->load->view('indexpakar');
+		$data['totalBasis'] = $this->M_pakar->countBasis();
+		$data['totalRevisi'] = $this->M_pakar->countRevisi();
+		$this->load->view('indexpakar',$data);
 	}
 
 	public function DataPenyakit()
@@ -47,8 +47,6 @@ class Pakar extends CI_Controller {
 		$data['basis'] = $this->M_pakar->getDataBasisId($id);
 		// $data['page']='DetailKasus.php';
 		$this->load->view('basisDetailPakar',$data);
-
-		
 	}
 
 	public function DataPemeriksaan()

@@ -93,7 +93,10 @@
                       
                       <input type="submit" class="btn btn-success" onclick="return confirm('Apakah Ingin Menyimpan Hasil Revisi?');" value="SIMPAN">
 
-                      <a href="<?php echo site_url('Pakar/DataPemeriksaanRevisi')?>"> <button type="kembali" class="btn btn-primary">Kembali</button>
+                      <a href="<?php echo site_url('Pakar/DataPemeriksaanRevisi')?>"> <button type="button" class="btn btn-primary">Kembali</button>
+
+                        <br>
+                        <br>
 
                     <?php echo form_close(); ?>
 

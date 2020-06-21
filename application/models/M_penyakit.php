@@ -8,6 +8,30 @@ class M_penyakit extends CI_Model {
 		parent::__construct();
 	}
 
+	public function countPenyakit()
+	{
+		$query = $this->db->query("SELECT COUNT(id_penyakit) AS total FROM tb_penyakit");
+		return $query->result();
+	}
+
+	public function countGejala()
+	{
+		$query = $this->db->query("SELECT COUNT(id_gejala) AS total FROM tb_gejala");
+		return $query->result();
+	}
+
+	public function countPemeriksaan()
+	{
+		$query = $this->db->query("SELECT COUNT(id_pemeriksaan) AS total FROM tb_pemeriksaan");
+		return $query->result();
+	}
+
+	public function countBasis()
+	{
+		$query = $this->db->query("SELECT COUNT(id_basis_pengetahuan) AS total FROM tb_basis_pengetahuan");
+		return $query->result();
+	}
+
 	public function readPenyakit(){
 		$query=$this->db->get('tb_penyakit');
 		return $query->result();
