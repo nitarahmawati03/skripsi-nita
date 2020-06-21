@@ -33,7 +33,7 @@
                           </tbody>
                         </table>
                         <div class="clearfix"></div>
-                        <a href="<?php echo site_url('Pakar/DataPemeriksaan')?>"> <button type="kembali" class="btn btn-primary">Kembali</button>
+                        <a href="<?php echo site_url('Pemeriksaan/DataPemeriksaan')?>"> <button type="kembali" class="btn btn-primary">Kembali</button>
 
                       </div>
                     </div>

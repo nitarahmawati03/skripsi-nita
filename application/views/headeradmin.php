@@ -43,8 +43,12 @@
 	</nav>
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<div class="profile-sidebar">
+			<div class="profile-userpic">
+				<img src="<?php echo base_url(); ?>assets/img/administrator.png">
+			</div>
 			<div class="profile-usertitle">
-				<div class="profile-usertitle-name"><em class="fa fa-user">&nbsp;</em> Admin</div>
+				<div class="profile-usertitle-name">Admin</div>
+				<div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
 			</div>
 			<div class="clear"></div>
 		</div>

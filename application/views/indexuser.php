@@ -90,7 +90,7 @@
                 <div class="col-md-5">
                     <div class="about_text">
                          <img src="<?php echo base_url()?>/assets/img/about_icon.png" class="about_icon" height="40" width="40">
-                        <h2>Sistem Pakar Kelinci</h2>
+                        <h2>Bunnie Health Solution</h2>
                         <p>Website ini digunakan untuk membantu para pemilik kelinci mendapat penanganan pertama jika kelinci terkena penyakit.</p>
 
                     </div>

@@ -22,8 +22,8 @@
                               <th>Persentase (%)</th>
                               <th>Status</th>
                               <th>Tanggal Direvisi</th>
-                              <th>Pemeriksa</th>
-                              <th>Action</th>
+                              <!-- <th>Pemeriksa</th> -->
+                              <th>Detail</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -58,7 +58,7 @@
                                   }
                                 ?>
                               </td>
-                              <td>
+                             <!--  <td>
                                 <?php
                                   if ($key->id_pengelola==null){
                                     echo "-";
@@ -66,9 +66,9 @@
                                     echo $key->nama;
                                   }
                                 ?>
-                              </td>
+                              </td> -->
                               <td>
-                                <a href="<?=site_url()?>/Pakar/detailPemeriksaan/<?php echo $key->id_pemeriksaan ?>" class="btn btn-primary"><span class="glyphicon glyphicon-list"> Gejala</a>
+                                <a href="<?=site_url()?>/Pemeriksaan/detailPemeriksaan/<?php echo $key->id_pemeriksaan ?>" class="btn btn-primary"><span class="glyphicon glyphicon-list"> Gejala</a>
                               </td>
                             </tr>
                             <?php

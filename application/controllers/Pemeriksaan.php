@@ -31,6 +31,8 @@ class Pemeriksaan extends CI_Controller {
 		// $data['page']='PemeriksaanDetail.php';
 		$this->load->view('tabelpemeriksaanDetail',$data);
 	}
+
+	
 	// public function daftar_pemeriksaan()
 	// {
 	// 	$this->load->model('M_pemeriksaan');

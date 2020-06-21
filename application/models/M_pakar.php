@@ -10,11 +10,17 @@ class M_Pakar extends CI_Model {
 		return $query->result();
 	}
 
-	public function countBasis()
+	public function countGejala()
 	{
-		$query = $this->db->query("SELECT COUNT(id_basis_pengetahuan) AS total FROM tb_basis_pengetahuan");
+		$query = $this->db->query("SELECT COUNT(id_gejala) AS total FROM tb_gejala");
 		return $query->result();
 	}
+
+	// public function countRevisi()
+	// {
+	// 	$query = $this->db->query("SELECT COUNT(id_pemeriksaan) AS total FROM tb_pemeriksaan");
+	// 	return $query->result();
+	// }
 
 	public function countPemeriksaan()
 	{
