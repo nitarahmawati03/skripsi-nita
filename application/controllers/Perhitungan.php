@@ -3,9 +3,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Perhitungan extends CI_Controller
 {
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->library('form_validation');
+		$this->load->model('M_penyakit');
+		$this->load->model('M_gejala');
+	}
+
 
 	public function index()
 	{
+		$this->form_validation->set_rules('check_list[]', 'Pilih Gejala', 'required');
+		if ($this->form_validation->run()==TRUE)
+		{
 		$this->load->model('M_perhitungan');
 
 		$kasus = $this->M_perhitungan->getPerhitunganQueryObject(); //mengambil data gejala setiap kasus
@@ -15,7 +26,7 @@ class Perhitungan extends CI_Controller
 			$data_kasus[$value->id_basis_pengetahuan][$value->id_gejala] = $value->bobot; //untuk mengambil bobot dari setiap gejala di kasus lama atau basis pengetahuan
 		}
 
-		$data_kasus_baru = $this->input->post('check_list'); //untuk menyimpan gejala kasus baru dengan variable data 
+		$data_kasus_baru = $this->input->post('check_list'); //untuk menyimpan gejala kasus baru dengan variable data
 
 
 		$data_bobot_kasus_tiap_penyakit = []; //variabel untuk simpan hasil
@@ -54,7 +65,7 @@ class Perhitungan extends CI_Controller
 			$nilai_sim_percent[$key] = $value * 100;
 		}
 
-		// #grant varible for view 
+		// #grant varible for view
 
 		$var_table_perhitungan = [];
 		foreach ($data_kasus as $key => $value) { //array untuk menampilkan perhitungan
@@ -69,13 +80,13 @@ class Perhitungan extends CI_Controller
 		}
 
 		$db_kasus = $this->M_perhitungan->joinPerhitungan();
-		
+
 		$data_kasus_penyakit = [];
 		foreach ($db_kasus as $key => $value) {
 			$data_kasus_penyakit[$value->id_basis_pengetahuan] = $value;
 		}
 
-		
+
 		$var_hasil_analisa_penyakit = []; //script menampilkan hasil analisa penyakit dengan presentase
 		foreach ($db_kasus as $key => $value) {
 			$var_hasil_analisa_penyakit[$key] = [
@@ -114,11 +125,11 @@ class Perhitungan extends CI_Controller
 				'status' => ($var_kemungkinan_penyakit_yang_diderita[$value]['persentase'] >= 50 ? 1 : 2),
 				'id_penyakit' => $data_kasus_penyakit[$value]->id_penyakit,
 				'hasil' => $var_kemungkinan_penyakit_yang_diderita[$value]['persentase']
-				
+
 			];
 
 			$this->M_perhitungan->insertPemeriksaan($set_pemeriksaan);
-		
+
 			$id_pemeriksaan = $this->db->insert_id();
 			foreach ($data_kasus_baru as $key => $value) {
 				$set_detail = [
@@ -139,7 +150,12 @@ class Perhitungan extends CI_Controller
 		$data['kasus'] = $nilai_sim_untuk_tiap_kasus;
 		$data['persen'] = $nilai_sim_percent;
 		$this->load->view('hasilKonsultasi', $data);
+	}else{
+		$data['penyakit_object']=$this->M_penyakit->getPenyakitQueryObject();
+		$data['gejala']=$this->M_gejala->getGejalaQueryObject();
+		$this->load->view('indexuser', $data);
 	}
+}
 
 	// public function revise($id_pemerikasaan)
 	// {
