@@ -6,17 +6,11 @@ class Perhitungan extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-<<<<<<< HEAD
-		$this->load->helper('url','form');
-		$this->load->library('form_validation');
-	}
-=======
 		$this->load->library('form_validation');
 		$this->load->model('M_penyakit');
 		$this->load->model('M_gejala');
 	}
 
->>>>>>> 7e9de78de05b191f516c00148382d74ddf437e0a
 
 	public function index()
 	{
@@ -172,4 +166,3 @@ class Perhitungan extends CI_Controller
 	// }
 
 }
-
