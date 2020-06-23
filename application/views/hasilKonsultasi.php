@@ -140,7 +140,7 @@
                     <th width="4%">NO</th>
                     <th width="18%">Penyakit</th>
                     <th width="30%">Definisi</th>
-                    <th width="30%">Solusi</th>
+                    <th width="30%">Penanganan Pertama</th>
                     <th width="18%">Persentase (%)</th>
                 </tr>
             </thead>
