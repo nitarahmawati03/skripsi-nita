@@ -68,7 +68,7 @@
                 ?>
                         <tr>
                             <td align="center"><?php echo $i; ?></td>
-                            <td align="center" name="gejala[]"><?php echo $value; ?></td>
+                            <td align="center" name="gejala[]"><?php echo $list_gejala[$value]->gejala; ?></td>
                         </tr>
                         <?php
                 $i++;
@@ -144,6 +144,9 @@
 
                 <button type="button" id="buttonPrev" class="btn btn-default">Prev</button>
                 <button type="button" id="btnChange" class="btn btn-default">Next</button>
+                <br>
+                <br>
+
                 
                 <h5 class="heading">Hasil diagnosis penyakit kelinci :</h5><br>
                 <table class="table table-striped table-bordered data">

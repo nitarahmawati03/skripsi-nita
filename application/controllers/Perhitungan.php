@@ -142,11 +142,19 @@ class Perhitungan extends CI_Controller
 			}
 		}
 
+		$db_gejala = $this->db->get('tb_gejala')->result();
+
+		$list_gejala = [];
+		foreach ($db_gejala as $key => $value) {
+			$list_gejala[$value->id_gejala] = $value;
+		}
+
 		$data['table_perhitungan'] = $var_table_perhitungan;
 		$data['hasil_analisa_penyakit'] = $var_hasil_analisa_penyakit;
 		// $data['gejala_cocok'] = $var_gejala_cocok;
 		$data['kemungkinan_penyakit_yang_diderita'] = $var_kemungkinan_penyakit_yang_diderita_maxed;
 		$data['gejala'] = $data_kasus_baru;
+		$data['list_gejala']= $list_gejala;
 		// $data['kasus'] = number_format($nilai_sim_untuk_tiap_kasus, 2, '.', '');
 		$data['kasus'] = $nilai_sim_untuk_tiap_kasus;
 		$data['persen'] = $nilai_sim_percent;
