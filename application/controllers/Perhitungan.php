@@ -14,7 +14,8 @@ class Perhitungan extends CI_Controller
 
 	public function index()
 	{
-		$this->form_validation->set_rules('check_list[]', 'Pilih Gejala', 'required');
+		$this->form_validation->set_rules('check_list[]', 'Pilih Gejala Kosong', 'required');
+		$this->form_validation->set_message('required', 'Pilih Gejala kosong!');
 		if ($this->form_validation->run()==TRUE)
 		{
 		$this->load->model('M_perhitungan');
