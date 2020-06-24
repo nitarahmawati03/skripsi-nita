@@ -76,6 +76,7 @@
                 ?>
                     </tbody>
                 </table>
+
                 <div id="perhitungan">
                     <h5 class="heading">Perhitungan</h5><br>
                     <table class="table table-striped table-bordered data">
@@ -112,7 +113,7 @@
                     </table>
                 </div>
 
-<div id="analisa">
+            <div id="analisa">
                 <h5 class="heading">Hasil Analisa Penyakit</h5><br>
                 <table class="table table-striped table-bordered data">
                     <thead>
@@ -140,8 +141,10 @@
                 </table>
 
                 </div>
+
                 <button type="button" id="buttonPrev" class="btn btn-default">Prev</button>
                 <button type="button" id="btnChange" class="btn btn-default">Next</button>
+                
                 <h5 class="heading">Hasil diagnosis penyakit kelinci :</h5><br>
                 <table class="table table-striped table-bordered data">
                     <thead>
