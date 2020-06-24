@@ -46,7 +46,7 @@
 
     <!-- service part start-->
     <section class="services py-5" id="furniture">
-    <div class="container py-lg-3">
+    <div class="container py-lg-3" id="detail">
         <h3 class="heading mb-5 text-center">Hasil Diagnosa</h3>
 
         <h5 class="heading">Gejala Yang Dipilih</h5><br>
@@ -200,6 +200,12 @@
     <script src="<?php echo base_url()?>/assets/js/owl.carousel.min.js"></script>
     <!-- custom js -->
     <script src="<?php echo base_url()?>/assets/js/custom.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            
+        });
+    </script>
 </body>
 
 </html>
